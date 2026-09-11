@@ -65,12 +65,7 @@ async function loadProductsFromDatabase(){
  renderStores();
 }
 
-const defaultProducts=[
-{id:1,n:"كوكيز فستق",s:"كوكيز بندر",p:19,e:"🍪",c:"cookies"},
-{id:2,n:"كوكيز شوكليت",s:"كوكيز بندر",p:17,e:"🍪",c:"cookies"},
-{id:3,n:"كوكيز ماتشا",s:"كوكيز بندر",p:18,e:"🍵",c:"cookies"},
-{id:4,n:"كيكة فانيلا",s:"حلويات البيت",p:65,e:"🍰",c:"cakes"},
-{id:5,n:"كرواسون زبدة",s:"مخبوزات بيتنا",p:12,e:"🥐",c:"bakery"}];
+
 let products=JSON.parse(localStorage.getItem("products")||"null")||defaultProducts;
 let cart=JSON.parse(localStorage.getItem("cart")||"[]");
 let orders=JSON.parse(localStorage.getItem("orders")||"[]");
