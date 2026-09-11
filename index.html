@@ -12,8 +12,8 @@
 
 <section id="shop"><main class="wrap">
 <div class="hero"><div class="muted" style="color:#cfc2b7">نسخة تجريبية V1</div><h1>منتجات محلية،<br>من رابط واحد.</h1><p>واجهة الطلب العامة للعميل. لاحقًا نضيف الأسر المنتجة والمناديب والدفع الإلكتروني.</p><button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">ابدأ الطلب</button></div>
- <h2>المتاجر</h2><div id="stores" class="grid"></div><h2>الأقسام</h2><div class="cats"><button class="cat active" onclick="filter('all',this)">الكل</button><button class="cat" onclick="filter('cookies',this)">كوكيز</button><button class="cat" onclick="filter('cakes',this)">كيك</button><button class="cat" onclick="filter('bakery',this)">مخبوزات</button></div>
-<h2 id="products">المنتجات</h2><div id="grid" class="grid"></div>
+ <h2>المتاجر</h2><div id="stores" class="grid"></div><div id="catalog" style="display:none"><h2>الأقسام</h2><div class="cats"><button class="cat active" onclick="filter('all',this)">الكل</button><button class="cat" onclick="filter('cookies',this)">كوكيز</button><button class="cat" onclick="filter('cakes',this)">كيك</button><button class="cat" onclick="filter('bakery',this)">مخبوزات</button></div>
+<h2 id="products">المنتجات</h2><div id="grid" class="grid"></div></div>
 </main></section>
 
 <section id="admin" class="admin"><main class="wrap">
@@ -95,7 +95,22 @@ function renderStores(){
     </article>
   `).join("");
 }
-function render(list=products){document.getElementById("grid").innerHTML=list.map(p=>`<article class="card"><div class="pic">${p.e}</div><h3>${p.n}</h3><div class="muted">${p.s}</div><div class="row" style="margin-top:14px"><span class="price">${p.p} ر.س</span><button class="add" onclick="add(${p.id})">+ أضف</button></div></article>`).join("");document.getElementById("prodN").textContent=products.length}
+function openStore(id){
+  const store=products.find(p=>p.vendor_id===id);
+  if(!store)return;
+
+  document.getElementById("stores").style.display="none";
+  document.getElementById("catalog").style.display="block";
+  document.getElementById("storeTitle").textContent=store.s;
+  render(products.filter(p=>p.vendor_id===id));
+}
+
+function showStores(){
+  document.getElementById("catalog").style.display="none";
+  document.getElementById("stores").style.display="grid";
+  renderStores();
+}
+ function render(list=products){document.getElementById("grid").innerHTML=list.map(p=>`<article class="card"><div class="pic">${p.e}</div><h3>${p.n}</h3><div class="muted">${p.s}</div><div class="row" style="margin-top:14px"><span class="price">${p.p} ر.س</span><button class="add" onclick="add(${p.id})">+ أضف</button></div></article>`).join("");document.getElementById("prodN").textContent=products.length}
 
  function filter(c,b){document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(c==="all"?products:products.filter(p=>p.c===c))}
 function add(id){cart.push(products.find(p=>p.id===id));save();update();openCart()}
