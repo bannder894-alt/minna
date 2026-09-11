@@ -129,7 +129,7 @@ function showShop(){document.getElementById("admin").style.display="none";docume
 function drawAdmin(){let sales=orders.reduce((a,o)=>a+o.total,0);document.getElementById("ordersN").textContent=orders.length;document.getElementById("salesN").textContent=sales+" ر.س";document.getElementById("commN").textContent=(sales*.1).toFixed(2)+" ر.س";document.getElementById("orders").innerHTML=orders.length?orders.map(o=>`<div class="order"><div class="row"><b>طلب #${o.id}</b><span class="badge">${o.status}</span></div><p class="muted">${o.date}</p><b>${o.name}</b> — ${o.phone}<p>${o.items.join("، ")}</p><div class="row"><b>${o.total} ر.س</b><select onchange="changeStatus('${o.id}',this.value)" style="width:auto;margin:0"><option ${o.status==="جديد"?"selected":""}>جديد</option><option ${o.status==="قيد التجهيز"?"selected":""}>قيد التجهيز</option><option ${o.status==="جاهز"?"selected":""}>جاهز</option><option ${o.status==="تم التوصيل"?"selected":""}>تم التوصيل</option></select></div></div>`).join(""):'<div class="empty">لا توجد طلبات حتى الآن</div>'}
 function changeStatus(id,v){let o=orders.find(x=>x.id===id);o.status=v;save();drawAdmin()}
 function openAdd(){document.getElementById("addPanel").style.display="block"}
-async async function addProduct(){
+async  function addProduct(){
   let n=pn.value.trim(),
       s=ps.value.trim(),
       p=Number(pp.value),
