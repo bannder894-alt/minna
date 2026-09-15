@@ -1835,7 +1835,7 @@ return;
 console.error(err);
 
 alert(
-"تعذر حفظ المنتج في قاعدة البيانات"
+"الخطأ: " + (err.message || err)
 );
 
 return;
