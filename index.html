@@ -10,583 +10,507 @@
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:#f5f0e8;
-  color:#29251f;
+margin:0;
+font-family:Arial,Tahoma,sans-serif;
+background:#f5f0e8;
+color:#29251f
 }
 
-button,input,textarea,select{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
+button,input,textarea,select{font-family:inherit}
+button{cursor:pointer}
 
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(245,240,232,.94);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #e3dbcf;
+position:sticky;
+top:0;
+z-index:50;
+background:rgba(245,240,232,.95);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #e3dbcf
 }
 
 .nav{
-  max-width:1100px;
-  margin:auto;
-  padding:16px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+max-width:1100px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
 }
 
 .logo{
-  font-size:26px;
-  font-weight:900;
-  letter-spacing:-1px;
+font-size:27px;
+font-weight:900
 }
 
 .logo small{
-  display:block;
-  font-size:10px;
-  color:#8d7652;
-  font-weight:500;
-  margin-top:2px;
+display:block;
+font-size:10px;
+color:#927957;
+font-weight:500;
+margin-top:2px
 }
 
 .nav-actions{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
+display:flex;
+gap:7px;
+flex-wrap:wrap
 }
 
 .btn{
-  border:0;
-  border-radius:12px;
-  padding:11px 16px;
-  font-weight:700;
-  background:#29251f;
-  color:white;
+border:0;
+border-radius:12px;
+padding:11px 16px;
+font-weight:700;
+background:#29251f;
+color:#fff
 }
 
 .btn.light{
-  background:#fff;
-  color:#29251f;
-  border:1px solid #ddd2c3;
+background:#fff;
+color:#29251f;
+border:1px solid #ddd2c3
 }
 
 .btn.gold{
-  background:#a88a5b;
-  color:#fff;
-}
-
-.btn.danger{
-  background:#8e3c3c;
+background:#a88a5b;
+color:#fff
 }
 
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px 20px 60px;
+max-width:1100px;
+margin:auto;
+padding:25px 20px 60px
 }
 
 .hero{
-  text-align:center;
-  padding:50px 15px 35px;
+text-align:center;
+padding:50px 15px 35px
 }
 
 .hero h1{
-  font-size:42px;
-  margin:0 0 12px;
-  letter-spacing:-1.5px;
+font-size:42px;
+margin:0 0 12px;
+letter-spacing:-1.5px
 }
 
 .hero p{
-  margin:0;
-  color:#776f65;
-  font-size:17px;
+margin:0;
+color:#776f65;
+font-size:17px
 }
 
 .section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin:25px 0 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin:25px 0 16px
 }
 
 .section-title h2{
-  margin:0;
-  font-size:24px;
+margin:0;
+font-size:23px
 }
 
-.stores-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+.stores-grid,
+.products-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
 }
 
-.store-card{
-  background:#fff;
-  border:1px solid #e7dfd4;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 5px 20px rgba(40,30,20,.05);
-  transition:.2s;
+.store-card,
+.product-card,
+.panel{
+background:#fff;
+border:1px solid #e7dfd4;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(40,30,20,.05)
 }
 
-.store-card:hover{
-  transform:translateY(-2px);
+.store-card,
+.product-card{
+overflow:hidden
 }
 
-.store-image{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-  background:#e8e0d5;
+.store-image,
+.product-image{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+display:block;
+background:#eee6dc
 }
 
-.store-body{
-  padding:14px;
+.store-body,
+.product-body{
+padding:14px
 }
 
 .store-name{
-  font-size:18px;
-  font-weight:900;
-  margin-bottom:5px;
+font-size:18px;
+font-weight:900;
+margin-bottom:5px
 }
 
 .store-desc{
-  color:#81776d;
-  font-size:13px;
-  line-height:1.6;
-  min-height:40px;
-}
-
-.products-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.product-card{
-  background:#fff;
-  border:1px solid #e7dfd4;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 5px 20px rgba(40,30,20,.05);
-}
-
-.product-image{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-  background:#eee6dc;
-}
-
-.product-body{
-  padding:14px;
+color:#81776d;
+font-size:13px;
+line-height:1.6;
+min-height:40px
 }
 
 .product-name{
-  font-size:17px;
-  font-weight:900;
+font-size:17px;
+font-weight:900
 }
 
 .product-store{
-  font-size:12px;
-  color:#8a8177;
-  margin:5px 0 8px;
+font-size:12px;
+color:#8a8177;
+margin:5px 0 8px
 }
 
 .product-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px
 }
 
-.price{
-  font-weight:900;
+.price{font-weight:900}
+
+.panel{
+padding:20px
 }
 
 .back{
-  margin-bottom:20px;
+margin-bottom:20px
 }
 
-.empty{
-  padding:35px;
-  text-align:center;
-  color:#82786e;
-  background:#fff;
-  border:1px dashed #d8cdbf;
-  border-radius:18px;
+.vendor-head{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px
 }
 
-.panel{
-  background:#fff;
-  border:1px solid #e4dace;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(40,30,20,.05);
+.vendor-avatar{
+width:85px;
+height:85px;
+border-radius:20px;
+object-fit:cover;
+background:#eee5d9;
+border:1px solid #ddd2c4
+}
+
+.vendor-title h1{
+margin:0 0 5px;
+font-size:28px
+}
+
+.vendor-title p{
+margin:0;
+color:#81786e
 }
 
 .form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px
 }
 
 .field{
-  margin-bottom:14px;
+margin-bottom:14px
 }
 
 .field.full{
-  grid-column:1/-1;
+grid-column:1/-1
 }
 
 .field label{
-  display:block;
-  margin-bottom:7px;
-  font-size:13px;
-  font-weight:700;
+display:block;
+margin-bottom:7px;
+font-size:13px;
+font-weight:700
 }
 
 .field input,
 .field textarea,
 .field select{
-  width:100%;
-  padding:13px;
-  border:1px solid #dcd1c4;
-  border-radius:12px;
-  background:#fcfaf7;
-  outline:none;
+width:100%;
+padding:13px;
+border:1px solid #dcd1c4;
+border-radius:12px;
+background:#fcfaf7;
+outline:none
 }
 
 .field textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:#a88a5b;
-}
-
-.vendor-head{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.vendor-avatar{
-  width:80px;
-  height:80px;
-  border-radius:20px;
-  object-fit:cover;
-  background:#eee5d9;
-  border:1px solid #ddd2c4;
-}
-
-.vendor-title h1{
-  margin:0 0 5px;
-  font-size:28px;
-}
-
-.vendor-title p{
-  margin:0;
-  color:#81786e;
+min-height:100px;
+resize:vertical
 }
 
 .dashboard-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:20px
 }
 
 .stat{
-  background:#f8f4ee;
-  border:1px solid #e8dfd4;
-  border-radius:15px;
-  padding:15px;
-  text-align:center;
+background:#f8f4ee;
+border:1px solid #e8dfd4;
+border-radius:15px;
+padding:15px;
+text-align:center
 }
 
 .stat strong{
-  display:block;
-  font-size:23px;
+display:block;
+font-size:23px
 }
 
 .stat span{
-  color:#82776c;
-  font-size:12px;
-}
-
-.table-wrap{
-  overflow:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:600px;
-}
-
-th,td{
-  text-align:right;
-  padding:12px 10px;
-  border-bottom:1px solid #eee6dc;
-}
-
-th{
-  font-size:12px;
-  color:#786e63;
-}
-
-td{
-  font-size:14px;
-}
-
-.mini-product{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.mini-product img{
-  width:45px;
-  height:45px;
-  object-fit:cover;
-  border-radius:10px;
+color:#82776c;
+font-size:12px
 }
 
 .login-box{
-  max-width:420px;
-  margin:60px auto;
+max-width:420px;
+margin:60px auto
 }
 
 .login-box h1{
-  margin-top:0;
+margin-top:0
 }
 
 .note{
-  background:#f8f2e8;
-  border:1px solid #eadcc8;
-  padding:12px;
-  border-radius:12px;
-  color:#74695d;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:15px;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(30,25,20,.55);
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(560px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:22px;
-  padding:22px;
-}
-
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:15px;
-}
-
-.modal-head h2{
-  margin:0;
-}
-
-.close{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:50%;
-  background:#f1ece5;
-  font-size:20px;
+background:#f8f2e8;
+border:1px solid #eadcc8;
+padding:12px;
+border-radius:12px;
+color:#74695d;
+font-size:13px;
+line-height:1.6;
+margin-bottom:15px
 }
 
 .image-preview{
-  width:110px;
-  height:110px;
-  border-radius:18px;
-  object-fit:cover;
-  background:#eee6dc;
-  border:1px solid #ddd2c4;
-  display:block;
-  margin-bottom:10px;
+width:120px;
+height:120px;
+border-radius:18px;
+object-fit:cover;
+background:#eee6dc;
+border:1px solid #ddd2c4;
+display:block;
+margin-bottom:10px
+}
+
+.mini-product{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px 0;
+border-bottom:1px solid #eee6dc
+}
+
+.mini-product img{
+width:48px;
+height:48px;
+object-fit:cover;
+border-radius:10px
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(30,25,20,.55);
+z-index:100;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+width:min(560px,100%);
+max-height:90vh;
+overflow:auto;
+background:#fff;
+border-radius:22px;
+padding:22px
+}
+
+.modal-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:15px
+}
+
+.modal-head h2{margin:0}
+
+.close{
+width:38px;
+height:38px;
+border:0;
+border-radius:50%;
+background:#f1ece5;
+font-size:20px
+}
+
+.empty{
+padding:35px;
+text-align:center;
+color:#82786e;
+background:#fff;
+border:1px dashed #d8cdbf;
+border-radius:18px
 }
 
 .toast{
-  position:fixed;
-  left:20px;
-  bottom:20px;
-  background:#29251f;
-  color:#fff;
-  padding:13px 17px;
-  border-radius:13px;
-  z-index:200;
-  display:none;
-  box-shadow:0 8px 30px rgba(0,0,0,.2);
+position:fixed;
+left:20px;
+bottom:20px;
+background:#29251f;
+color:#fff;
+padding:13px 17px;
+border-radius:13px;
+z-index:200;
+display:none;
+box-shadow:0 8px 30px rgba(0,0,0,.2)
 }
 
-.toast.show{
-  display:block;
-}
+.toast.show{display:block}
 
 .cart-bar{
-  position:fixed;
-  left:20px;
-  right:20px;
-  bottom:18px;
-  max-width:500px;
-  margin:auto;
-  background:#29251f;
-  color:#fff;
-  border-radius:18px;
-  padding:13px 16px;
-  display:none;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  z-index:40;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+position:fixed;
+left:20px;
+right:20px;
+bottom:18px;
+max-width:500px;
+margin:auto;
+background:#29251f;
+color:#fff;
+border-radius:18px;
+padding:13px 16px;
+display:none;
+align-items:center;
+justify-content:space-between;
+z-index:40
 }
 
-.cart-bar.show{
-  display:flex;
-}
+.cart-bar.show{display:flex}
 
 .cart-count{
-  background:#a88a5b;
-  padding:5px 9px;
-  border-radius:8px;
-  font-size:12px;
+background:#a88a5b;
+padding:5px 9px;
+border-radius:8px;
+font-size:12px
 }
+
+.table-wrap{overflow:auto}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:500px
+}
+
+th,td{
+padding:12px 10px;
+border-bottom:1px solid #eee6dc;
+text-align:right
+}
+
+.hidden{display:none!important}
 
 footer{
-  text-align:center;
-  padding:35px 20px;
-  color:#8a8076;
-  font-size:12px;
-}
-
-.hidden{
-  display:none!important;
+text-align:center;
+padding:35px 20px;
+color:#8a8076;
+font-size:12px
 }
 
 @media(max-width:700px){
-  .hero{
-    padding:35px 10px 25px;
-  }
 
-  .hero h1{
-    font-size:32px;
-  }
+.nav{padding:12px 14px}
 
-  .stores-grid,
-  .products-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-  }
+.logo{font-size:22px}
 
-  .store-card,
-  .product-card{
-    border-radius:14px;
-  }
+.hero{padding:35px 10px 25px}
 
-  .store-body,
-  .product-body{
-    padding:9px;
-  }
+.hero h1{font-size:32px}
 
-  .store-name{
-    font-size:14px;
-  }
+.stores-grid,
+.products-grid{
+grid-template-columns:repeat(3,1fr);
+gap:9px
+}
 
-  .store-desc{
-    font-size:10px;
-    min-height:34px;
-  }
+.store-card,
+.product-card{
+border-radius:14px
+}
 
-  .product-name{
-    font-size:13px;
-  }
+.store-body,
+.product-body{
+padding:9px
+}
 
-  .product-store{
-    font-size:9px;
-  }
+.store-name{
+font-size:14px
+}
 
-  .price{
-    font-size:12px;
-  }
+.store-desc{
+font-size:10px;
+min-height:34px
+}
 
-  .btn{
-    padding:9px 11px;
-    font-size:12px;
-  }
+.product-name{font-size:13px}
 
-  .form-grid,
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
+.product-store{font-size:9px}
 
-  .stats{
-    grid-template-columns:repeat(3,1fr);
-  }
+.price{font-size:12px}
 
-  .stat{
-    padding:10px 5px;
-  }
+.btn{
+padding:9px 11px;
+font-size:12px
+}
 
-  .stat strong{
-    font-size:18px;
-  }
+.dashboard-grid,
+.form-grid{
+grid-template-columns:1fr
+}
 
-  .stat span{
-    font-size:10px;
-  }
+.stats{
+grid-template-columns:repeat(3,1fr)
+}
 
-  .nav{
-    padding:12px 14px;
-  }
+.stat{
+padding:10px 5px
+}
 
-  .logo{
-    font-size:22px;
-  }
+.stat strong{font-size:18px}
+
+.stat span{font-size:10px}
+
+.vendor-title h1{font-size:22px}
+
+.vendor-avatar{
+width:70px;
+height:70px
+}
 }
 </style>
 </head>
@@ -594,291 +518,483 @@ footer{
 <body>
 
 <header class="topbar">
-  <div class="nav">
-    <div class="logo">
-      مِنّا
-      <small>من أياديهم إلى يديك</small>
-    </div>
+<div class="nav">
 
-    <div class="nav-actions">
-      <button class="btn light" onclick="showHome()">المتاجر</button>
-      <button class="btn light" onclick="openVendorLogin()">أصحاب المتاجر</button>
-      <button class="btn light" onclick="openAdmin()">مالك المنصة</button>
-    </div>
-  </div>
+<div class="logo">
+مِنّا
+<small>من أياديهم إلى يديك</small>
+</div>
+
+<div class="nav-actions">
+
+<button class="btn light" onclick="showHome()">
+المتاجر
+</button>
+
+<button class="btn light" onclick="openVendorLogin()">
+أصحاب المتاجر
+</button>
+
+<button class="btn light" onclick="openAdmin()">
+مالك المنصة
+</button>
+
+</div>
+</div>
 </header>
+
 
 <main class="container">
 
-  <!-- HOME -->
-  <section id="homePage">
-    <div class="hero">
-      <h1>من أياديهم إلى يديك</h1>
-      <p>اكتشف منتجات صنعت بحب من أصحاب المتاجر والأسر المنتجة.</p>
-    </div>
+<!-- الصفحة الرئيسية -->
 
-    <div class="section-title">
-      <h2>متاجر مِنّا</h2>
-    </div>
+<section id="homePage">
 
-    <div id="storesGrid" class="stores-grid"></div>
-  </section>
+<div class="hero">
+<h1>من أياديهم إلى يديك</h1>
+<p>اكتشف منتجات صنعت بحب من أصحاب المتاجر والأسر المنتجة.</p>
+</div>
 
+<div class="section-title">
+<h2>متاجر مِنّا</h2>
+</div>
 
-  <!-- STORE -->
-  <section id="storePage" class="hidden">
-    <div class="back">
-      <button class="btn light" onclick="showHome()">← المتاجر</button>
-    </div>
+<div id="storesGrid" class="stores-grid"></div>
 
-    <div class="vendor-head">
-      <img id="storePageImage" class="vendor-avatar" src="" alt="">
-      <div class="vendor-title">
-        <h1 id="storePageTitle">متجر</h1>
-        <p id="storePageDescription"></p>
-      </div>
-    </div>
-
-    <div id="storeProducts" class="products-grid"></div>
-  </section>
+</section>
 
 
-  <!-- VENDOR LOGIN -->
-  <section id="vendorLoginPage" class="hidden">
-    <div class="login-box panel">
-      <h1>دخول أصحاب المتاجر</h1>
+<!-- صفحة المتجر -->
 
-      <div class="note">
-        هذه نسخة تجريبية حالياً. تسجيل الدخول الحقيقي بواسطة Supabase Auth
-        سنضيفه لاحقاً.
-      </div>
+<section id="storePage" class="hidden">
 
-      <div class="field">
-        <label>رمز الدخول</label>
-        <input id="vendorPin" type="password" placeholder="أدخل الرمز">
-      </div>
+<div class="back">
+<button class="btn light" onclick="showHome()">
+← المتاجر
+</button>
+</div>
 
-      <button class="btn" onclick="vendorLogin()">دخول</button>
-      <button class="btn light" onclick="showHome()">رجوع</button>
-    </div>
-  </section>
+<div class="vendor-head">
 
+<img id="storePageImage"
+class="vendor-avatar"
+src=""
+alt="">
 
-  <!-- VENDOR DASHBOARD -->
-  <section id="vendorDashboardPage" class="hidden">
+<div class="vendor-title">
 
-    <div class="back">
-      <button class="btn light" onclick="showHome()">← المتاجر</button>
-    </div>
+<h1 id="storePageTitle"></h1>
 
-    <div class="vendor-head">
-      <img id="dashboardVendorImage" class="vendor-avatar" src="" alt="">
-      <div class="vendor-title">
-        <h1 id="dashboardVendorName">متجر بندر</h1>
-        <p id="dashboardVendorDescription">حلويات ومنتجات صنعت بحب</p>
-      </div>
-    </div>
+<p id="storePageDescription"></p>
 
-    <div class="stats">
-      <div class="stat">
-        <strong id="vendorProductsCount">0</strong>
-        <span>المنتجات</span>
-      </div>
+</div>
 
-      <div class="stat">
-        <strong id="vendorOrdersCount">0</strong>
-        <span>الطلبات</span>
-      </div>
+</div>
 
-      <div class="stat">
-        <strong id="vendorSalesCount">0</strong>
-        <span>المبيعات</span>
-      </div>
-    </div>
+<div id="storeProducts" class="products-grid"></div>
+
+</section>
 
 
-    <div class="dashboard-grid">
+<!-- دخول أصحاب المتاجر -->
 
-      <!-- EDIT STORE -->
-      <div class="panel">
-        <div class="section-title">
-          <h2>بيانات المتجر</h2>
-        </div>
+<section id="vendorLoginPage" class="hidden">
 
-        <div class="field">
-          <label>صورة المتجر</label>
+<div class="login-box panel">
 
-          <img id="vendorImagePreview"
-               class="image-preview"
-               src=""
-               alt="صورة المتجر">
+<h1>دخول أصحاب المتاجر</h1>
 
-          <input id="vendorImageInput"
-                 type="file"
-                 accept="image/*"
-                 onchange="previewVendorImage(event)">
-        </div>
+<div class="note">
+هذه نسخة تجريبية حالياً.
+رمز الدخول التجريبي: 1234
+</div>
 
-        <div class="field">
-          <label>اسم المتجر</label>
-          <input id="vendorNameInput" type="text">
-        </div>
+<div class="field">
 
-        <div class="field">
-          <label>وصف المتجر</label>
-          <textarea id="vendorDescriptionInput"></textarea>
-        </div>
+<label>رمز الدخول</label>
 
-        <button class="btn gold" onclick="saveVendorProfile()">
-          حفظ بيانات المتجر
-        </button>
-      </div>
+<input
+id="vendorPin"
+type="password"
+placeholder="أدخل الرمز">
 
+</div>
 
-      <!-- PRODUCTS -->
-      <div class="panel">
-        <div class="section-title">
-          <h2>منتجاتي</h2>
+<button class="btn" onclick="vendorLogin()">
+دخول
+</button>
 
-          <button class="btn" onclick="openAddVendorProduct()">
-            + إضافة منتج
-          </button>
-        </div>
+<button class="btn light" onclick="showHome()">
+رجوع
+</button>
 
-        <div id="vendorProductsList"></div>
-      </div>
+</div>
 
-    </div>
-
-    <div style="margin-top:18px">
-      <button class="btn light" onclick="vendorLogout()">
-        تسجيل الخروج
-      </button>
-    </div>
-
-  </section>
+</section>
 
 
-  <!-- ADMIN -->
-  <section id="adminPage" class="hidden">
+<!-- لوحة المتجر -->
 
-    <div class="back">
-      <button class="btn light" onclick="showHome()">← المتاجر</button>
-    </div>
+<section id="vendorDashboardPage" class="hidden">
 
-    <div class="panel">
-      <div class="section-title">
-        <h2>لوحة مالك المنصة</h2>
-      </div>
+<div class="back">
 
-      <div class="stats">
-        <div class="stat">
-          <strong id="adminProductsCount">0</strong>
-          <span>المنتجات</span>
-        </div>
+<button class="btn light" onclick="showHome()">
+← المتاجر
+</button>
 
-        <div class="stat">
-          <strong id="adminVendorsCount">0</strong>
-          <span>المتاجر</span>
-        </div>
+</div>
 
-        <div class="stat">
-          <strong id="adminOrdersCount">0</strong>
-          <span>الطلبات</span>
-        </div>
-      </div>
 
-      <button class="btn gold" onclick="openAdminAddProduct()">
-        + إضافة منتج
-      </button>
+<div class="vendor-head">
 
-      <div style="height:20px"></div>
+<img
+id="dashboardVendorImage"
+class="vendor-avatar"
+src=""
+alt="">
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>المنتج</th>
-              <th>المتجر</th>
-              <th>السعر</th>
-            </tr>
-          </thead>
+<div class="vendor-title">
 
-          <tbody id="adminProductsTable"></tbody>
-        </table>
-      </div>
-    </div>
+<h1 id="dashboardVendorName">
+متجر بندر
+</h1>
 
-  </section>
+<p id="dashboardVendorDescription"></p>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong id="vendorProductsCount">0</strong>
+<span>المنتجات</span>
+</div>
+
+<div class="stat">
+<strong id="vendorOrdersCount">0</strong>
+<span>الطلبات</span>
+</div>
+
+<div class="stat">
+<strong id="vendorSalesCount">0</strong>
+<span>المبيعات</span>
+</div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+
+<!-- تعديل المتجر -->
+
+<div class="panel">
+
+<div class="section-title">
+<h2>بيانات المتجر</h2>
+</div>
+
+
+<div class="field">
+
+<label>صورة المتجر</label>
+
+<img
+id="vendorImagePreview"
+class="image-preview"
+src=""
+alt="">
+
+<input
+id="vendorImageInput"
+type="file"
+accept="image/*"
+onchange="previewVendorImage(event)">
+
+</div>
+
+
+<div class="field">
+
+<label>اسم المتجر</label>
+
+<input
+id="vendorNameInput"
+type="text">
+
+</div>
+
+
+<div class="field">
+
+<label>وصف المتجر</label>
+
+<textarea
+id="vendorDescriptionInput"></textarea>
+
+</div>
+
+
+<button
+class="btn gold"
+onclick="saveVendorProfile()">
+
+حفظ بيانات المتجر
+
+</button>
+
+</div>
+
+
+<!-- المنتجات -->
+
+<div class="panel">
+
+<div class="section-title">
+
+<h2>منتجاتي</h2>
+
+<button
+class="btn"
+onclick="openAddVendorProduct()">
+
++ إضافة منتج
+
+</button>
+
+</div>
+
+<div id="vendorProductsList"></div>
+
+</div>
+
+</div>
+
+
+<div style="margin-top:18px">
+
+<button
+class="btn light"
+onclick="vendorLogout()">
+
+تسجيل الخروج
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- لوحة المالك -->
+
+<section id="adminPage" class="hidden">
+
+<div class="back">
+
+<button
+class="btn light"
+onclick="showHome()">
+
+← المتاجر
+
+</button>
+
+</div>
+
+
+<div class="panel">
+
+<div class="section-title">
+<h2>لوحة مالك المنصة</h2>
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong id="adminProductsCount">0</strong>
+<span>المنتجات</span>
+</div>
+
+<div class="stat">
+<strong id="adminVendorsCount">0</strong>
+<span>المتاجر</span>
+</div>
+
+<div class="stat">
+<strong id="adminOrdersCount">0</strong>
+<span>الطلبات</span>
+</div>
+
+</div>
+
+
+<button
+class="btn gold"
+onclick="openAdminAddProduct()">
+
++ إضافة منتج
+
+</button>
+
+
+<div style="height:20px"></div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>المنتج</th>
+<th>المتجر</th>
+<th>السعر</th>
+</tr>
+
+</thead>
+
+<tbody id="adminProductsTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
 
 </main>
 
 
-<!-- ADD PRODUCT MODAL -->
+<!-- نافذة إضافة المنتج -->
+
 <div id="productModal" class="modal">
-  <div class="modal-box">
 
-    <div class="modal-head">
-      <h2 id="productModalTitle">إضافة منتج</h2>
-      <button class="close" onclick="closeProductModal()">×</button>
-    </div>
+<div class="modal-box">
 
-    <div class="field">
-      <label>اسم المنتج</label>
-      <input id="productNameInput" type="text" placeholder="مثال: كوكيز فستق">
-    </div>
+<div class="modal-head">
 
-    <div class="field">
-      <label>السعر</label>
-      <input id="productPriceInput" type="number" min="0" step="0.01" placeholder="17">
-    </div>
+<h2>إضافة منتج</h2>
 
-    <div class="field">
-      <label>التصنيف</label>
-      <select id="productCategoryInput">
-        <option value="cookies">كوكيز</option>
-        <option value="desserts">حلويات</option>
-        <option value="cakes">كيك</option>
-        <option value="drinks">مشروبات</option>
-        <option value="other">أخرى</option>
-      </select>
-    </div>
+<button
+class="close"
+onclick="closeProductModal()">
 
-    <div class="field">
-      <label>وصف المنتج</label>
-      <textarea id="productDescriptionInput"
-        placeholder="اكتب وصفاً بسيطاً للمنتج"></textarea>
-    </div>
+×
+</button>
 
-    <div class="field">
-      <label>صورة المنتج</label>
-      <input id="productImageInput" type="file" accept="image/*">
-    </div>
+</div>
 
-    <button class="btn gold" onclick="saveProduct()">
-      حفظ المنتج
-    </button>
 
-  </div>
+<div class="field">
+
+<label>اسم المنتج</label>
+
+<input
+id="productNameInput"
+type="text"
+placeholder="مثال: كوكيز فستق">
+
+</div>
+
+
+<div class="field">
+
+<label>السعر</label>
+
+<input
+id="productPriceInput"
+type="number"
+min="0"
+step="0.01"
+placeholder="17">
+
+</div>
+
+
+<div class="field">
+
+<label>التصنيف</label>
+
+<select id="productCategoryInput">
+
+<option value="cookies">كوكيز</option>
+<option value="desserts">حلويات</option>
+<option value="cakes">كيك</option>
+<option value="drinks">مشروبات</option>
+<option value="other">أخرى</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>وصف المنتج</label>
+
+<textarea
+id="productDescriptionInput"
+placeholder="اكتب وصفاً للمنتج"></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>صورة المنتج</label>
+
+<input
+id="productImageInput"
+type="file"
+accept="image/*">
+
+</div>
+
+
+<button
+class="btn gold"
+onclick="saveProduct()">
+
+حفظ المنتج
+
+</button>
+
+</div>
+
 </div>
 
 
 <div id="toast" class="toast"></div>
 
-<div id="cartBar" class="cart-bar">
-  <div>
-    السلة
-    <span id="cartCount" class="cart-count">0</span>
-  </div>
 
-  <button class="btn gold" onclick="openCart()">
-    عرض السلة
-  </button>
+<div id="cartBar" class="cart-bar">
+
+<div>
+السلة
+<span id="cartCount" class="cart-count">0</span>
+</div>
+
+<button
+class="btn gold"
+onclick="openCart()">
+
+عرض السلة
+
+</button>
+
 </div>
 
 
 <footer>
-  مِنّا © 2026 — من أياديهم إلى يديك
+مِنّا © 2026 — من أياديهم إلى يديك
 </footer>
 
 
@@ -887,1233 +1003,1387 @@ footer{
 <script>
 
 const SUPABASE_URL =
-  "https://eetytrvkovzkadcfrmdh.supabase.co";
+"https://eetytrvkovzkadcfrmdh.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_Tr8icfN87zwe9yhF0BIJ3Q_5Grbu7yu";
+"sb_publishable_Tr8icfN87zwe9yhF0BIJ3Q_5Grbu7yu";
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
 
-/* =========================
-   STATE
-========================= */
-
-let products = [];
-let vendors = [];
-let cart = [];
+/* المتجر التجريبي */
 
 let currentVendorId = 1;
+
 let vendorLoggedIn = false;
+
+let products = [];
+
+let vendors = [];
+
+let cart = [];
 
 let productModalMode = "vendor";
 
 
 /* =========================
-   HELPERS
+   أدوات
 ========================= */
 
 function escapeHtml(value){
-  if(value === null || value === undefined) return "";
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
+if(value === null || value === undefined)
+return "";
 
-
-function toast(message){
-  const el = document.getElementById("toast");
-
-  el.textContent = message;
-  el.classList.add("show");
-
-  setTimeout(()=>{
-    el.classList.remove("show");
-  },2500);
-}
-
-
-function hideAllPages(){
-
-  document.getElementById("homePage").classList.add("hidden");
-  document.getElementById("storePage").classList.add("hidden");
-  document.getElementById("vendorLoginPage").classList.add("hidden");
-  document.getElementById("vendorDashboardPage").classList.add("hidden");
-  document.getElementById("adminPage").classList.add("hidden");
-
-}
-
-
-function showHome(){
-
-  hideAllPages();
-
-  document.getElementById("homePage").classList.remove("hidden");
-
-  renderStores();
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 function imageFallback(type="product"){
 
-  if(type === "store"){
-    return "https://placehold.co/700x700/f0e9df/8b7a65?text=مِنّا";
-  }
+if(type === "store"){
 
-  return "https://placehold.co/700x700/eee6dc/8b7a65?text=مِنّا";
+return "https://placehold.co/700x700/f0e9df/8b7a65?text=%D9%85%D9%90%D9%86%D9%91%D8%A7";
+
+}
+
+return "https://placehold.co/700x700/eee6dc/8b7a65?text=%D9%85%D9%90%D9%86%D9%91%D8%A7";
+
+}
+
+
+function toast(message){
+
+const el =
+document.getElementById("toast");
+
+el.textContent = message;
+
+el.classList.add("show");
+
+setTimeout(()=>{
+
+el.classList.remove("show");
+
+},3000);
+
+}
+
+
+function hideAllPages(){
+
+document.getElementById("homePage")
+.classList.add("hidden");
+
+document.getElementById("storePage")
+.classList.add("hidden");
+
+document.getElementById("vendorLoginPage")
+.classList.add("hidden");
+
+document.getElementById("vendorDashboardPage")
+.classList.add("hidden");
+
+document.getElementById("adminPage")
+.classList.add("hidden");
+
 }
 
 
 /* =========================
-   LOAD DATA
+   تحميل البيانات
 ========================= */
 
 async function loadData(){
 
-  const vendorResult =
-    await supabaseClient
-      .from("vendors")
-      .select("*")
-      .eq("is_active",true)
-      .order("id");
-
-  if(!vendorResult.error){
-    vendors = vendorResult.data || [];
-  }
+const vendorResult =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("is_active",true)
+.order("id");
 
 
-  const productResult =
-    await supabaseClient
-      .from("products")
-      .select(`
-        *,
-        vendors(
-          name,
-          image_url,
-          description
-        )
-      `)
-      .eq("is_active",true)
-      .order("id",{ascending:false});
+if(vendorResult.error){
 
+console.error(vendorResult.error);
 
-  if(productResult.error){
+vendors = [];
 
-    console.error(productResult.error);
+}else{
 
-    toast("تعذر تحميل المنتجات");
-
-    products = [];
-
-    return;
-  }
-
-
-  products =
-    (productResult.data || []).map(x=>({
-
-      id:x.id,
-
-      n:x.name,
-
-      s:x.vendors?.name || "متجر مِنّا",
-
-      p:Number(x.price || 0),
-
-      e:x.emoji || "🍪",
-
-      c:x.category || "cookies",
-
-      vendor_id:x.vendor_id,
-
-      description:x.description || "",
-
-      image_url:x.image_url || "",
-
-      vendor_image_url:x.vendors?.image_url || "",
-
-      vendor_description:
-        x.vendors?.description ||
-        "حلويات ومنتجات صنعت بحب"
-
-    }));
+vendors =
+vendorResult.data || [];
 
 }
 
 
-async function refresh(){
+const productResult =
+await supabaseClient
+.from("products")
+.select(`
+*,
+vendors(
+name,
+image_url,
+description
+)
+`)
+.eq("is_active",true)
+.order("id",{ascending:false});
 
-  await loadData();
 
-  renderStores();
+if(productResult.error){
+
+console.error(productResult.error);
+
+products = [];
+
+toast("تعذر تحميل المنتجات");
+
+return;
+
+}
+
+
+products =
+(productResult.data || []).map(x=>({
+
+id:x.id,
+
+n:x.name,
+
+s:x.vendors?.name || "متجر مِنّا",
+
+p:Number(x.price || 0),
+
+e:x.emoji || "🍪",
+
+c:x.category || "cookies",
+
+vendor_id:x.vendor_id,
+
+description:x.description || "",
+
+image_url:x.image_url || "",
+
+vendor_image_url:
+x.vendors?.image_url || "",
+
+vendor_description:
+x.vendors?.description ||
+"حلويات ومنتجات صنعت بحب"
+
+}));
 
 }
 
 
 /* =========================
-   STORES
+   الرئيسية
 ========================= */
+
+function showHome(){
+
+hideAllPages();
+
+document.getElementById("homePage")
+.classList.remove("hidden");
+
+renderStores();
+
+}
+
 
 function renderStores(){
 
-  const grid =
-    document.getElementById("storesGrid");
+const grid =
+document.getElementById("storesGrid");
 
-  const map = new Map();
-
-  products
-    .filter(p=>p.vendor_id)
-    .forEach(p=>{
-
-      if(!map.has(p.vendor_id)){
-
-        map.set(
-          p.vendor_id,
-          {
-            id:p.vendor_id,
-            name:p.s,
-            image_url:p.vendor_image_url,
-            description:p.vendor_description
-          }
-        );
-
-      }
-
-    });
+const map = new Map();
 
 
-  /* إذا المتجر موجود في vendors حتى لو ما عنده منتجات */
+/* المتاجر التي لديها منتجات */
 
-  vendors.forEach(v=>{
+products
+.filter(p=>p.vendor_id)
+.forEach(p=>{
 
-    if(!map.has(v.id)){
+if(!map.has(p.vendor_id)){
 
-      map.set(
-        v.id,
-        {
-          id:v.id,
-          name:v.name,
-          image_url:v.image_url || "",
-          description:
-            v.description ||
-            "حلويات ومنتجات صنعت بحب"
-        }
-      );
+map.set(
+p.vendor_id,
+{
+id:p.vendor_id,
+name:p.s,
+image_url:p.vendor_image_url,
+description:p.vendor_description
+}
+);
 
-    }
+}
 
-  });
-
-
-  const stores =
-    [...map.values()];
+});
 
 
-  if(!stores.length){
+/* جميع المتاجر */
 
-    grid.innerHTML =
-      `<div class="empty">
-        لا توجد متاجر حالياً
-      </div>`;
+vendors.forEach(v=>{
 
-    return;
-  }
+if(!map.has(v.id)){
+
+map.set(
+v.id,
+{
+id:v.id,
+name:v.name,
+image_url:v.image_url || "",
+description:
+v.description ||
+"حلويات ومنتجات صنعت بحب"
+}
+);
+
+}
+
+});
 
 
-  grid.innerHTML =
-    stores.map(v=>`
+const stores =
+[...map.values()];
 
-      <div class="store-card">
 
-        <img
-          class="store-image"
-          src="${escapeHtml(v.image_url || imageFallback("store"))}"
-          alt="${escapeHtml(v.name)}"
-          onerror="this.src='${imageFallback("store")}'"
-        >
+if(!stores.length){
 
-        <div class="store-body">
+grid.innerHTML =
+`<div class="empty">
+لا توجد متاجر حالياً
+</div>`;
 
-          <div class="store-name">
-            ${escapeHtml(v.name)}
-          </div>
+return;
 
-          <div class="store-desc">
-            ${escapeHtml(v.description)}
-          </div>
+}
 
-          <button
-            class="btn"
-            style="width:100%;margin-top:10px"
-            onclick="openStore(${Number(v.id)})"
-          >
-            دخول المتجر
-          </button>
 
-        </div>
+grid.innerHTML =
+stores.map(v=>`
 
-      </div>
+<div class="store-card">
 
-    `).join("");
+<img
+class="store-image"
+src="${escapeHtml(v.image_url || imageFallback("store"))}"
+alt="${escapeHtml(v.name)}"
+onerror="this.src='${imageFallback("store")}'">
+
+<div class="store-body">
+
+<div class="store-name">
+${escapeHtml(v.name)}
+</div>
+
+<div class="store-desc">
+${escapeHtml(v.description)}
+</div>
+
+<button
+class="btn"
+style="width:100%;margin-top:10px"
+onclick="openStore(${Number(v.id)})">
+
+دخول المتجر
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
 
 }
 
 
 /* =========================
-   STORE PAGE
+   صفحة المتجر
 ========================= */
 
 function openStore(vendorId){
 
-  hideAllPages();
+hideAllPages();
 
-  document
-    .getElementById("storePage")
-    .classList.remove("hidden");
-
-
-  const vendor =
-    vendors.find(v=>Number(v.id) === Number(vendorId));
+document.getElementById("storePage")
+.classList.remove("hidden");
 
 
-  const vendorProducts =
-    products.filter(
-      p=>Number(p.vendor_id) === Number(vendorId)
-    );
+const vendor =
+vendors.find(
+v=>Number(v.id) === Number(vendorId)
+);
 
 
-  const firstProduct =
-    vendorProducts[0];
+const vendorProducts =
+products.filter(
+p=>Number(p.vendor_id) === Number(vendorId)
+);
 
 
-  const name =
-    vendor?.name ||
-    firstProduct?.s ||
-    "متجر مِنّا";
+const first =
+vendorProducts[0];
 
 
-  const description =
-    vendor?.description ||
-    firstProduct?.vendor_description ||
-    "";
+const name =
+vendor?.name ||
+first?.s ||
+"متجر مِنّا";
 
 
-  const image =
-    vendor?.image_url ||
-    firstProduct?.vendor_image_url ||
-    imageFallback("store");
+const description =
+vendor?.description ||
+first?.vendor_description ||
+"";
 
 
-  document.getElementById("storePageTitle")
-    .textContent = name;
-
-  document.getElementById("storePageDescription")
-    .textContent = description;
-
-  const imageEl =
-    document.getElementById("storePageImage");
-
-  imageEl.src = image;
-  imageEl.onerror = ()=>{
-    imageEl.src = imageFallback("store");
-  };
+const image =
+vendor?.image_url ||
+first?.vendor_image_url ||
+imageFallback("store");
 
 
-  renderStoreProducts(vendorProducts);
+document.getElementById("storePageTitle")
+.textContent = name;
+
+document.getElementById("storePageDescription")
+.textContent = description;
+
+
+const imageEl =
+document.getElementById("storePageImage");
+
+imageEl.src = image;
+
+imageEl.onerror = ()=>{
+
+imageEl.src =
+imageFallback("store");
+
+};
+
+
+renderStoreProducts(vendorProducts);
 
 }
 
 
 function renderStoreProducts(list){
 
-  const el =
-    document.getElementById("storeProducts");
+const el =
+document.getElementById("storeProducts");
 
 
-  if(!list.length){
+if(!list.length){
 
-    el.innerHTML =
-      `<div class="empty">
-        هذا المتجر لا يملك منتجات حالياً.
-      </div>`;
+el.innerHTML =
+`<div class="empty">
+هذا المتجر لا يملك منتجات حالياً.
+</div>`;
 
-    return;
-  }
+return;
+
+}
 
 
-  el.innerHTML =
-    list.map(p=>`
+el.innerHTML =
+list.map(p=>`
 
-      <div class="product-card">
+<div class="product-card">
 
-        <img
-          class="product-image"
-          src="${escapeHtml(p.image_url || imageFallback())}"
-          alt="${escapeHtml(p.n)}"
-          onerror="this.src='${imageFallback()}'"
-        >
+<img
+class="product-image"
+src="${escapeHtml(p.image_url || imageFallback())}"
+alt="${escapeHtml(p.n)}"
+onerror="this.src='${imageFallback()}'">
 
-        <div class="product-body">
+<div class="product-body">
 
-          <div class="product-name">
-            ${escapeHtml(p.n)}
-          </div>
+<div class="product-name">
+${escapeHtml(p.n)}
+</div>
 
-          <div class="product-store">
-            ${escapeHtml(p.description || p.s)}
-          </div>
+<div class="product-store">
+${escapeHtml(p.description || p.s)}
+</div>
 
-          <div class="product-bottom">
+<div class="product-bottom">
 
-            <div class="price">
-              ${Number(p.p).toFixed(0)} ر.س
-            </div>
+<div class="price">
+${Number(p.p).toFixed(0)} ر.س
+</div>
 
-            <button
-              class="btn gold"
-              onclick="addToCart(${Number(p.id)})"
-            >
-              أضف
-            </button>
+<button
+class="btn gold"
+onclick="addToCart(${Number(p.id)})">
 
-          </div>
+أضف
 
-        </div>
+</button>
 
-      </div>
+</div>
 
-    `).join("");
+</div>
+
+</div>
+
+`).join("");
 
 }
 
 
 /* =========================
-   CART
-========================= */
-
-function addToCart(productId){
-
-  const product =
-    products.find(
-      p=>Number(p.id) === Number(productId)
-    );
-
-  if(!product) return;
-
-
-  const existing =
-    cart.find(
-      x=>Number(x.id) === Number(productId)
-    );
-
-
-  if(existing){
-    existing.qty++;
-  }else{
-
-    cart.push({
-      ...product,
-      qty:1
-    });
-
-  }
-
-
-  updateCart();
-
-  toast("تمت إضافة المنتج للسلة");
-}
-
-
-function updateCart(){
-
-  const totalQty =
-    cart.reduce(
-      (sum,item)=>sum + item.qty,
-      0
-    );
-
-
-  const count =
-    document.getElementById("cartCount");
-
-  count.textContent = totalQty;
-
-
-  const bar =
-    document.getElementById("cartBar");
-
-
-  if(totalQty > 0){
-
-    bar.classList.add("show");
-
-  }else{
-
-    bar.classList.remove("show");
-
-  }
-
-}
-
-
-function openCart(){
-
-  if(!cart.length){
-
-    toast("السلة فارغة");
-
-    return;
-  }
-
-
-  let text =
-    "السلة:%0A%0A";
-
-
-  cart.forEach(item=>{
-
-    text +=
-      `${encodeURIComponent(item.n)} × ${item.qty}%0A`;
-
-  });
-
-
-  alert(
-    "السلة تحتوي على " +
-    cart.reduce((s,x)=>s+x.qty,0) +
-    " منتجات.\n\nنظام الطلب سيتم ربطه بالطلبات لاحقاً."
-  );
-
-}
-
-
-/* =========================
-   VENDOR LOGIN
+   دخول المتجر
 ========================= */
 
 function openVendorLogin(){
 
-  hideAllPages();
+hideAllPages();
 
-  document
-    .getElementById("vendorLoginPage")
-    .classList.remove("hidden");
+document.getElementById("vendorLoginPage")
+.classList.remove("hidden");
 
-
-  document.getElementById("vendorPin").value = "";
+document.getElementById("vendorPin").value = "";
 
 }
 
 
 function vendorLogin(){
 
-  const pin =
-    document.getElementById("vendorPin").value.trim();
+const pin =
+document.getElementById("vendorPin")
+.value.trim();
 
 
-  /* الرمز التجريبي */
+if(pin !== "1234"){
 
-  if(pin !== "1234"){
+toast("رمز الدخول غير صحيح");
 
-    toast("رمز الدخول غير صحيح");
+return;
 
-    return;
-  }
+}
 
 
-  vendorLoggedIn = true;
+vendorLoggedIn = true;
 
-  openVendorDashboard();
+openVendorDashboard();
 
 }
 
 
 function vendorLogout(){
 
-  vendorLoggedIn = false;
+vendorLoggedIn = false;
 
-  showHome();
+showHome();
 
-  toast("تم تسجيل الخروج");
+toast("تم تسجيل الخروج");
 
 }
 
 
 /* =========================
-   VENDOR DASHBOARD
+   لوحة المتجر
 ========================= */
 
 async function openVendorDashboard(){
 
-  if(!vendorLoggedIn){
+if(!vendorLoggedIn){
 
-    openVendorLogin();
+openVendorLogin();
 
-    return;
-  }
+return;
 
-
-  hideAllPages();
-
-  document
-    .getElementById("vendorDashboardPage")
-    .classList.remove("hidden");
+}
 
 
-  await loadVendorDashboard();
+hideAllPages();
+
+document.getElementById("vendorDashboardPage")
+.classList.remove("hidden");
+
+
+await loadVendorDashboard();
 
 }
 
 
 async function loadVendorDashboard(){
 
-  await loadData();
+await loadData();
 
 
-  const vendor =
-    vendors.find(
-      v=>Number(v.id) === Number(currentVendorId)
-    );
+const vendor =
+vendors.find(
+v=>Number(v.id) === Number(currentVendorId)
+);
 
 
-  if(!vendor){
+if(!vendor){
 
-    toast("لم يتم العثور على المتجر");
+toast("لم يتم العثور على المتجر");
 
-    return;
-  }
+return;
 
-
-  document.getElementById("dashboardVendorName")
-    .textContent = vendor.name || "متجر";
-
-  document.getElementById("dashboardVendorDescription")
-    .textContent =
-      vendor.description ||
-      "حلويات ومنتجات صنعت بحب";
+}
 
 
-  document.getElementById("vendorNameInput")
-    .value = vendor.name || "";
+document.getElementById("dashboardVendorName")
+.textContent =
+vendor.name || "متجر";
 
 
-  document.getElementById("vendorDescriptionInput")
-    .value = vendor.description || "";
+document.getElementById("dashboardVendorDescription")
+.textContent =
+vendor.description || "";
 
 
-  const image =
-    vendor.image_url || imageFallback("store");
+document.getElementById("vendorNameInput")
+.value =
+vendor.name || "";
 
 
-  document.getElementById("dashboardVendorImage")
-    .src = image;
-
-  document.getElementById("vendorImagePreview")
-    .src = image;
+document.getElementById("vendorDescriptionInput")
+.value =
+vendor.description || "";
 
 
-  renderVendorProducts();
+const image =
+vendor.image_url ||
+imageFallback("store");
+
+
+document.getElementById("dashboardVendorImage")
+.src = image;
+
+
+document.getElementById("vendorImagePreview")
+.src = image;
+
+
+renderVendorProducts();
 
 }
 
 
 function renderVendorProducts(){
 
-  const list =
-    products.filter(
-      p=>Number(p.vendor_id) === Number(currentVendorId)
-    );
+const list =
+products.filter(
+p=>Number(p.vendor_id) === Number(currentVendorId)
+);
 
 
-  document.getElementById("vendorProductsCount")
-    .textContent = list.length;
+document.getElementById("vendorProductsCount")
+.textContent =
+list.length;
 
 
-  document.getElementById("vendorProductsList");
+const el =
+document.getElementById("vendorProductsList");
 
 
-  const el =
-    document.getElementById("vendorProductsList");
+if(!list.length){
+
+el.innerHTML =
+`<div class="empty">
+لم تضف أي منتجات حتى الآن.
+</div>`;
+
+return;
+
+}
 
 
-  if(!list.length){
+el.innerHTML =
+list.map(p=>`
 
-    el.innerHTML =
-      `<div class="empty">
-        لم تضف أي منتجات حتى الآن.
-      </div>`;
+<div class="mini-product">
 
-    return;
-  }
+<img
+src="${escapeHtml(p.image_url || imageFallback())}"
+alt=""
+onerror="this.src='${imageFallback()}'">
 
+<div style="flex:1">
 
-  el.innerHTML =
-    list.map(p=>`
+<strong>
+${escapeHtml(p.n)}
+</strong>
 
-      <div
-        class="mini-product"
-        style="
-          padding:10px 0;
-          border-bottom:1px solid #eee6dc;
-        "
-      >
+<div
+style="font-size:12px;color:#81776d;margin-top:3px">
 
-        <img
-          src="${escapeHtml(p.image_url || imageFallback())}"
-          alt=""
-          onerror="this.src='${imageFallback()}'"
-        >
+${Number(p.p).toFixed(0)} ر.س
 
-        <div style="flex:1">
+</div>
 
-          <strong>
-            ${escapeHtml(p.n)}
-          </strong>
+</div>
 
-          <div
-            style="
-              font-size:12px;
-              color:#81776d;
-              margin-top:3px;
-            "
-          >
-            ${Number(p.p).toFixed(0)} ر.س
-          </div>
+</div>
 
-        </div>
-
-      </div>
-
-    `).join("");
+`).join("");
 
 }
 
 
 /* =========================
-   VENDOR IMAGE
+   معاينة الصورة
 ========================= */
 
 function previewVendorImage(event){
 
-  const file =
-    event.target.files?.[0];
+const file =
+event.target.files?.[0];
 
-  if(!file) return;
-
-
-  const url =
-    URL.createObjectURL(file);
+if(!file) return;
 
 
-  document.getElementById("vendorImagePreview")
-    .src = url;
-
-}
+const url =
+URL.createObjectURL(file);
 
 
-async function uploadImage(file){
-
-  if(!file) return null;
-
-
-  const extension =
-    file.name.split(".").pop() || "jpg";
-
-
-  const fileName =
-    `${Date.now()}-${Math.random()
-      .toString(36)
-      .substring(2)}.${extension}`;
-
-
-  const path =
-    `uploads/${fileName}`;
-
-
-  const result =
-    await supabaseClient
-      .storage
-      .from("product-images")
-      .upload(path,file,{
-        upsert:false,
-        contentType:file.type
-      });
-
-
-  if(result.error){
-
-    console.error(result.error);
-
-    throw result.error;
-  }
-
-
-  const publicResult =
-    supabaseClient
-      .storage
-      .from("product-images")
-      .getPublicUrl(path);
-
-
-  return publicResult.data.publicUrl;
+document.getElementById("vendorImagePreview")
+.src = url;
 
 }
 
 
 /* =========================
-   SAVE VENDOR PROFILE
+   رفع الصور
+========================= */
+
+async function uploadImage(file){
+
+if(!file) return null;
+
+
+const extension =
+(file.name.split(".").pop() || "jpg")
+.toLowerCase();
+
+
+const fileName =
+`${Date.now()}-${Math.random()
+.toString(36)
+.substring(2)}.${extension}`;
+
+
+const path =
+`uploads/${fileName}`;
+
+
+const upload =
+await supabaseClient
+.storage
+.from("product-images")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(upload.error){
+
+console.error(upload.error);
+
+throw upload.error;
+
+}
+
+
+const publicUrl =
+supabaseClient
+.storage
+.from("product-images")
+.getPublicUrl(path);
+
+
+return publicUrl.data.publicUrl;
+
+}
+
+
+/* =========================
+   حفظ المتجر
 ========================= */
 
 async function saveVendorProfile(){
 
-  const name =
-    document.getElementById("vendorNameInput")
-      .value.trim();
+const name =
+document.getElementById("vendorNameInput")
+.value.trim();
 
 
-  const description =
-    document.getElementById("vendorDescriptionInput")
-      .value.trim();
+const description =
+document.getElementById("vendorDescriptionInput")
+.value.trim();
 
 
-  const file =
-    document.getElementById("vendorImageInput")
-      .files?.[0];
+const file =
+document.getElementById("vendorImageInput")
+.files?.[0];
 
 
-  if(!name){
+if(!name){
 
-    toast("اكتب اسم المتجر");
+toast("اكتب اسم المتجر");
 
-    return;
-  }
+return;
 
-
-  const vendor =
-    vendors.find(
-      v=>Number(v.id) === Number(currentVendorId)
-    );
+}
 
 
-  if(!vendor){
+try{
 
-    toast("المتجر غير موجود");
-
-    return;
-  }
+let imageUrl = null;
 
 
-  try{
+/* رفع الصورة الجديدة */
 
-    let imageUrl =
-      vendor.image_url || null;
+if(file){
 
+toast("جاري رفع الصورة...");
 
-    if(file){
+imageUrl =
+await uploadImage(file);
 
-      toast("جاري رفع صورة المتجر...");
-
-      imageUrl =
-        await uploadImage(file);
-
-    }
+}
 
 
-    const result =
-      await supabaseClient
-        .from("vendors")
-        .update({
+/* البيانات الجديدة */
 
-          name:name,
+const updateData = {
 
-          description:description,
+name:name,
 
-          image_url:imageUrl
+description:description
 
-        })
-        .eq("id",currentVendorId);
+};
 
 
-    if(result.error){
+if(imageUrl){
 
-      console.error(result.error);
+updateData.image_url =
+imageUrl;
 
-      toast(
-        "تعذر الحفظ: " +
-        result.error.message
-      );
-
-      return;
-    }
+}
 
 
-    toast("تم حفظ بيانات المتجر ✓");
+/*
+تحديث المتجر
+ونستخدم select للتأكد أن الصف
+تم تحديثه فعلياً
+*/
+
+const result =
+await supabaseClient
+.from("vendors")
+.update(updateData)
+.eq("id",currentVendorId)
+.select("*")
+.single();
 
 
-    await loadData();
+/* لو Supabase رفض التحديث */
 
-    await loadVendorDashboard();
+if(result.error){
+
+console.error(
+"VENDOR UPDATE ERROR:",
+result.error
+);
+
+toast(
+"لم يتم الحفظ: " +
+result.error.message
+);
+
+return;
+
+}
 
 
-  }catch(error){
+/* البيانات الجديدة من Supabase */
 
-    console.error(error);
+const updatedVendor =
+result.data;
 
-    toast("حدث خطأ أثناء رفع الصورة");
 
-  }
+/* تحديث القائمة المحلية */
+
+const index =
+vendors.findIndex(
+v=>Number(v.id) ===
+Number(currentVendorId)
+);
+
+
+if(index !== -1){
+
+vendors[index] =
+updatedVendor;
+
+}
+
+
+/* تحديث المنتجات محلياً */
+
+products =
+products.map(p=>{
+
+if(
+Number(p.vendor_id) ===
+Number(currentVendorId)
+){
+
+return {
+
+...p,
+
+s:updatedVendor.name,
+
+vendor_image_url:
+updatedVendor.image_url || "",
+
+vendor_description:
+updatedVendor.description || ""
+
+};
+
+}
+
+return p;
+
+});
+
+
+/* تحديث اللوحة فوراً */
+
+document.getElementById("dashboardVendorName")
+.textContent =
+updatedVendor.name;
+
+
+document.getElementById("dashboardVendorDescription")
+.textContent =
+updatedVendor.description || "";
+
+
+const newImage =
+updatedVendor.image_url ||
+imageFallback("store");
+
+
+document.getElementById("dashboardVendorImage")
+.src =
+newImage;
+
+
+document.getElementById("vendorImagePreview")
+.src =
+newImage;
+
+
+/* تحديث الصفحة الرئيسية */
+
+renderStores();
+
+
+/* تنظيف الصورة */
+
+document.getElementById("vendorImageInput")
+.value = "";
+
+
+toast("تم حفظ التغييرات ✓");
+
+}
+catch(error){
+
+console.error(error);
+
+toast(
+"حدث خطأ أثناء حفظ بيانات المتجر"
+);
+
+}
 
 }
 
 
 /* =========================
-   ADD PRODUCT
+   إضافة منتج
 ========================= */
 
 function openAddVendorProduct(){
 
-  productModalMode = "vendor";
+productModalMode =
+"vendor";
 
-  openProductModal();
+openProductModal();
 
 }
 
 
 function openAdminAddProduct(){
 
-  productModalMode = "admin";
+productModalMode =
+"admin";
 
-  openProductModal();
+openProductModal();
 
 }
 
 
 function openProductModal(){
 
-  document
-    .getElementById("productModal")
-    .classList.add("show");
+document.getElementById("productModal")
+.classList.add("show");
 
 
-  document.getElementById("productNameInput")
-    .value = "";
+document.getElementById("productNameInput")
+.value = "";
 
-  document.getElementById("productPriceInput")
-    .value = "";
 
-  document.getElementById("productDescriptionInput")
-    .value = "";
+document.getElementById("productPriceInput")
+.value = "";
 
-  document.getElementById("productImageInput")
-    .value = "";
+
+document.getElementById("productDescriptionInput")
+.value = "";
+
+
+document.getElementById("productImageInput")
+.value = "";
 
 }
 
 
 function closeProductModal(){
 
-  document
-    .getElementById("productModal")
-    .classList.remove("show");
-
-}
-
-
-async function saveProduct(){
-
-  const name =
-    document.getElementById("productNameInput")
-      .value.trim();
-
-
-  const price =
-    Number(
-      document.getElementById("productPriceInput")
-        .value
-    );
-
-
-  const category =
-    document.getElementById("productCategoryInput")
-      .value;
-
-
-  const description =
-    document.getElementById("productDescriptionInput")
-      .value.trim();
-
-
-  const file =
-    document.getElementById("productImageInput")
-      .files?.[0];
-
-
-  if(!name){
-
-    toast("اكتب اسم المنتج");
-
-    return;
-  }
-
-
-  if(!price || price < 0){
-
-    toast("اكتب سعر صحيح");
-
-    return;
-  }
-
-
-  let vendorId =
-    currentVendorId;
-
-
-  if(productModalMode === "admin"){
-
-    vendorId = 1;
-
-  }
-
-
-  try{
-
-    let imageUrl = null;
-
-
-    if(file){
-
-      toast("جاري رفع صورة المنتج...");
-
-      imageUrl =
-        await uploadImage(file);
-
-    }
-
-
-    const insertData = {
-
-      vendor_id:vendorId,
-
-      name:name,
-
-      price:price,
-
-      category:category,
-
-      description:description,
-
-      emoji:"🍪",
-
-      is_active:true
-
-    };
-
-
-    if(imageUrl){
-
-      insertData.image_url = imageUrl;
-
-    }
-
-
-    const result =
-      await supabaseClient
-        .from("products")
-        .insert(insertData)
-        .select();
-
-
-    if(result.error){
-
-      console.error(result.error);
-
-      toast(
-        "تعذر إضافة المنتج: " +
-        result.error.message
-      );
-
-      return;
-    }
-
-
-    closeProductModal();
-
-    toast("تمت إضافة المنتج ✓");
-
-
-    await loadData();
-
-
-    if(productModalMode === "vendor"){
-
-      await loadVendorDashboard();
-
-    }else{
-
-      await loadAdmin();
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    toast("حدث خطأ أثناء إضافة المنتج");
-
-  }
+document.getElementById("productModal")
+.classList.remove("show");
 
 }
 
 
 /* =========================
-   ADMIN
+   حفظ المنتج
+========================= */
+
+async function saveProduct(){
+
+const name =
+document.getElementById("productNameInput")
+.value.trim();
+
+
+const price =
+Number(
+document.getElementById("productPriceInput")
+.value
+);
+
+
+const category =
+document.getElementById("productCategoryInput")
+.value;
+
+
+const description =
+document.getElementById("productDescriptionInput")
+.value.trim();
+
+
+const file =
+document.getElementById("productImageInput")
+.files?.[0];
+
+
+if(!name){
+
+toast("اكتب اسم المنتج");
+
+return;
+
+}
+
+
+if(price < 0 || isNaN(price)){
+
+toast("اكتب سعر صحيح");
+
+return;
+
+}
+
+
+const vendorId =
+currentVendorId;
+
+
+try{
+
+let imageUrl = null;
+
+
+if(file){
+
+toast("جاري رفع صورة المنتج...");
+
+imageUrl =
+await uploadImage(file);
+
+}
+
+
+const insertData = {
+
+vendor_id:vendorId,
+
+name:name,
+
+price:price,
+
+category:category,
+
+description:description,
+
+emoji:"🍪",
+
+is_active:true
+
+};
+
+
+if(imageUrl){
+
+insertData.image_url =
+imageUrl;
+
+}
+
+
+const result =
+await supabaseClient
+.from("products")
+.insert(insertData)
+.select()
+.single();
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر إضافة المنتج: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+closeProductModal();
+
+toast("تمت إضافة المنتج ✓");
+
+
+await loadData();
+
+
+if(productModalMode === "vendor"){
+
+await loadVendorDashboard();
+
+}else{
+
+await loadAdmin();
+
+}
+
+}
+catch(error){
+
+console.error(error);
+
+toast("حدث خطأ أثناء إضافة المنتج");
+
+}
+
+}
+
+
+/* =========================
+   السلة
+========================= */
+
+function addToCart(productId){
+
+const product =
+products.find(
+p=>Number(p.id) === Number(productId)
+);
+
+
+if(!product) return;
+
+
+const existing =
+cart.find(
+x=>Number(x.id) === Number(productId)
+);
+
+
+if(existing){
+
+existing.qty++;
+
+}else{
+
+cart.push({
+...product,
+qty:1
+});
+
+}
+
+
+updateCart();
+
+toast("تمت إضافة المنتج للسلة");
+
+}
+
+
+function updateCart(){
+
+const total =
+cart.reduce(
+(sum,item)=>sum + item.qty,
+0
+);
+
+
+document.getElementById("cartCount")
+.textContent =
+total;
+
+
+const bar =
+document.getElementById("cartBar");
+
+
+if(total > 0){
+
+bar.classList.add("show");
+
+}else{
+
+bar.classList.remove("show");
+
+}
+
+}
+
+
+function openCart(){
+
+if(!cart.length){
+
+toast("السلة فارغة");
+
+return;
+
+}
+
+
+let message =
+"السلة:\n\n";
+
+
+cart.forEach(item=>{
+
+message +=
+`${item.n} × ${item.qty}\n`;
+
+});
+
+
+alert(message);
+
+}
+
+
+/* =========================
+   المالك
 ========================= */
 
 async function openAdmin(){
 
-  const pin =
-    prompt("أدخل رمز مالك المنصة");
+const pin =
+prompt("أدخل رمز مالك المنصة");
 
 
-  if(pin !== "1234"){
+if(pin !== "1234"){
 
-    if(pin !== null){
-      toast("الرمز غير صحيح");
-    }
+if(pin !== null){
 
-    return;
-  }
+toast("الرمز غير صحيح");
 
+}
 
-  hideAllPages();
+return;
 
-  document
-    .getElementById("adminPage")
-    .classList.remove("hidden");
+}
 
 
-  await loadAdmin();
+hideAllPages();
+
+document.getElementById("adminPage")
+.classList.remove("hidden");
+
+
+await loadAdmin();
 
 }
 
 
 async function loadAdmin(){
 
-  await loadData();
+await loadData();
 
 
-  document.getElementById("adminProductsCount")
-    .textContent = products.length;
+document.getElementById("adminProductsCount")
+.textContent =
+products.length;
 
 
-  document.getElementById("adminVendorsCount")
-    .textContent = vendors.length;
+document.getElementById("adminVendorsCount")
+.textContent =
+vendors.length;
 
 
-  const ordersResult =
-    await supabaseClient
-      .from("orders")
-      .select("id");
+const ordersResult =
+await supabaseClient
+.from("orders")
+.select("id");
 
 
-  const orders =
-    ordersResult.data || [];
+const orders =
+ordersResult.data || [];
 
 
-  document.getElementById("adminOrdersCount")
-    .textContent = orders.length;
+document.getElementById("adminOrdersCount")
+.textContent =
+orders.length;
 
 
-  const table =
-    document.getElementById("adminProductsTable");
+document.getElementById("vendorOrdersCount")
+.textContent =
+orders.length;
 
 
-  table.innerHTML =
-    products.map(p=>`
-
-      <tr>
-
-        <td>
-          <div class="mini-product">
-
-            <img
-              src="${escapeHtml(p.image_url || imageFallback())}"
-              alt=""
-            >
-
-            <span>
-              ${escapeHtml(p.n)}
-            </span>
-
-          </div>
-        </td>
-
-        <td>
-          ${escapeHtml(p.s)}
-        </td>
-
-        <td>
-          ${Number(p.p).toFixed(0)} ر.س
-        </td>
-
-      </tr>
-
-    `).join("");
+document.getElementById("vendorSalesCount")
+.textContent =
+products.filter(
+p=>Number(p.vendor_id) ===
+Number(currentVendorId)
+).length;
 
 
-  document.getElementById("vendorOrdersCount")
-    .textContent = orders.length;
+const table =
+document.getElementById("adminProductsTable");
 
 
-  const vendorSales =
-    products.filter(
-      p=>Number(p.vendor_id) === Number(currentVendorId)
-    ).length;
+table.innerHTML =
+products.map(p=>`
 
+<tr>
 
-  document.getElementById("vendorSalesCount")
-    .textContent = vendorSales;
+<td>
+
+<div class="mini-product">
+
+<img
+src="${escapeHtml(p.image_url || imageFallback())}"
+alt="">
+
+<span>
+${escapeHtml(p.n)}
+</span>
+
+</div>
+
+</td>
+
+<td>
+${escapeHtml(p.s)}
+</td>
+
+<td>
+${Number(p.p).toFixed(0)} ر.س
+</td>
+
+</tr>
+
+`).join("");
 
 }
 
 
 /* =========================
-   CLOSE MODAL WHEN CLICK OUTSIDE
+   إغلاق النافذة
 ========================= */
 
 document
-  .getElementById("productModal")
-  .addEventListener("click",function(e){
+.getElementById("productModal")
+.addEventListener(
+"click",
+function(e){
 
-    if(e.target === this){
+if(e.target === this){
 
-      closeProductModal();
+closeProductModal();
 
-    }
+}
 
-  });
+});
 
 
 /* =========================
-   START
+   تشغيل
 ========================= */
 
 (async function(){
 
-  await refresh();
+await loadData();
 
-  showHome();
+showHome();
 
 })();
 
