@@ -766,7 +766,7 @@ async function loadProductsFromDatabase(){
 
 const {data,error}=await supabaseClient
 .from("products")
-.select("*, vendors(name)")
+.select("*, vendors(name,image_url,description)")
 .eq("is_active",true);
 
 if(error){
@@ -906,7 +906,7 @@ style="cursor:pointer"
 <div class="pic">
 
 <img
-src="A49F06E0-E978-49C6-854C-B1A04D45D090.png"
+src="${v.image_url || 'A49F06E0-E978-49C6-854C-B1A04D45D090.png'}"
 alt="${v.name}"
 >
 
