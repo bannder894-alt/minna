@@ -249,7 +249,7 @@ font-size:12px
 }
 
 .login-box{
-max-width:420px;
+max-width:430px;
 margin:60px auto
 }
 
@@ -352,9 +352,7 @@ justify-content:space-between;
 margin-bottom:15px
 }
 
-.modal-head h2{
-margin:0
-}
+.modal-head h2{margin:0}
 
 .close{
 width:38px;
@@ -388,9 +386,7 @@ box-shadow:0 8px 30px rgba(0,0,0,.2);
 max-width:calc(100% - 40px)
 }
 
-.toast.show{
-display:block
-}
+.toast.show{display:block}
 
 .cart-bar{
 position:fixed;
@@ -409,9 +405,7 @@ justify-content:space-between;
 z-index:40
 }
 
-.cart-bar.show{
-display:flex
-}
+.cart-bar.show{display:flex}
 
 .cart-count{
 background:#a88a5b;
@@ -420,9 +414,7 @@ border-radius:8px;
 font-size:12px
 }
 
-.table-wrap{
-overflow:auto
-}
+.table-wrap{overflow:auto}
 
 table{
 width:100%;
@@ -436,9 +428,7 @@ border-bottom:1px solid #eee6dc;
 text-align:right
 }
 
-.hidden{
-display:none!important
-}
+.hidden{display:none!important}
 
 footer{
 text-align:center;
@@ -568,24 +558,19 @@ height:70px
 </div>
 
 </div>
-
 </header>
 
 
 <main class="container">
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- الصفحة الرئيسية -->
 
 <section id="homePage">
 
 <div class="hero">
 
-<h1>
-من أياديهم إلى يديك
-</h1>
+<h1>من أياديهم إلى يديك</h1>
 
 <p>
 اكتشف منتجات صنعت بحب من أصحاب المتاجر والأسر المنتجة.
@@ -594,11 +579,7 @@ height:70px
 </div>
 
 <div class="section-title">
-
-<h2>
-متاجر مِنّا
-</h2>
-
+<h2>متاجر مِنّا</h2>
 </div>
 
 <div id="storesGrid" class="stores-grid"></div>
@@ -606,24 +587,17 @@ height:70px
 </section>
 
 
-<!-- =========================
-     STORE
-========================= -->
+<!-- صفحة المتجر -->
 
 <section id="storePage" class="hidden">
 
 <div class="back">
 
-<button
-class="btn light"
-onclick="showHome()">
-
+<button class="btn light" onclick="showHome()">
 ← المتاجر
-
 </button>
 
 </div>
-
 
 <div class="vendor-head">
 
@@ -643,7 +617,6 @@ alt="">
 
 </div>
 
-
 <div
 id="storeProducts"
 class="products-grid">
@@ -652,52 +625,54 @@ class="products-grid">
 </section>
 
 
-<!-- =========================
-     VENDOR LOGIN
-========================= -->
+<!-- دخول صاحب المتجر -->
 
 <section id="vendorLoginPage" class="hidden">
 
 <div class="login-box panel">
 
-<h1>
-دخول أصحاب المتاجر
-</h1>
+<h1>دخول أصحاب المتاجر</h1>
 
 <div class="note">
-
-هذه نسخة تجريبية حالياً.<br>
-رمز الدخول التجريبي:
-<strong>1234</strong>
-
+أدخل البريد الإلكتروني وكلمة المرور الخاصة بحسابك.
 </div>
-
 
 <div class="field">
 
-<label>
-رمز الدخول
-</label>
+<label>البريد الإلكتروني</label>
 
 <input
-id="vendorPin"
-type="password"
-placeholder="أدخل الرمز">
+id="vendorEmail"
+type="email"
+autocomplete="email"
+placeholder="example@email.com">
 
 </div>
 
+<div class="field">
+
+<label>كلمة المرور</label>
+
+<input
+id="vendorPassword"
+type="password"
+autocomplete="current-password"
+placeholder="كلمة المرور">
+
+</div>
 
 <button
-class="btn"
+class="btn gold"
+style="width:100%;margin-bottom:8px"
 onclick="vendorLogin()">
 
 دخول
 
 </button>
 
-
 <button
 class="btn light"
+style="width:100%"
 onclick="showHome()">
 
 رجوع
@@ -709,14 +684,9 @@ onclick="showHome()">
 </section>
 
 
-<!-- =========================
-     VENDOR DASHBOARD
-========================= -->
+<!-- لوحة صاحب المتجر -->
 
-<section
-id="vendorDashboardPage"
-class="hidden">
-
+<section id="vendorDashboardPage" class="hidden">
 
 <div class="back">
 
@@ -742,7 +712,7 @@ alt="">
 <div class="vendor-title">
 
 <h1 id="dashboardVendorName">
-متجر بندر
+متجري
 </h1>
 
 <p id="dashboardVendorDescription"></p>
@@ -760,12 +730,9 @@ alt="">
 0
 </strong>
 
-<span>
-المنتجات
-</span>
+<span>المنتجات</span>
 
 </div>
-
 
 <div class="stat">
 
@@ -773,22 +740,16 @@ alt="">
 0
 </strong>
 
-<span>
-الطلبات
-</span>
+<span>الطلبات</span>
 
 </div>
-
 
 <div class="stat">
 
 <strong id="vendorSalesCount">
-0
-</strong>
+0</strong>
 
-<span>
-المبيعات
-</span>
+<span>المبيعات</span>
 
 </div>
 
@@ -804,19 +765,14 @@ alt="">
 
 <div class="section-title">
 
-<h2>
-بيانات المتجر
-</h2>
+<h2>بيانات المتجر</h2>
 
 </div>
 
 
 <div class="field">
 
-<label>
-صورة المتجر
-</label>
-
+<label>صورة المتجر</label>
 
 <img
 id="vendorImagePreview"
@@ -836,9 +792,7 @@ onchange="previewVendorImage(event)">
 
 <div class="field">
 
-<label>
-اسم المتجر
-</label>
+<label>اسم المتجر</label>
 
 <input
 id="vendorNameInput"
@@ -849,9 +803,7 @@ type="text">
 
 <div class="field">
 
-<label>
-وصف المتجر
-</label>
+<label>وصف المتجر</label>
 
 <textarea
 id="vendorDescriptionInput"></textarea>
@@ -870,15 +822,13 @@ onclick="saveVendorProfile()">
 </div>
 
 
-<!-- منتجات المتجر -->
+<!-- المنتجات -->
 
 <div class="panel">
 
 <div class="section-title">
 
-<h2>
-منتجاتي
-</h2>
+<h2>منتجاتي</h2>
 
 <button
 class="btn"
@@ -890,10 +840,7 @@ onclick="openAddVendorProduct()">
 
 </div>
 
-
-<div
-id="vendorProductsList">
-</div>
+<div id="vendorProductsList"></div>
 
 </div>
 
@@ -915,9 +862,7 @@ onclick="vendorLogout()">
 </section>
 
 
-<!-- =========================
-     ADMIN
-========================= -->
+<!-- لوحة المالك -->
 
 <section id="adminPage" class="hidden">
 
@@ -937,11 +882,7 @@ onclick="showHome()">
 <div class="panel">
 
 <div class="section-title">
-
-<h2>
-لوحة مالك المنصة
-</h2>
-
+<h2>لوحة مالك المنصة</h2>
 </div>
 
 
@@ -949,39 +890,25 @@ onclick="showHome()">
 
 <div class="stat">
 
-<strong id="adminProductsCount">
-0
-</strong>
+<strong id="adminProductsCount">0</strong>
 
-<span>
-المنتجات
-</span>
+<span>المنتجات</span>
 
 </div>
 
-
 <div class="stat">
 
-<strong id="adminVendorsCount">
-0
-</strong>
+<strong id="adminVendorsCount">0</strong>
 
-<span>
-المتاجر
-</span>
+<span>المتاجر</span>
 
 </div>
 
-
 <div class="stat">
 
-<strong id="adminOrdersCount">
-0
-</strong>
+<strong id="adminOrdersCount">0</strong>
 
-<span>
-الطلبات
-</span>
+<span>الطلبات</span>
 
 </div>
 
@@ -1008,25 +935,15 @@ onclick="openAdminAddProduct()">
 
 <tr>
 
-<th>
-المنتج
-</th>
-
-<th>
-المتجر
-</th>
-
-<th>
-السعر
-</th>
+<th>المنتج</th>
+<th>المتجر</th>
+<th>السعر</th>
 
 </tr>
 
 </thead>
 
-<tbody
-id="adminProductsTable">
-</tbody>
+<tbody id="adminProductsTable"></tbody>
 
 </table>
 
@@ -1039,9 +956,7 @@ id="adminProductsTable">
 </main>
 
 
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
+<!-- نافذة المنتج -->
 
 <div
 id="productModal"
@@ -1051,9 +966,7 @@ class="modal">
 
 <div class="modal-head">
 
-<h2>
-إضافة منتج
-</h2>
+<h2>إضافة منتج</h2>
 
 <button
 class="close"
@@ -1067,9 +980,7 @@ onclick="closeProductModal()">
 
 <div class="field">
 
-<label>
-اسم المنتج
-</label>
+<label>اسم المنتج</label>
 
 <input
 id="productNameInput"
@@ -1081,9 +992,7 @@ placeholder="مثال: كوكيز فستق">
 
 <div class="field">
 
-<label>
-السعر
-</label>
+<label>السعر</label>
 
 <input
 id="productPriceInput"
@@ -1097,31 +1006,15 @@ placeholder="17">
 
 <div class="field">
 
-<label>
-التصنيف
-</label>
+<label>التصنيف</label>
 
 <select id="productCategoryInput">
 
-<option value="cookies">
-كوكيز
-</option>
-
-<option value="desserts">
-حلويات
-</option>
-
-<option value="cakes">
-كيك
-</option>
-
-<option value="drinks">
-مشروبات
-</option>
-
-<option value="other">
-أخرى
-</option>
+<option value="cookies">كوكيز</option>
+<option value="desserts">حلويات</option>
+<option value="cakes">كيك</option>
+<option value="drinks">مشروبات</option>
+<option value="other">أخرى</option>
 
 </select>
 
@@ -1130,23 +1023,18 @@ placeholder="17">
 
 <div class="field">
 
-<label>
-وصف المنتج
-</label>
+<label>وصف المنتج</label>
 
 <textarea
 id="productDescriptionInput"
-placeholder="اكتب وصفاً للمنتج">
-</textarea>
+placeholder="اكتب وصفاً للمنتج"></textarea>
 
 </div>
 
 
 <div class="field">
 
-<label>
-صورة المنتج
-</label>
+<label>صورة المنتج</label>
 
 <input
 id="productImageInput"
@@ -1186,7 +1074,6 @@ class="cart-count">
 
 </div>
 
-
 <button
 class="btn gold"
 onclick="openCart()">
@@ -1199,14 +1086,11 @@ onclick="openCart()">
 
 
 <footer>
-
 مِنّا © 2026 — من أياديهم إلى يديك
-
 </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -1231,7 +1115,9 @@ SUPABASE_KEY
    VARIABLES
 ===================================================== */
 
-let currentVendorId = 1;
+let currentVendorId = null;
+
+let currentVendor = null;
 
 let vendorLoggedIn = false;
 
@@ -1250,11 +1136,8 @@ let productModalMode = "vendor";
 
 function escapeHtml(value){
 
-if(value === null || value === undefined){
-
+if(value === null || value === undefined)
 return "";
-
-}
 
 return String(value)
 .replaceAll("&","&amp;")
@@ -1300,24 +1183,19 @@ el.classList.remove("show");
 
 function hideAllPages(){
 
-document
-.getElementById("homePage")
+document.getElementById("homePage")
 .classList.add("hidden");
 
-document
-.getElementById("storePage")
+document.getElementById("storePage")
 .classList.add("hidden");
 
-document
-.getElementById("vendorLoginPage")
+document.getElementById("vendorLoginPage")
 .classList.add("hidden");
 
-document
-.getElementById("vendorDashboardPage")
+document.getElementById("vendorDashboardPage")
 .classList.add("hidden");
 
-document
-.getElementById("adminPage")
+document.getElementById("adminPage")
 .classList.add("hidden");
 
 }
@@ -1329,8 +1207,6 @@ document
 
 async function loadData(){
 
-/* تحميل المتاجر */
-
 const vendorResult =
 await supabaseClient
 .from("vendors")
@@ -1341,10 +1217,7 @@ await supabaseClient
 
 if(vendorResult.error){
 
-console.error(
-"VENDOR LOAD ERROR:",
-vendorResult.error
-);
+console.error(vendorResult.error);
 
 vendors = [];
 
@@ -1355,8 +1228,6 @@ vendorResult.data || [];
 
 }
 
-
-/* تحميل المنتجات */
 
 const productResult =
 await supabaseClient
@@ -1375,14 +1246,9 @@ description
 
 if(productResult.error){
 
-console.error(
-"PRODUCT LOAD ERROR:",
-productResult.error
-);
+console.error(productResult.error);
 
 products = [];
-
-toast("تعذر تحميل المنتجات");
 
 return;
 
@@ -1450,8 +1316,6 @@ const map =
 new Map();
 
 
-/* المتاجر من المنتجات */
-
 products
 .filter(p=>p.vendor_id)
 .forEach(p=>{
@@ -1472,8 +1336,6 @@ description:p.vendor_description
 
 });
 
-
-/* المتاجر مباشرة من جدول vendors */
 
 vendors.forEach(v=>{
 
@@ -1556,7 +1418,7 @@ onclick="openStore(${Number(v.id)})">
 
 
 /* =====================================================
-   STORE PAGE
+   STORE
 ===================================================== */
 
 async function openStore(vendorId){
@@ -1566,7 +1428,6 @@ hideAllPages();
 document
 .getElementById("storePage")
 .classList.remove("hidden");
-
 
 await loadData();
 
@@ -1633,9 +1494,7 @@ imageFallback("store");
 };
 
 
-renderStoreProducts(
-vendorProducts
-);
+renderStoreProducts(vendorProducts);
 
 }
 
@@ -1711,7 +1570,7 @@ onclick="addToCart(${Number(p.id)})">
 
 
 /* =====================================================
-   VENDOR LOGIN
+   REAL AUTH
 ===================================================== */
 
 function openVendorLogin(){
@@ -1723,39 +1582,159 @@ document
 .classList.remove("hidden");
 
 document
-.getElementById("vendorPin")
-.value = "";
+.getElementById("vendorEmail")
+.focus();
 
 }
 
 
-function vendorLogin(){
+async function vendorLogin(){
 
-const pin =
+const email =
 document
-.getElementById("vendorPin")
+.getElementById("vendorEmail")
 .value
 .trim();
 
 
-if(pin !== "1234"){
+const password =
+document
+.getElementById("vendorPassword")
+.value;
 
-toast("رمز الدخول غير صحيح");
+
+if(!email){
+
+toast("اكتب البريد الإلكتروني");
 
 return;
 
 }
 
 
-vendorLoggedIn =
-true;
+if(!password){
 
-openVendorDashboard();
+toast("اكتب كلمة المرور");
+
+return;
 
 }
 
 
-function vendorLogout(){
+toast("جاري تسجيل الدخول...");
+
+
+const result =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(result.error){
+
+console.error(
+"LOGIN ERROR:",
+result.error
+);
+
+toast(
+"بيانات الدخول غير صحيحة"
+);
+
+return;
+
+}
+
+
+const user =
+result.data.user;
+
+
+if(!user){
+
+toast("تعذر تسجيل الدخول");
+
+return;
+
+}
+
+
+/* البحث عن المتجر المرتبط بهذا الحساب */
+
+const vendorResult =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("user_id",user.id)
+.eq("is_active",true)
+.limit(1);
+
+
+if(vendorResult.error){
+
+console.error(
+vendorResult.error
+);
+
+await supabaseClient.auth.signOut();
+
+toast(
+"تعذر العثور على متجر هذا الحساب"
+);
+
+return;
+
+}
+
+
+if(
+!vendorResult.data ||
+!vendorResult.data.length
+){
+
+await supabaseClient.auth.signOut();
+
+toast(
+"هذا الحساب غير مرتبط بمتجر حتى الآن"
+);
+
+return;
+
+}
+
+
+currentVendor =
+vendorResult.data[0];
+
+currentVendorId =
+currentVendor.id;
+
+vendorLoggedIn =
+true;
+
+
+await openVendorDashboard();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function vendorLogout(){
+
+await supabaseClient.auth.signOut();
+
+currentVendor =
+null;
+
+currentVendorId =
+null;
 
 vendorLoggedIn =
 false;
@@ -1799,52 +1778,86 @@ async function loadVendorDashboard(){
 await loadData();
 
 
-const vendor =
-vendors.find(
-v=>Number(v.id) ===
-Number(currentVendorId)
-);
+/*
+إذا كان الحساب مسجل دخول،
+نقرأ المتجر المرتبط به مباشرة
+*/
+
+const sessionResult =
+await supabaseClient.auth.getSession();
 
 
-if(!vendor){
+const session =
+sessionResult.data?.session;
 
-toast("لم يتم العثور على المتجر");
+
+if(session?.user){
+
+const vendorResult =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("user_id",session.user.id)
+.eq("is_active",true)
+.limit(1);
+
+
+if(
+!vendorResult.error &&
+vendorResult.data &&
+vendorResult.data.length
+){
+
+currentVendor =
+vendorResult.data[0];
+
+currentVendorId =
+currentVendor.id;
+
+}
+
+}
+
+
+if(!currentVendor){
+
+toast("لم يتم العثور على متجرك");
 
 return;
 
 }
 
 
-/* اسم ووصف المتجر */
-
 document
 .getElementById("dashboardVendorName")
 .textContent =
-vendor.name || "متجر";
+currentVendor.name ||
+"متجري";
 
 
 document
 .getElementById("dashboardVendorDescription")
 .textContent =
-vendor.description || "";
+currentVendor.description ||
+"";
 
 
 document
 .getElementById("vendorNameInput")
 .value =
-vendor.name || "";
+currentVendor.name ||
+"";
 
 
 document
 .getElementById("vendorDescriptionInput")
 .value =
-vendor.description || "";
+currentVendor.description ||
+"";
 
-
-/* صورة المتجر */
 
 const image =
-vendor.image_url ||
+currentVendor.image_url ||
 imageFallback("store");
 
 
@@ -1880,6 +1893,8 @@ document
 .textContent =
 orders.length;
 
+
+/* عدد المنتجات */
 
 document
 .getElementById("vendorSalesCount")
@@ -1966,7 +1981,7 @@ ${Number(p.p).toFixed(0)} ر.س
 
 
 /* =====================================================
-   PREVIEW VENDOR IMAGE
+   VENDOR IMAGE
 ===================================================== */
 
 function previewVendorImage(event){
@@ -1974,11 +1989,8 @@ function previewVendorImage(event){
 const file =
 event.target.files?.[0];
 
-if(!file){
-
+if(!file)
 return;
-
-}
 
 
 const url =
@@ -1999,11 +2011,8 @@ url;
 
 async function uploadImage(file){
 
-if(!file){
-
+if(!file)
 return null;
-
-}
 
 
 const extension =
@@ -2047,10 +2056,7 @@ contentType:file.type
 
 if(upload.error){
 
-console.error(
-"IMAGE UPLOAD ERROR:",
-upload.error
-);
+console.error(upload.error);
 
 throw upload.error;
 
@@ -2070,11 +2076,19 @@ return publicUrl.data.publicUrl;
 
 
 /* =====================================================
-   SAVE VENDOR PROFILE
-   FIXED VERSION
+   SAVE VENDOR
 ===================================================== */
 
 async function saveVendorProfile(){
+
+if(!currentVendorId){
+
+toast("لم يتم تحديد المتجر");
+
+return;
+
+}
+
 
 const name =
 document
@@ -2111,10 +2125,6 @@ let imageUrl =
 null;
 
 
-/* -----------------------------------------
-   رفع الصورة إذا تم اختيار صورة
------------------------------------------ */
-
 if(file){
 
 toast("جاري رفع صورة المتجر...");
@@ -2124,10 +2134,6 @@ await uploadImage(file);
 
 }
 
-
-/* -----------------------------------------
-   بيانات التحديث
------------------------------------------ */
 
 const updateData = {
 
@@ -2146,12 +2152,7 @@ imageUrl;
 }
 
 
-/* -----------------------------------------
-   تحديث vendors
-   بدون single()
------------------------------------------ */
-
-const updateResult =
+const result =
 await supabaseClient
 .from("vendors")
 .update(updateData)
@@ -2159,20 +2160,16 @@ await supabaseClient
 .select("*");
 
 
-/* -----------------------------------------
-   التحقق من خطأ Supabase
------------------------------------------ */
-
-if(updateResult.error){
+if(result.error){
 
 console.error(
 "VENDOR UPDATE ERROR:",
-updateResult.error
+result.error
 );
 
 toast(
 "لم يتم الحفظ: " +
-updateResult.error.message
+result.error.message
 );
 
 return;
@@ -2180,33 +2177,26 @@ return;
 }
 
 
-/* -----------------------------------------
-   الحصول على المتجر المحدث
------------------------------------------ */
-
 let updatedVendor =
 null;
 
 
 if(
-updateResult.data &&
-updateResult.data.length > 0
+result.data &&
+result.data.length
 ){
 
 updatedVendor =
-updateResult.data[0];
+result.data[0];
 
 }
 
 
-/* -----------------------------------------
-   إذا لم يرجع التحديث بيانات،
-   نقرأ المتجر من قاعدة البيانات
------------------------------------------ */
+/* إذا لم يرجع التحديث السجل */
 
 if(!updatedVendor){
 
-const reloadResult =
+const reload =
 await supabaseClient
 .from("vendors")
 .select("*")
@@ -2214,15 +2204,10 @@ await supabaseClient
 .limit(1);
 
 
-if(reloadResult.error){
-
-console.error(
-"VENDOR RELOAD ERROR:",
-reloadResult.error
-);
+if(reload.error){
 
 toast(
-"تم الحفظ لكن تعذر قراءة البيانات الجديدة"
+"تم التحديث لكن تعذر قراءة البيانات"
 );
 
 return;
@@ -2231,13 +2216,11 @@ return;
 
 
 if(
-!reloadResult.data ||
-!reloadResult.data.length
+!reload.data ||
+!reload.data.length
 ){
 
-toast(
-"لم يتم العثور على المتجر"
-);
+toast("لم يتم العثور على المتجر");
 
 return;
 
@@ -2245,20 +2228,24 @@ return;
 
 
 updatedVendor =
-reloadResult.data[0];
+reload.data[0];
 
 }
 
 
-/* -----------------------------------------
-   تحديث vendors محلياً
------------------------------------------ */
+/* حفظ النسخة الجديدة */
+
+currentVendor =
+updatedVendor;
+
+currentVendorId =
+updatedVendor.id;
+
 
 const vendorIndex =
 vendors.findIndex(
-v =>
-Number(v.id) ===
-Number(currentVendorId)
+v=>Number(v.id) ===
+Number(updatedVendor.id)
 );
 
 
@@ -2274,24 +2261,21 @@ vendors.push(updatedVendor);
 }
 
 
-/* -----------------------------------------
-   تحديث بيانات المنتجات محلياً
------------------------------------------ */
+/* تحديث المنتجات */
 
 products =
 products.map(p=>{
 
 if(
 Number(p.vendor_id) ===
-Number(currentVendorId)
+Number(updatedVendor.id)
 ){
 
 return {
 
 ...p,
 
-s:
-updatedVendor.name || "",
+s:updatedVendor.name,
 
 vendor_image_url:
 updatedVendor.image_url || "",
@@ -2308,14 +2292,12 @@ return p;
 });
 
 
-/* -----------------------------------------
-   تحديث لوحة المتجر فوراً
------------------------------------------ */
+/* تحديث الواجهة */
 
 document
 .getElementById("dashboardVendorName")
 .textContent =
-updatedVendor.name || "متجر";
+updatedVendor.name;
 
 
 document
@@ -2324,7 +2306,7 @@ document
 updatedVendor.description || "";
 
 
-const newImage =
+const image =
 updatedVendor.image_url ||
 imageFallback("store");
 
@@ -2332,25 +2314,14 @@ imageFallback("store");
 document
 .getElementById("dashboardVendorImage")
 .src =
-newImage;
+image;
 
 
 document
 .getElementById("vendorImagePreview")
 .src =
-newImage;
+image;
 
-
-/* -----------------------------------------
-   تحديث الصفحة الرئيسية
------------------------------------------ */
-
-renderStores();
-
-
-/* -----------------------------------------
-   تنظيف اختيار الصورة
------------------------------------------ */
 
 document
 .getElementById("vendorImageInput")
@@ -2358,17 +2329,15 @@ document
 "";
 
 
-toast(
-"تم حفظ التغييرات ✓"
-);
+renderStores();
 
 
-}catch(error){
+toast("تم حفظ بيانات المتجر ✓");
 
-console.error(
-"SAVE VENDOR ERROR:",
-error
-);
+}
+catch(error){
+
+console.error(error);
 
 toast(
 "حدث خطأ أثناء حفظ بيانات المتجر"
@@ -2380,7 +2349,7 @@ toast(
 
 
 /* =====================================================
-   PRODUCT MODAL
+   ADD PRODUCT
 ===================================================== */
 
 function openAddVendorProduct(){
@@ -2445,11 +2414,16 @@ document
 }
 
 
-/* =====================================================
-   SAVE PRODUCT
-===================================================== */
-
 async function saveProduct(){
+
+if(!currentVendorId){
+
+toast("لم يتم تحديد المتجر");
+
+return;
+
+}
+
 
 const name =
 document
@@ -2521,8 +2495,7 @@ await uploadImage(file);
 
 const insertData = {
 
-vendor_id:
-currentVendorId,
+vendor_id:currentVendorId,
 
 name:name,
 
@@ -2556,10 +2529,7 @@ await supabaseClient
 
 if(result.error){
 
-console.error(
-"PRODUCT INSERT ERROR:",
-result.error
-);
+console.error(result.error);
 
 toast(
 "تعذر إضافة المنتج: " +
@@ -2573,23 +2543,12 @@ return;
 
 closeProductModal();
 
-toast(
-"تمت إضافة المنتج ✓"
-);
+toast("تمت إضافة المنتج ✓");
 
 
 await loadData();
 
-
-if(productModalMode === "vendor"){
-
 await loadVendorDashboard();
-
-}else{
-
-await loadAdmin();
-
-}
 
 }
 catch(error){
@@ -2618,11 +2577,8 @@ Number(productId)
 );
 
 
-if(!product){
-
+if(!product)
 return;
-
-}
 
 
 const existing =
@@ -2695,9 +2651,7 @@ function openCart(){
 
 if(!cart.length){
 
-toast(
-"السلة فارغة"
-);
+toast("السلة فارغة");
 
 return;
 
@@ -2731,18 +2685,14 @@ alert(message);
 async function openAdmin(){
 
 const pin =
-prompt(
-"أدخل رمز مالك المنصة"
-);
+prompt("أدخل رمز مالك المنصة");
 
 
 if(pin !== "1234"){
 
 if(pin !== null){
 
-toast(
-"الرمز غير صحيح"
-);
+toast("الرمز غير صحيح");
 
 }
 
@@ -2796,21 +2746,6 @@ document
 orders.length;
 
 
-document
-.getElementById("vendorOrdersCount")
-.textContent =
-orders.length;
-
-
-document
-.getElementById("vendorSalesCount")
-.textContent =
-products.filter(
-p=>Number(p.vendor_id) ===
-Number(currentVendorId)
-).length;
-
-
 const table =
 document
 .getElementById("adminProductsTable");
@@ -2855,7 +2790,7 @@ ${Number(p.p).toFixed(0)} ر.س
 
 
 /* =====================================================
-   MODAL CLOSE
+   MODAL
 ===================================================== */
 
 document
@@ -2878,6 +2813,44 @@ closeProductModal();
 ===================================================== */
 
 (async function(){
+
+const sessionResult =
+await supabaseClient.auth.getSession();
+
+const session =
+sessionResult.data?.session;
+
+
+if(session?.user){
+
+const vendorResult =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("user_id",session.user.id)
+.eq("is_active",true)
+.limit(1);
+
+
+if(
+!vendorResult.error &&
+vendorResult.data &&
+vendorResult.data.length
+){
+
+currentVendor =
+vendorResult.data[0];
+
+currentVendorId =
+currentVendor.id;
+
+vendorLoggedIn =
+true;
+
+}
+
+}
+
 
 await loadData();
 
