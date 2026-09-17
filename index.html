@@ -260,8 +260,8 @@ font-size:12px
 }
 
 .login-box{
-max-width:430px;
-margin:60px auto
+max-width:500px;
+margin:40px auto
 }
 
 .login-box h1{
@@ -277,6 +277,18 @@ color:#74695d;
 font-size:13px;
 line-height:1.6;
 margin-bottom:15px
+}
+
+.note.success{
+background:#edf5eb;
+border-color:#d3e5cf;
+color:#557051
+}
+
+.note.warning{
+background:#fff4e5;
+border-color:#ead8b8;
+color:#826a42
 }
 
 .field{
@@ -301,6 +313,12 @@ background:#fcfaf7;
 outline:none
 }
 
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+border-color:#a88a5b
+}
+
 .field textarea{
 min-height:100px;
 resize:vertical
@@ -315,6 +333,21 @@ background:#eee6dc;
 border:1px solid #ddd2c4;
 display:block;
 margin-bottom:10px
+}
+
+.document-box{
+padding:14px;
+border:1px dashed #d8cdbf;
+border-radius:15px;
+background:#faf7f2;
+margin-top:8px
+}
+
+.document-name{
+font-size:12px;
+color:#746b61;
+margin-top:8px;
+word-break:break-word
 }
 
 .mini-product{
@@ -480,6 +513,16 @@ color:#8a8076;
 font-size:12px
 }
 
+.status-badge{
+display:inline-block;
+padding:7px 11px;
+border-radius:9px;
+background:#fff0d9;
+color:#826a42;
+font-size:12px;
+font-weight:700
+}
+
 @media(max-width:700px){
 
 .nav{
@@ -604,6 +647,10 @@ height:50px
 أصحاب المتاجر
 </button>
 
+<button class="btn gold" onclick="openVendorSignup()">
+انضم إلى مِنّا
+</button>
+
 <button class="btn light" onclick="openAdmin()">
 مالك المنصة
 </button>
@@ -717,10 +764,248 @@ onclick="vendorLogin()">
 
 <button
 class="btn light"
+style="width:100%;margin-bottom:8px"
+onclick="openVendorSignup()">
+
+ليس لديك متجر؟ انضم إلى مِنّا
+
+</button>
+
+<button
+class="btn light"
 style="width:100%"
 onclick="showHome()">
 
 رجوع
+
+</button>
+
+</div>
+
+</section>
+
+
+<section id="vendorSignupPage" class="hidden">
+
+<div class="login-box panel">
+
+<h1>انضم إلى مِنّا</h1>
+
+<div class="note">
+أنشئ حسابك أولاً، وبعد تأكيد البريد الإلكتروني يمكنك إكمال بيانات المتجر ورفع الوثائق.
+</div>
+
+<div class="field">
+
+<label>البريد الإلكتروني</label>
+
+<input
+id="signupEmail"
+type="email"
+autocomplete="email"
+placeholder="example@email.com">
+
+</div>
+
+<div class="field">
+
+<label>كلمة المرور</label>
+
+<input
+id="signupPassword"
+type="password"
+autocomplete="new-password"
+placeholder="6 أحرف أو أكثر">
+
+</div>
+
+<div class="field">
+
+<label>تأكيد كلمة المرور</label>
+
+<input
+id="signupPasswordConfirm"
+type="password"
+autocomplete="new-password"
+placeholder="أعد كتابة كلمة المرور">
+
+</div>
+
+<button
+class="btn gold"
+style="width:100%;margin-bottom:8px"
+onclick="vendorSignup()">
+
+إنشاء الحساب
+
+</button>
+
+<button
+class="btn light"
+style="width:100%"
+onclick="openVendorLogin()">
+
+لدي حساب بالفعل
+
+</button>
+
+</div>
+
+</section>
+
+
+<section id="vendorOnboardingPage" class="hidden">
+
+<div class="login-box panel">
+
+<h1>إكمال طلب المتجر</h1>
+
+<div class="note">
+أكمل بيانات متجرك وارفع الوثائق المطلوبة. بعد الإرسال سيصبح الطلب <strong>قيد المراجعة</strong>.
+</div>
+
+<div class="field">
+
+<label>اسم صاحب المتجر</label>
+
+<input
+id="onboardingOwnerName"
+type="text"
+placeholder="الاسم الكامل">
+
+</div>
+
+<div class="field">
+
+<label>اسم المتجر</label>
+
+<input
+id="onboardingStoreName"
+type="text"
+placeholder="مثال: متجر بندر">
+
+</div>
+
+<div class="field">
+
+<label>رقم الجوال</label>
+
+<input
+id="onboardingPhone"
+type="tel"
+placeholder="05xxxxxxxx">
+
+</div>
+
+<div class="field">
+
+<label>وصف المتجر</label>
+
+<textarea
+id="onboardingDescription"
+placeholder="اكتب نبذة بسيطة عن متجرك ومنتجاتك"></textarea>
+
+</div>
+
+<div class="field">
+
+<label>صورة المتجر</label>
+
+<img
+id="onboardingImagePreview"
+class="image-preview"
+src=""
+alt="صورة المتجر">
+
+<input
+id="onboardingImageInput"
+type="file"
+accept="image/*"
+onchange="previewOnboardingImage(event)">
+
+</div>
+
+<div class="field">
+
+<label>نوع الوثيقة</label>
+
+<select id="onboardingDocumentType">
+
+<option value="">اختر نوع الوثيقة</option>
+<option value="freelance">وثيقة العمل الحر</option>
+<option value="productive_families">شهادة الأسر المنتجة</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>رفع الوثيقة</label>
+
+<div class="document-box">
+
+<input
+id="onboardingDocumentInput"
+type="file"
+accept=".pdf,.jpg,.jpeg,.png"
+onchange="showDocumentName(event)">
+
+<div
+id="onboardingDocumentName"
+class="document-name">
+
+لم يتم اختيار ملف
+
+</div>
+
+</div>
+
+</div>
+
+<button
+class="btn gold"
+style="width:100%;margin-bottom:8px"
+onclick="submitVendorApplication()">
+
+إرسال الطلب للمراجعة
+
+</button>
+
+<button
+class="btn light"
+style="width:100%"
+onclick="vendorLogout()">
+
+تسجيل الخروج
+
+</button>
+
+</div>
+
+</section>
+
+
+<section id="vendorPendingPage" class="hidden">
+
+<div class="login-box panel" style="text-align:center">
+
+<div style="font-size:50px;margin-bottom:10px">
+⏳
+</div>
+
+<h1>طلبك قيد المراجعة</h1>
+
+<div class="note warning">
+تم استلام طلب متجرك بنجاح، وسيتم مراجعته من إدارة مِنّا قبل نشره.
+</div>
+
+<button
+class="btn light"
+style="width:100%"
+onclick="vendorLogout()">
+
+تسجيل الخروج
 
 </button>
 
@@ -1155,19 +1440,12 @@ SUPABASE_KEY
 ===================================================== */
 
 let currentVendorId = null;
-
 let currentVendor = null;
-
 let vendorLoggedIn = false;
-
 let products = [];
-
 let vendors = [];
-
 let cart = [];
-
 let productModalMode = "vendor";
-
 let editingProductId = null;
 
 
@@ -1224,20 +1502,22 @@ el.classList.remove("show");
 
 function hideAllPages(){
 
-document.getElementById("homePage")
+[
+"homePage",
+"storePage",
+"vendorLoginPage",
+"vendorSignupPage",
+"vendorOnboardingPage",
+"vendorPendingPage",
+"vendorDashboardPage",
+"adminPage"
+].forEach(id=>{
+
+document
+.getElementById(id)
 .classList.add("hidden");
 
-document.getElementById("storePage")
-.classList.add("hidden");
-
-document.getElementById("vendorLoginPage")
-.classList.add("hidden");
-
-document.getElementById("vendorDashboardPage")
-.classList.add("hidden");
-
-document.getElementById("adminPage")
-.classList.add("hidden");
+});
 
 }
 
@@ -1300,30 +1580,18 @@ products =
 (productResult.data || []).map(x=>({
 
 id:x.id,
-
 n:x.name,
-
 s:x.vendors?.name || "متجر مِنّا",
-
 p:Number(x.price || 0),
-
 e:x.emoji || "🍪",
-
 c:x.category || "cookies",
-
 vendor_id:x.vendor_id,
-
 description:x.description || "",
-
 image_url:x.image_url || "",
-
-vendor_image_url:
-x.vendors?.image_url || "",
-
+vendor_image_url:x.vendors?.image_url || "",
 vendor_description:
 x.vendors?.description ||
 "حلويات ومنتجات صنعت بحب",
-
 is_active:x.is_active !== false
 
 }));
@@ -1369,35 +1637,22 @@ const allProducts =
 (result.data || []).map(x=>({
 
 id:x.id,
-
 n:x.name,
-
 s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
-
 p:Number(x.price || 0),
-
 e:x.emoji || "🍪",
-
 c:x.category || "cookies",
-
 vendor_id:x.vendor_id,
-
 description:x.description || "",
-
 image_url:x.image_url || "",
-
 vendor_image_url:
 x.vendors?.image_url || "",
-
 vendor_description:
 x.vendors?.description || "",
-
 is_active:x.is_active !== false
 
 }));
 
-
-/* المنتجات النشطة تبقى في products */
 
 products =
 products
@@ -1697,7 +1952,7 @@ onclick="addToCart(${Number(p.id)})">
 
 
 /* =====================================================
-   REAL AUTH
+   VENDOR LOGIN / SIGNUP
 ===================================================== */
 
 function openVendorLogin(){
@@ -1711,6 +1966,120 @@ document
 document
 .getElementById("vendorEmail")
 .focus();
+
+}
+
+
+function openVendorSignup(){
+
+hideAllPages();
+
+document
+.getElementById("vendorSignupPage")
+.classList.remove("hidden");
+
+document
+.getElementById("signupEmail")
+.focus();
+
+}
+
+
+async function vendorSignup(){
+
+const email =
+document
+.getElementById("signupEmail")
+.value
+.trim();
+
+
+const password =
+document
+.getElementById("signupPassword")
+.value;
+
+
+const confirmPassword =
+document
+.getElementById("signupPasswordConfirm")
+.value;
+
+
+if(!email){
+
+toast("اكتب البريد الإلكتروني");
+
+return;
+
+}
+
+
+if(!password || password.length < 6){
+
+toast("كلمة المرور يجب أن تكون 6 أحرف أو أكثر");
+
+return;
+
+}
+
+
+if(password !== confirmPassword){
+
+toast("كلمتا المرور غير متطابقتين");
+
+return;
+
+}
+
+
+toast("جاري إنشاء الحساب...");
+
+
+const result =
+await supabaseClient.auth.signUp({
+
+email:email,
+
+password:password
+
+});
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+result.error.message ||
+"تعذر إنشاء الحساب"
+);
+
+return;
+
+}
+
+
+if(result.data?.session){
+
+toast("تم إنشاء الحساب");
+
+await handleAuthenticatedUser(result.data.user);
+
+return;
+
+}
+
+
+hideAllPages();
+
+document
+.getElementById("vendorLoginPage")
+.classList.remove("hidden");
+
+toast(
+"تم إنشاء الحساب. تحقق من بريدك الإلكتروني ثم سجل الدخول."
+);
 
 }
 
@@ -1755,7 +2124,6 @@ const result =
 await supabaseClient.auth.signInWithPassword({
 
 email:email,
-
 password:password
 
 });
@@ -1769,7 +2137,7 @@ result.error
 );
 
 toast(
-"بيانات الدخول غير صحيحة"
+"بيانات الدخول غير صحيحة أو لم يتم تأكيد البريد"
 );
 
 return;
@@ -1777,13 +2145,18 @@ return;
 }
 
 
-const user =
-result.data.user;
+await handleAuthenticatedUser(
+result.data.user
+);
 
+}
+
+
+async function handleAuthenticatedUser(user){
 
 if(!user){
 
-toast("تعذر تسجيل الدخول");
+toast("تعذر قراءة الحساب");
 
 return;
 
@@ -1795,21 +2168,14 @@ await supabaseClient
 .from("vendors")
 .select("*")
 .eq("user_id",user.id)
-.eq("is_active",true)
 .limit(1);
 
 
 if(vendorResult.error){
 
-console.error(
-vendorResult.error
-);
+console.error(vendorResult.error);
 
-await supabaseClient.auth.signOut();
-
-toast(
-"تعذر العثور على متجر هذا الحساب"
-);
+toast("حدث خطأ أثناء قراءة بيانات المتجر");
 
 return;
 
@@ -1817,39 +2183,76 @@ return;
 
 
 if(
-!vendorResult.data ||
-!vendorResult.data.length
+vendorResult.data &&
+vendorResult.data.length
 ){
 
-await supabaseClient.auth.signOut();
+const vendor =
+vendorResult.data[0];
 
-toast(
-"هذا الحساب غير مرتبط بمتجر حتى الآن"
-);
+
+currentVendor =
+vendor;
+
+currentVendorId =
+vendor.id;
+
+vendorLoggedIn =
+true;
+
+
+if(
+vendor.approval_status === "pending" ||
+vendor.is_active === false
+){
+
+hideAllPages();
+
+document
+.getElementById("vendorPendingPage")
+.classList.remove("hidden");
 
 return;
 
 }
 
 
+await openVendorDashboard();
+
+return;
+
+}
+
+
+/*
+   الحساب موجود لكن لم يقدم بيانات متجره بعد
+*/
+
 currentVendor =
-vendorResult.data[0];
+null;
 
 currentVendorId =
-currentVendor.id;
+null;
 
 vendorLoggedIn =
 true;
 
 
-await openVendorDashboard();
+openVendorOnboarding();
 
 }
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+function openVendorOnboarding(){
+
+hideAllPages();
+
+document
+.getElementById("vendorOnboardingPage")
+.classList.remove("hidden");
+
+}
+
 
 async function vendorLogout(){
 
@@ -1867,6 +2270,367 @@ false;
 showHome();
 
 toast("تم تسجيل الخروج");
+
+}
+
+
+/* =====================================================
+   ONBOARDING
+===================================================== */
+
+function previewOnboardingImage(event){
+
+const file =
+event.target.files?.[0];
+
+if(!file)
+return;
+
+
+const url =
+URL.createObjectURL(file);
+
+
+document
+.getElementById("onboardingImagePreview")
+.src =
+url;
+
+}
+
+
+function showDocumentName(event){
+
+const file =
+event.target.files?.[0];
+
+
+const el =
+document.getElementById(
+"onboardingDocumentName"
+);
+
+
+if(!file){
+
+el.textContent =
+"لم يتم اختيار ملف";
+
+return;
+
+}
+
+
+el.textContent =
+file.name;
+
+}
+
+
+async function uploadVendorDocument(file){
+
+if(!file)
+return null;
+
+
+const sessionResult =
+await supabaseClient.auth.getSession();
+
+
+const session =
+sessionResult.data?.session;
+
+
+if(!session?.user){
+
+throw new Error(
+"يجب تسجيل الدخول قبل رفع الوثيقة"
+);
+
+}
+
+
+const extension =
+(
+file.name
+.split(".")
+.pop() ||
+"pdf"
+)
+.toLowerCase();
+
+
+const fileName =
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2) +
+"." +
+extension;
+
+
+/*
+   كل مستخدم داخل مجلد خاص به
+*/
+
+const path =
+session.user.id +
+"/" +
+fileName;
+
+
+const upload =
+await supabaseClient
+.storage
+.from("vendor-documents")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(upload.error){
+
+console.error(upload.error);
+
+throw upload.error;
+
+}
+
+
+return path;
+
+}
+
+
+async function submitVendorApplication(){
+
+const ownerName =
+document
+.getElementById("onboardingOwnerName")
+.value
+.trim();
+
+
+const storeName =
+document
+.getElementById("onboardingStoreName")
+.value
+.trim();
+
+
+const phone =
+document
+.getElementById("onboardingPhone")
+.value
+.trim();
+
+
+const description =
+document
+.getElementById("onboardingDescription")
+.value
+.trim();
+
+
+const documentType =
+document
+.getElementById("onboardingDocumentType")
+.value;
+
+
+const imageFile =
+document
+.getElementById("onboardingImageInput")
+.files?.[0];
+
+
+const documentFile =
+document
+.getElementById("onboardingDocumentInput")
+.files?.[0];
+
+
+if(!ownerName){
+
+toast("اكتب اسم صاحب المتجر");
+
+return;
+
+}
+
+
+if(!storeName){
+
+toast("اكتب اسم المتجر");
+
+return;
+
+}
+
+
+if(!phone){
+
+toast("اكتب رقم الجوال");
+
+return;
+
+}
+
+
+if(!documentType){
+
+toast("اختر نوع الوثيقة");
+
+return;
+
+}
+
+
+if(!documentFile){
+
+toast("ارفع الوثيقة المطلوبة");
+
+return;
+
+}
+
+
+const sessionResult =
+await supabaseClient.auth.getSession();
+
+
+const session =
+sessionResult.data?.session;
+
+
+if(!session?.user){
+
+toast("انتهت الجلسة، سجل الدخول مرة أخرى");
+
+return;
+
+}
+
+
+try{
+
+toast("جاري تجهيز طلب المتجر...");
+
+
+let imageUrl =
+null;
+
+
+if(imageFile){
+
+toast("جاري رفع صورة المتجر...");
+
+imageUrl =
+await uploadImage(imageFile);
+
+}
+
+
+toast("جاري رفع الوثيقة...");
+
+const documentPath =
+await uploadVendorDocument(
+documentFile
+);
+
+
+const insertData = {
+
+user_id:session.user.id,
+
+name:storeName,
+
+owner_name:ownerName,
+
+phone:phone,
+
+description:description,
+
+document_type:documentType,
+
+document_url:documentPath,
+
+is_active:false,
+
+approval_status:"pending"
+
+};
+
+
+if(imageUrl){
+
+insertData.image_url =
+imageUrl;
+
+}
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.insert(insertData)
+.select("*")
+.single();
+
+
+if(result.error){
+
+console.error(
+"VENDOR APPLICATION ERROR:",
+result.error
+);
+
+toast(
+"تعذر إرسال الطلب: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+currentVendor =
+result.data;
+
+currentVendorId =
+result.data.id;
+
+vendorLoggedIn =
+true;
+
+
+hideAllPages();
+
+document
+.getElementById("vendorPendingPage")
+.classList.remove("hidden");
+
+toast(
+"تم إرسال طلبك بنجاح ✓"
+);
+
+}
+catch(error){
+
+console.error(error);
+
+toast(
+"حدث خطأ أثناء إرسال الطلب"
+);
+
+}
 
 }
 
@@ -2074,23 +2838,14 @@ const list =
 (result.data || []).map(x=>({
 
 id:x.id,
-
 n:x.name,
-
 s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
-
 p:Number(x.price || 0),
-
 e:x.emoji || "🍪",
-
 c:x.category || "cookies",
-
 vendor_id:x.vendor_id,
-
 description:x.description || "",
-
 image_url:x.image_url || "",
-
 is_active:x.is_active !== false
 
 }));
@@ -2343,7 +3098,6 @@ await uploadImage(file);
 const updateData = {
 
 name:name,
-
 description:description
 
 };
@@ -2527,7 +3281,6 @@ document
 
 
 renderStores();
-
 
 toast("تم حفظ بيانات المتجر ✓");
 
@@ -2821,11 +3574,8 @@ if(editingProductId){
 const updateData = {
 
 name:name,
-
 price:price,
-
 category:category,
-
 description:description
 
 };
@@ -2882,17 +3632,11 @@ return;
 const insertData = {
 
 vendor_id:currentVendorId,
-
 name:name,
-
 price:price,
-
 category:category,
-
 description:description,
-
 emoji:"🍪",
-
 is_active:true
 
 };
@@ -3346,7 +4090,6 @@ await supabaseClient
 .from("vendors")
 .select("*")
 .eq("user_id",session.user.id)
-.eq("is_active",true)
 .limit(1);
 
 
@@ -3365,6 +4108,19 @@ currentVendor.id;
 vendorLoggedIn =
 true;
 
+if(
+currentVendor.approval_status === "pending" ||
+currentVendor.is_active === false
+){
+
+hideAllPages();
+
+document
+.getElementById("vendorPendingPage")
+.classList.remove("hidden");
+
+}
+
 }
 
 }
@@ -3372,7 +4128,18 @@ true;
 
 await loadData();
 
+if(
+!session ||
+!currentVendor ||
+(
+currentVendor.approval_status !== "pending" &&
+currentVendor.is_active === true
+)
+){
+
 await showHome();
+
+}
 
 updateCart();
 
