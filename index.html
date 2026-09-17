@@ -581,6 +581,16 @@ flex-wrap:wrap;
 margin-top:14px
 }
 
+.document-view-button{
+background:#29251f;
+color:#fff;
+border:0;
+border-radius:10px;
+padding:9px 13px;
+font-weight:700;
+font-size:12px
+}
+
 @media(max-width:700px){
 
 .nav{
@@ -769,10 +779,7 @@ alt="">
 
 </div>
 
-<div
-id="storeProducts"
-class="products-grid">
-</div>
+<div id="storeProducts" class="products-grid"></div>
 
 </section>
 
@@ -961,7 +968,7 @@ placeholder="05xxxxxxxx">
 
 <textarea
 id="onboardingDescription"
-placeholder="اكتب نبذة بسيطة عن متجرك ومنتجاتك"></textarea>
+placeholder="اكتب نبذة بسيطة عن متجرك ومنتجاته"></textarea>
 
 </div>
 
@@ -1161,7 +1168,8 @@ alt="">
 <div class="stat">
 
 <strong id="vendorSalesCount">
-0</strong>
+0
+</strong>
 
 <span>المنتجات المباعة</span>
 
@@ -1383,9 +1391,7 @@ onclick="openAdminAddProduct()">
 </main>
 
 
-<div
-id="productModal"
-class="modal">
+<div id="productModal" class="modal">
 
 <div class="modal-box">
 
@@ -1400,6 +1406,7 @@ class="close"
 onclick="closeProductModal()">
 
 ×
+
 </button>
 
 </div>
@@ -2362,10 +2369,6 @@ return;
 }
 
 
-/*
-   الحساب موجود لكن لم يقدم بيانات متجره بعد
-*/
-
 currentVendor =
 null;
 
@@ -2533,6 +2536,108 @@ return path;
 
 }
 
+
+/* =====================================================
+   DOCUMENT VIEW
+===================================================== */
+
+async function openVendorDocument(documentPath){
+
+if(!documentPath){
+
+toast("لا توجد وثيقة مرفقة لهذا الطلب");
+
+return;
+
+}
+
+
+try{
+
+toast("جاري تجهيز الوثيقة...");
+
+
+const sessionResult =
+await supabaseClient.auth.getSession();
+
+
+const session =
+sessionResult.data?.session;
+
+
+if(!session?.user){
+
+toast(
+"يجب تسجيل الدخول بحساب المالك لعرض الوثائق الخاصة"
+);
+
+return;
+
+}
+
+
+const signedResult =
+await supabaseClient
+.storage
+.from("vendor-documents")
+.createSignedUrl(
+documentPath,
+300
+);
+
+
+if(signedResult.error){
+
+console.error(
+"DOCUMENT SIGN ERROR:",
+signedResult.error
+);
+
+toast(
+"تعذر فتح الوثيقة. تأكد من تسجيل دخول حساب المالك."
+);
+
+return;
+
+}
+
+
+const signedUrl =
+signedResult.data?.signedUrl;
+
+
+if(!signedUrl){
+
+toast("تعذر إنشاء رابط الوثيقة");
+
+return;
+
+}
+
+
+window.open(
+signedUrl,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+catch(error){
+
+console.error(error);
+
+toast(
+"حدث خطأ أثناء فتح الوثيقة"
+);
+
+}
+
+}
+
+
+/* =====================================================
+   SUBMIT VENDOR APPLICATION
+===================================================== */
 
 async function submitVendorApplication(){
 
@@ -4306,6 +4411,22 @@ v.document_type === "freelance"
 
 
 <div class="application-actions">
+
+${
+v.document_url
+?
+`
+<button
+class="document-view-button"
+onclick="openVendorDocument(${JSON.stringify(v.document_url)})">
+
+📄 عرض الوثيقة
+
+</button>
+`
+:
+""
+}
 
 <button
 class="btn gold"
