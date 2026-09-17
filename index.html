@@ -291,6 +291,12 @@ border-color:#ead8b8;
 color:#826a42
 }
 
+.note.danger-note{
+background:#f8e9e7;
+border-color:#ead0cc;
+color:#8c5751
+}
+
 .field{
 margin-bottom:14px
 }
@@ -521,6 +527,58 @@ background:#fff0d9;
 color:#826a42;
 font-size:12px;
 font-weight:700
+}
+
+.status-approved{
+background:#e8f1e7;
+color:#547052
+}
+
+.status-rejected{
+background:#f4e7e4;
+color:#95645e
+}
+
+.application-card{
+background:#faf7f2;
+border:1px solid #e6ddd1;
+border-radius:17px;
+padding:16px;
+margin-bottom:12px
+}
+
+.application-head{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:14px
+}
+
+.application-image{
+width:65px;
+height:65px;
+border-radius:15px;
+object-fit:cover;
+background:#eee6dc;
+border:1px solid #ddd2c4
+}
+
+.application-name{
+font-size:18px;
+font-weight:900
+}
+
+.application-info{
+font-size:13px;
+line-height:1.9;
+color:#655d54
+}
+
+.application-actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:14px
 }
 
 @media(max-width:700px){
@@ -792,7 +850,7 @@ onclick="showHome()">
 <h1>انضم إلى مِنّا</h1>
 
 <div class="note">
-أنشئ حسابك أولاً، وبعد تأكيد البريد الإلكتروني يمكنك إكمال بيانات المتجر ورفع الوثائق.
+أنشئ حسابك أولاً، ثم أكمل بيانات متجرك وارفع الوثائق المطلوبة.
 </div>
 
 <div class="field">
@@ -861,7 +919,7 @@ onclick="openVendorLogin()">
 <h1>إكمال طلب المتجر</h1>
 
 <div class="note">
-أكمل بيانات متجرك وارفع الوثائق المطلوبة. بعد الإرسال سيصبح الطلب <strong>قيد المراجعة</strong>.
+أكمل بيانات متجرك وارفع الوثيقة المطلوبة. بعد الإرسال سيتم إرسال الطلب إلى إدارة مِنّا للمراجعة.
 </div>
 
 <div class="field">
@@ -997,7 +1055,35 @@ onclick="vendorLogout()">
 <h1>طلبك قيد المراجعة</h1>
 
 <div class="note warning">
-تم استلام طلب متجرك بنجاح، وسيتم مراجعته من إدارة مِنّا قبل نشره.
+تم استلام طلب متجرك بنجاح. ستتم مراجعة البيانات والوثيقة من إدارة مِنّا قبل نشر المتجر.
+</div>
+
+<button
+class="btn light"
+style="width:100%"
+onclick="vendorLogout()">
+
+تسجيل الخروج
+
+</button>
+
+</div>
+
+</section>
+
+
+<section id="vendorRejectedPage" class="hidden">
+
+<div class="login-box panel" style="text-align:center">
+
+<div style="font-size:50px;margin-bottom:10px">
+✕
+</div>
+
+<h1>تم رفض الطلب</h1>
+
+<div class="note danger-note">
+لم تتم الموافقة على طلب متجرك حاليًا. يمكنك التواصل مع إدارة مِنّا لمعرفة التفاصيل.
 </div>
 
 <button
@@ -1195,7 +1281,6 @@ class="btn light"
 onclick="showHome()">
 
 ← المتاجر
-
 </button>
 
 </div>
@@ -1246,7 +1331,27 @@ onclick="openAdminAddProduct()">
 </button>
 
 
-<div style="height:20px"></div>
+<div style="height:30px"></div>
+
+
+<div class="section-title">
+
+<h2>طلبات انضمام المتاجر</h2>
+
+</div>
+
+
+<div id="pendingVendorsList"></div>
+
+
+<div style="height:25px"></div>
+
+
+<div class="section-title">
+
+<h2>المنتجات</h2>
+
+</div>
 
 
 <div class="table-wrap">
@@ -1509,6 +1614,7 @@ function hideAllPages(){
 "vendorSignupPage",
 "vendorOnboardingPage",
 "vendorPendingPage",
+"vendorRejectedPage",
 "vendorDashboardPage",
 "adminPage"
 ].forEach(id=>{
@@ -1600,7 +1706,7 @@ is_active:x.is_active !== false
 
 
 /* =====================================================
-   LOAD ALL PRODUCTS FOR VENDOR
+   LOAD VENDOR PRODUCTS
 ===================================================== */
 
 async function loadVendorProducts(){
@@ -1645,10 +1751,8 @@ c:x.category || "cookies",
 vendor_id:x.vendor_id,
 description:x.description || "",
 image_url:x.image_url || "",
-vendor_image_url:
-x.vendors?.image_url || "",
-vendor_description:
-x.vendors?.description || "",
+vendor_image_url:x.vendors?.image_url || "",
+vendor_description:x.vendors?.description || "",
 is_active:x.is_active !== false
 
 }));
@@ -1952,7 +2056,7 @@ onclick="addToCart(${Number(p.id)})">
 
 
 /* =====================================================
-   VENDOR LOGIN / SIGNUP
+   AUTH
 ===================================================== */
 
 function openVendorLogin(){
@@ -2064,7 +2168,9 @@ if(result.data?.session){
 
 toast("تم إنشاء الحساب");
 
-await handleAuthenticatedUser(result.data.user);
+await handleAuthenticatedUser(
+result.data.user
+);
 
 return;
 
@@ -2175,7 +2281,9 @@ if(vendorResult.error){
 
 console.error(vendorResult.error);
 
-toast("حدث خطأ أثناء قراءة بيانات المتجر");
+toast(
+"حدث خطأ أثناء قراءة بيانات المتجر"
+);
 
 return;
 
@@ -2202,8 +2310,7 @@ true;
 
 
 if(
-vendor.approval_status === "pending" ||
-vendor.is_active === false
+vendor.approval_status === "pending"
 ){
 
 hideAllPages();
@@ -2217,7 +2324,38 @@ return;
 }
 
 
+if(
+vendor.approval_status === "rejected"
+){
+
+hideAllPages();
+
+document
+.getElementById("vendorRejectedPage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+if(
+vendor.approval_status === "approved" &&
+vendor.is_active === true
+){
+
 await openVendorDashboard();
+
+return;
+
+}
+
+
+hideAllPages();
+
+document
+.getElementById("vendorPendingPage")
+.classList.remove("hidden");
 
 return;
 
@@ -2237,22 +2375,14 @@ null;
 vendorLoggedIn =
 true;
 
-
 openVendorOnboarding();
 
 }
 
 
-function openVendorOnboarding(){
-
-hideAllPages();
-
-document
-.getElementById("vendorOnboardingPage")
-.classList.remove("hidden");
-
-}
-
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 async function vendorLogout(){
 
@@ -2369,10 +2499,6 @@ Math.random()
 "." +
 extension;
 
-
-/*
-   كل مستخدم داخل مجلد خاص به
-*/
 
 const path =
 session.user.id +
@@ -2511,7 +2637,9 @@ sessionResult.data?.session;
 
 if(!session?.user){
 
-toast("انتهت الجلسة، سجل الدخول مرة أخرى");
+toast(
+"انتهت الجلسة، سجل الدخول مرة أخرى"
+);
 
 return;
 
@@ -2520,7 +2648,7 @@ return;
 
 try{
 
-toast("جاري تجهيز طلب المتجر...");
+toast("جاري تجهيز الطلب...");
 
 
 let imageUrl =
@@ -2538,6 +2666,7 @@ await uploadImage(imageFile);
 
 
 toast("جاري رفع الوثيقة...");
+
 
 const documentPath =
 await uploadVendorDocument(
@@ -2682,6 +2811,7 @@ await supabaseClient
 .from("vendors")
 .select("*")
 .eq("user_id",session.user.id)
+.eq("approval_status","approved")
 .eq("is_active",true)
 .limit(1);
 
@@ -3098,6 +3228,7 @@ await uploadImage(file);
 const updateData = {
 
 name:name,
+
 description:description
 
 };
@@ -3299,7 +3430,7 @@ toast(
 
 
 /* =====================================================
-   ADD / EDIT PRODUCT MODAL
+   ADD / EDIT PRODUCT
 ===================================================== */
 
 function openAddVendorProduct(){
@@ -3565,10 +3696,6 @@ await uploadImage(file);
 }
 
 
-/* =================================================
-   EDIT
-================================================= */
-
 if(editingProductId){
 
 const updateData = {
@@ -3625,10 +3752,6 @@ return;
 }
 
 
-/* =================================================
-   ADD
-================================================= */
-
 const insertData = {
 
 vendor_id:currentVendorId,
@@ -3674,7 +3797,6 @@ return;
 closeProductModal();
 
 toast("تمت إضافة المنتج ✓");
-
 
 await loadData();
 
@@ -3817,7 +3939,6 @@ return;
 
 
 toast("تم حذف المنتج نهائيًا ✓");
-
 
 await loadData();
 
@@ -4048,6 +4169,272 @@ ${Number(p.p).toFixed(0)} ر.س
 
 `).join("");
 
+
+await loadPendingVendors();
+
+}
+
+
+/* =====================================================
+   PENDING VENDORS
+===================================================== */
+
+async function loadPendingVendors(){
+
+const el =
+document.getElementById(
+"pendingVendorsList"
+);
+
+
+if(!el)
+return;
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("approval_status","pending")
+.eq("is_active",false)
+.order("id",{ascending:false});
+
+
+if(result.error){
+
+console.error(result.error);
+
+el.innerHTML =
+`
+<div class="empty">
+تعذر تحميل طلبات المتاجر.
+</div>
+`;
+
+return;
+
+}
+
+
+const list =
+result.data || [];
+
+
+if(!list.length){
+
+el.innerHTML =
+`
+<div class="empty">
+لا توجد طلبات جديدة حالياً.
+</div>
+`;
+
+return;
+
+}
+
+
+el.innerHTML =
+list.map(v=>`
+
+<div class="application-card">
+
+<div class="application-head">
+
+<img
+class="application-image"
+src="${escapeHtml(
+v.image_url || imageFallback("store")
+)}"
+alt=""
+onerror="this.src='${imageFallback("store")}'">
+
+<div>
+
+<div class="application-name">
+${escapeHtml(v.name || "بدون اسم")}
+</div>
+
+<div style="font-size:12px;color:#81776d;margin-top:4px">
+${escapeHtml(v.owner_name || "بدون اسم صاحب المتجر")}
+</div>
+
+</div>
+
+</div>
+
+
+<div class="application-info">
+
+<div>
+<strong>اسم صاحب المتجر:</strong>
+${escapeHtml(v.owner_name || "-")}
+</div>
+
+<div>
+<strong>رقم الجوال:</strong>
+${escapeHtml(v.phone || "-")}
+</div>
+
+<div>
+<strong>الوصف:</strong>
+${escapeHtml(v.description || "-")}
+</div>
+
+<div>
+<strong>نوع الوثيقة:</strong>
+
+${
+v.document_type === "freelance"
+? "وثيقة العمل الحر"
+: v.document_type === "productive_families"
+? "شهادة الأسر المنتجة"
+: escapeHtml(v.document_type || "-")
+}
+
+</div>
+
+<div style="margin-top:9px">
+
+<span class="status-badge">
+قيد المراجعة
+</span>
+
+</div>
+
+</div>
+
+
+<div class="application-actions">
+
+<button
+class="btn gold"
+onclick="approveVendor(${Number(v.id)})">
+
+✓ قبول المتجر
+
+</button>
+
+<button
+class="btn danger"
+onclick="rejectVendor(${Number(v.id)})">
+
+✕ رفض الطلب
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+   APPROVE VENDOR
+===================================================== */
+
+async function approveVendor(vendorId){
+
+const confirmed =
+confirm(
+"هل تريد قبول هذا المتجر ونشره للعامة؟"
+);
+
+
+if(!confirmed)
+return;
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.update({
+
+approval_status:"approved",
+is_active:true
+
+})
+.eq("id",vendorId)
+.eq("approval_status","pending");
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر قبول المتجر: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+toast(
+"تم قبول المتجر ونشره للعامة ✓"
+);
+
+
+await loadAdmin();
+
+}
+
+
+/* =====================================================
+   REJECT VENDOR
+===================================================== */
+
+async function rejectVendor(vendorId){
+
+const confirmed =
+confirm(
+"هل تريد رفض طلب هذا المتجر؟"
+);
+
+
+if(!confirmed)
+return;
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.update({
+
+approval_status:"rejected",
+is_active:false
+
+})
+.eq("id",vendorId)
+.eq("approval_status","pending");
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر رفض الطلب: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+toast(
+"تم رفض الطلب"
+);
+
+
+await loadAdmin();
+
 }
 
 
@@ -4108,9 +4495,9 @@ currentVendor.id;
 vendorLoggedIn =
 true;
 
+
 if(
-currentVendor.approval_status === "pending" ||
-currentVendor.is_active === false
+currentVendor.approval_status === "pending"
 ){
 
 hideAllPages();
@@ -4118,6 +4505,27 @@ hideAllPages();
 document
 .getElementById("vendorPendingPage")
 .classList.remove("hidden");
+
+}else if(
+currentVendor.approval_status === "rejected"
+){
+
+hideAllPages();
+
+document
+.getElementById("vendorRejectedPage")
+.classList.remove("hidden");
+
+}else if(
+currentVendor.approval_status === "approved" &&
+currentVendor.is_active === true
+){
+
+await loadData();
+
+await showHome();
+
+return;
 
 }
 
@@ -4128,18 +4536,7 @@ document
 
 await loadData();
 
-if(
-!session ||
-!currentVendor ||
-(
-currentVendor.approval_status !== "pending" &&
-currentVendor.is_active === true
-)
-){
-
 await showHome();
-
-}
 
 updateCart();
 
