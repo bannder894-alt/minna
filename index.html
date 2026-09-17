@@ -77,6 +77,17 @@ background:#a88a5b;
 color:#fff
 }
 
+.btn.danger{
+background:#b94b43;
+color:#fff
+}
+
+.btn.small{
+padding:7px 10px;
+font-size:11px;
+border-radius:9px
+}
+
 .container{
 max-width:1100px;
 margin:auto;
@@ -310,15 +321,47 @@ margin-bottom:10px
 display:flex;
 align-items:center;
 gap:10px;
-padding:10px 0;
+padding:12px 0;
 border-bottom:1px solid #eee6dc
 }
 
+.mini-product:last-child{
+border-bottom:0
+}
+
 .mini-product img{
-width:48px;
-height:48px;
+width:58px;
+height:58px;
 object-fit:cover;
-border-radius:10px
+border-radius:12px;
+flex-shrink:0
+}
+
+.product-actions{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+margin-top:7px
+}
+
+.product-status{
+display:inline-block;
+font-size:10px;
+padding:4px 7px;
+border-radius:7px;
+background:#eee8df;
+color:#766b60;
+margin-right:5px
+}
+
+.product-status.active{
+background:#e8f1e7;
+color:#547052
+}
+
+.product-status.hidden-status{
+background:#f4e7e4;
+color:#95645e
 }
 
 .modal{
@@ -497,6 +540,11 @@ padding:9px 11px;
 font-size:12px
 }
 
+.btn.small{
+padding:6px 7px;
+font-size:9px
+}
+
 .dashboard-grid{
 grid-template-columns:1fr
 }
@@ -524,6 +572,11 @@ font-size:22px
 .vendor-avatar{
 width:70px;
 height:70px
+}
+
+.mini-product img{
+width:50px;
+height:50px
 }
 
 }
@@ -560,11 +613,7 @@ height:70px
 </div>
 </header>
 
-
 <main class="container">
-
-
-<!-- الصفحة الرئيسية -->
 
 <section id="homePage">
 
@@ -586,8 +635,6 @@ height:70px
 
 </section>
 
-
-<!-- صفحة المتجر -->
 
 <section id="storePage" class="hidden">
 
@@ -624,8 +671,6 @@ class="products-grid">
 
 </section>
 
-
-<!-- دخول صاحب المتجر -->
 
 <section id="vendorLoginPage" class="hidden">
 
@@ -683,8 +728,6 @@ onclick="showHome()">
 
 </section>
 
-
-<!-- لوحة صاحب المتجر -->
 
 <section id="vendorDashboardPage" class="hidden">
 
@@ -749,7 +792,7 @@ alt="">
 <strong id="vendorSalesCount">
 0</strong>
 
-<span>المبيعات</span>
+<span>المنتجات المباعة</span>
 
 </div>
 
@@ -758,8 +801,6 @@ alt="">
 
 <div class="dashboard-grid">
 
-
-<!-- بيانات المتجر -->
 
 <div class="panel">
 
@@ -822,8 +863,6 @@ onclick="saveVendorProfile()">
 </div>
 
 
-<!-- المنتجات -->
-
 <div class="panel">
 
 <div class="section-title">
@@ -861,8 +900,6 @@ onclick="vendorLogout()">
 
 </section>
 
-
-<!-- لوحة المالك -->
 
 <section id="adminPage" class="hidden">
 
@@ -956,8 +993,6 @@ onclick="openAdminAddProduct()">
 </main>
 
 
-<!-- نافذة المنتج -->
-
 <div
 id="productModal"
 class="modal">
@@ -966,7 +1001,9 @@ class="modal">
 
 <div class="modal-head">
 
-<h2>إضافة منتج</h2>
+<h2 id="productModalTitle">
+إضافة منتج
+</h2>
 
 <button
 class="close"
@@ -1048,7 +1085,9 @@ accept="image/*">
 class="btn gold"
 onclick="saveProduct()">
 
+<span id="saveProductButtonText">
 حفظ المنتج
+</span>
 
 </button>
 
@@ -1129,6 +1168,8 @@ let cart = [];
 
 let productModalMode = "vendor";
 
+let editingProductId = null;
+
 
 /* =====================================================
    HELPERS
@@ -1202,7 +1243,7 @@ document.getElementById("adminPage")
 
 
 /* =====================================================
-   LOAD DATA
+   LOAD PUBLIC DATA
 ===================================================== */
 
 async function loadData(){
@@ -1281,9 +1322,91 @@ x.vendors?.image_url || "",
 
 vendor_description:
 x.vendors?.description ||
-"حلويات ومنتجات صنعت بحب"
+"حلويات ومنتجات صنعت بحب",
+
+is_active:x.is_active !== false
 
 }));
+
+}
+
+
+/* =====================================================
+   LOAD ALL PRODUCTS FOR VENDOR
+===================================================== */
+
+async function loadVendorProducts(){
+
+if(!currentVendorId)
+return;
+
+
+const result =
+await supabaseClient
+.from("products")
+.select(`
+*,
+vendors(
+name,
+image_url,
+description
+)
+`)
+.eq("vendor_id",currentVendorId)
+.order("id",{ascending:false});
+
+
+if(result.error){
+
+console.error(result.error);
+
+return;
+
+}
+
+
+const allProducts =
+(result.data || []).map(x=>({
+
+id:x.id,
+
+n:x.name,
+
+s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
+
+p:Number(x.price || 0),
+
+e:x.emoji || "🍪",
+
+c:x.category || "cookies",
+
+vendor_id:x.vendor_id,
+
+description:x.description || "",
+
+image_url:x.image_url || "",
+
+vendor_image_url:
+x.vendors?.image_url || "",
+
+vendor_description:
+x.vendors?.description || "",
+
+is_active:x.is_active !== false
+
+}));
+
+
+/* المنتجات النشطة تبقى في products */
+
+products =
+products
+.filter(p=>Number(p.vendor_id)!==Number(currentVendorId))
+.concat(
+allProducts.filter(p=>p.is_active)
+);
+
+renderVendorProducts();
 
 }
 
@@ -1306,6 +1429,10 @@ renderStores();
 
 }
 
+
+/* =====================================================
+   STORES
+===================================================== */
 
 function renderStores(){
 
@@ -1663,8 +1790,6 @@ return;
 }
 
 
-/* البحث عن المتجر المرتبط بهذا الحساب */
-
 const vendorResult =
 await supabaseClient
 .from("vendors")
@@ -1778,11 +1903,6 @@ async function loadVendorDashboard(){
 await loadData();
 
 
-/*
-إذا كان الحساب مسجل دخول،
-نقرأ المتجر المرتبط به مباشرة
-*/
-
 const sessionResult =
 await supabaseClient.auth.getSession();
 
@@ -1873,10 +1993,8 @@ document
 image;
 
 
-renderVendorProducts();
+await loadVendorProducts();
 
-
-/* الطلبات */
 
 const ordersResult =
 await supabaseClient
@@ -1894,8 +2012,6 @@ document
 orders.length;
 
 
-/* عدد المنتجات */
-
 document
 .getElementById("vendorSalesCount")
 .textContent =
@@ -1911,25 +2027,79 @@ Number(currentVendorId)
    VENDOR PRODUCTS
 ===================================================== */
 
-function renderVendorProducts(){
-
-const list =
-products.filter(
-p=>Number(p.vendor_id) ===
-Number(currentVendorId)
-);
-
-
-document
-.getElementById("vendorProductsCount")
-.textContent =
-list.length;
-
+async function renderVendorProducts(){
 
 const el =
 document.getElementById(
 "vendorProductsList"
 );
+
+
+if(!el)
+return;
+
+
+const result =
+await supabaseClient
+.from("products")
+.select(`
+*,
+vendors(
+name,
+image_url,
+description
+)
+`)
+.eq("vendor_id",currentVendorId)
+.order("id",{ascending:false});
+
+
+if(result.error){
+
+console.error(result.error);
+
+el.innerHTML =
+`
+<div class="empty">
+تعذر تحميل المنتجات.
+</div>
+`;
+
+return;
+
+}
+
+
+const list =
+(result.data || []).map(x=>({
+
+id:x.id,
+
+n:x.name,
+
+s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
+
+p:Number(x.price || 0),
+
+e:x.emoji || "🍪",
+
+c:x.category || "cookies",
+
+vendor_id:x.vendor_id,
+
+description:x.description || "",
+
+image_url:x.image_url || "",
+
+is_active:x.is_active !== false
+
+}));
+
+
+document
+.getElementById("vendorProductsCount")
+.textContent =
+list.filter(p=>p.is_active).length;
 
 
 if(!list.length){
@@ -1958,7 +2128,7 @@ p.image_url || imageFallback()
 alt=""
 onerror="this.src='${imageFallback()}'">
 
-<div style="flex:1">
+<div style="flex:1;min-width:0">
 
 <strong>
 ${escapeHtml(p.n)}
@@ -1968,6 +2138,41 @@ ${escapeHtml(p.n)}
 style="font-size:12px;color:#81776d;margin-top:3px">
 
 ${Number(p.p).toFixed(0)} ر.س
+
+<span class="product-status ${p.is_active ? "active" : "hidden-status"}">
+
+${p.is_active ? "ظاهر" : "مخفي"}
+
+</span>
+
+</div>
+
+
+<div class="product-actions">
+
+<button
+class="btn small"
+onclick="editProduct(${Number(p.id)})">
+
+✏️ تعديل
+
+</button>
+
+<button
+class="btn small ${p.is_active ? "light" : "gold"}"
+onclick="toggleProduct(${Number(p.id)},${p.is_active})">
+
+${p.is_active ? "👁️ إخفاء" : "👁️ إظهار"}
+
+</button>
+
+<button
+class="btn small danger"
+onclick="deleteProduct(${Number(p.id)})">
+
+🗑️ حذف
+
+</button>
 
 </div>
 
@@ -2192,8 +2397,6 @@ result.data[0];
 }
 
 
-/* إذا لم يرجع التحديث السجل */
-
 if(!updatedVendor){
 
 const reload =
@@ -2233,8 +2436,6 @@ reload.data[0];
 }
 
 
-/* حفظ النسخة الجديدة */
-
 currentVendor =
 updatedVendor;
 
@@ -2260,8 +2461,6 @@ vendors.push(updatedVendor);
 
 }
 
-
-/* تحديث المنتجات */
 
 products =
 products.map(p=>{
@@ -2291,8 +2490,6 @@ return p;
 
 });
 
-
-/* تحديث الواجهة */
 
 document
 .getElementById("dashboardVendorName")
@@ -2349,13 +2546,16 @@ toast(
 
 
 /* =====================================================
-   ADD PRODUCT
+   ADD / EDIT PRODUCT MODAL
 ===================================================== */
 
 function openAddVendorProduct(){
 
 productModalMode =
 "vendor";
+
+editingProductId =
+null;
 
 openProductModal();
 
@@ -2367,7 +2567,101 @@ function openAdminAddProduct(){
 productModalMode =
 "admin";
 
+editingProductId =
+null;
+
 openProductModal();
+
+}
+
+
+async function editProduct(productId){
+
+const result =
+await supabaseClient
+.from("products")
+.select("*")
+.eq("id",productId)
+.eq("vendor_id",currentVendorId)
+.limit(1);
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast("تعذر تحميل المنتج");
+
+return;
+
+}
+
+
+if(!result.data || !result.data.length){
+
+toast("المنتج غير موجود");
+
+return;
+
+}
+
+
+const p =
+result.data[0];
+
+
+editingProductId =
+p.id;
+
+productModalMode =
+"vendor";
+
+
+document
+.getElementById("productModalTitle")
+.textContent =
+"تعديل المنتج";
+
+
+document
+.getElementById("saveProductButtonText")
+.textContent =
+"حفظ التعديلات";
+
+
+document
+.getElementById("productNameInput")
+.value =
+p.name || "";
+
+
+document
+.getElementById("productPriceInput")
+.value =
+p.price ?? "";
+
+
+document
+.getElementById("productCategoryInput")
+.value =
+p.category || "cookies";
+
+
+document
+.getElementById("productDescriptionInput")
+.value =
+p.description || "";
+
+
+document
+.getElementById("productImageInput")
+.value =
+"";
+
+
+document
+.getElementById("productModal")
+.classList.add("show");
 
 }
 
@@ -2377,6 +2671,20 @@ function openProductModal(){
 document
 .getElementById("productModal")
 .classList.add("show");
+
+
+if(!editingProductId){
+
+document
+.getElementById("productModalTitle")
+.textContent =
+"إضافة منتج";
+
+
+document
+.getElementById("saveProductButtonText")
+.textContent =
+"حفظ المنتج";
 
 
 document
@@ -2392,6 +2700,12 @@ document
 
 
 document
+.getElementById("productCategoryInput")
+.value =
+"cookies";
+
+
+document
 .getElementById("productDescriptionInput")
 .value =
 "";
@@ -2404,12 +2718,17 @@ document
 
 }
 
+}
+
 
 function closeProductModal(){
 
 document
 .getElementById("productModal")
 .classList.remove("show");
+
+editingProductId =
+null;
 
 }
 
@@ -2493,6 +2812,73 @@ await uploadImage(file);
 }
 
 
+/* =================================================
+   EDIT
+================================================= */
+
+if(editingProductId){
+
+const updateData = {
+
+name:name,
+
+price:price,
+
+category:category,
+
+description:description
+
+};
+
+
+if(imageUrl){
+
+updateData.image_url =
+imageUrl;
+
+}
+
+
+const result =
+await supabaseClient
+.from("products")
+.update(updateData)
+.eq("id",editingProductId)
+.eq("vendor_id",currentVendorId)
+.select("*");
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر تعديل المنتج: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+closeProductModal();
+
+toast("تم تعديل المنتج ✓");
+
+await loadData();
+
+await loadVendorDashboard();
+
+return;
+
+}
+
+
+/* =================================================
+   ADD
+================================================= */
+
 const insertData = {
 
 vendor_id:currentVendorId,
@@ -2556,10 +2942,142 @@ catch(error){
 console.error(error);
 
 toast(
-"حدث خطأ أثناء إضافة المنتج"
+"حدث خطأ أثناء حفظ المنتج"
 );
 
 }
+
+}
+
+
+/* =====================================================
+   HIDE / SHOW PRODUCT
+===================================================== */
+
+async function toggleProduct(productId,currentStatus){
+
+const newStatus =
+!currentStatus;
+
+
+const result =
+await supabaseClient
+.from("products")
+.update({
+is_active:newStatus
+})
+.eq("id",productId)
+.eq("vendor_id",currentVendorId)
+.select("*");
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر تغيير حالة المنتج: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+toast(
+newStatus
+? "تم إظهار المنتج ✓"
+: "تم إخفاء المنتج ✓"
+);
+
+
+await loadData();
+
+await renderVendorProducts();
+
+}
+
+
+/* =====================================================
+   DELETE PRODUCT
+===================================================== */
+
+async function deleteProduct(productId){
+
+const product =
+await supabaseClient
+.from("products")
+.select("id,name")
+.eq("id",productId)
+.eq("vendor_id",currentVendorId)
+.limit(1);
+
+
+if(product.error){
+
+console.error(product.error);
+
+toast("تعذر العثور على المنتج");
+
+return;
+
+}
+
+
+if(!product.data || !product.data.length){
+
+toast("المنتج غير موجود");
+
+return;
+
+}
+
+
+const name =
+product.data[0].name;
+
+
+const confirmed =
+confirm(
+"هل أنت متأكد من حذف المنتج:\n\n" +
+name +
+"\n\nسيتم حذفه نهائيًا."
+);
+
+
+if(!confirmed)
+return;
+
+
+const result =
+await supabaseClient
+.from("products")
+.delete()
+.eq("id",productId)
+.eq("vendor_id",currentVendorId);
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر حذف المنتج: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+toast("تم حذف المنتج نهائيًا ✓");
+
+
+await loadData();
+
+await renderVendorProducts();
 
 }
 
@@ -2790,7 +3308,7 @@ ${Number(p.p).toFixed(0)} ر.س
 
 
 /* =====================================================
-   MODAL
+   MODAL CLICK
 ===================================================== */
 
 document
@@ -2854,7 +3372,9 @@ true;
 
 await loadData();
 
-showHome();
+await showHome();
+
+updateCart();
 
 })();
 
