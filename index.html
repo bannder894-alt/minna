@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>مِنّا — من أياديهم إلى يديك</title>
 
 <style>
@@ -13,19 +12,15 @@ body{
 margin:0;
 font-family:Arial,Tahoma,sans-serif;
 background:#f5f0e8;
-color:#29251f
+color:#2b241e
 }
 
-button,input,textarea,select{font-family:inherit}
-button{cursor:pointer}
-
-.topbar{
+header{
+background:#fff;
+border-bottom:1px solid #e8dfd5;
 position:sticky;
 top:0;
-z-index:50;
-background:rgba(245,240,232,.96);
-backdrop-filter:blur(12px);
-border-bottom:1px solid #e3dbcf
+z-index:5
 }
 
 .nav{
@@ -33,661 +28,327 @@ max-width:1100px;
 margin:auto;
 padding:15px 20px;
 display:flex;
-align-items:center;
 justify-content:space-between;
-gap:12px
+align-items:center;
+gap:8px
 }
 
 .logo{
-font-size:27px;
-font-weight:900
+font:700 25px Georgia
 }
 
-.logo small{
-display:block;
-font-size:10px;
-color:#927957;
-font-weight:500;
-margin-top:2px
-}
-
-.nav-actions{
-display:flex;
-gap:7px;
-flex-wrap:wrap
-}
-
-.btn{
+button,.btn{
 border:0;
 border-radius:12px;
-padding:11px 16px;
-font-weight:700;
-background:#29251f;
+padding:11px 15px;
+cursor:pointer;
+background:#8b6b3f;
 color:#fff
 }
 
-.btn.light{
-background:#fff;
-color:#29251f;
-border:1px solid #ddd2c3
+.ghost{
+background:#f0e9e1;
+color:#241f1b
 }
 
-.btn.gold{
-background:#a88a5b;
-color:#fff
-}
-
-.btn.danger{
-background:#b94b43;
-color:#fff
-}
-
-.btn.small{
-padding:7px 10px;
-font-size:11px;
-border-radius:9px
-}
-
-.container{
+.wrap{
 max-width:1100px;
 margin:auto;
 padding:25px 20px 60px
 }
 
 .hero{
-text-align:center;
-padding:50px 15px 35px
+background:#3b3027;
+color:#fff;
+border-radius:25px;
+padding:38px;
+margin-bottom:30px
 }
 
 .hero h1{
-font-size:42px;
-margin:0 0 12px;
-letter-spacing:-1.5px
+font:42px Georgia;
+margin:8px 0
 }
 
 .hero p{
-margin:0;
-color:#776f65;
-font-size:17px
+color:#ded4ca;
+line-height:1.8
 }
 
-.section-title{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-margin:25px 0 16px
-}
-
-.section-title h2{
-margin:0;
-font-size:23px
-}
-
-.stores-grid,
-.products-grid{
+.grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:16px
 }
 
-.store-card,
-.product-card,
-.panel{
+.card,.store-head,.stat,.order{
 background:#fff;
-border:1px solid #e7dfd4;
+border:1px solid #e9dfd5;
 border-radius:20px;
-box-shadow:0 5px 20px rgba(40,30,20,.05)
-}
-
-.store-card,
-.product-card{
-overflow:hidden
-}
-
-.store-image,
-.product-image{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-display:block;
-background:#eee6dc
-}
-
-.store-body,
-.product-body{
 padding:14px
 }
 
-.store-name{
-font-size:18px;
-font-weight:900;
-margin-bottom:5px
-}
-
-.store-desc{
-color:#81776d;
-font-size:13px;
-line-height:1.6;
-min-height:40px
-}
-
-.product-name{
-font-size:17px;
-font-weight:900
-}
-
-.product-store{
-font-size:12px;
-color:#8a8177;
-margin:5px 0 8px
-}
-
-.product-bottom{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:8px
-}
-
-.price{
-font-weight:900
-}
-
-.panel{
-padding:20px
-}
-
-.back{
-margin-bottom:20px
-}
-
-.vendor-head{
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:20px
-}
-
-.vendor-avatar{
-width:85px;
-height:85px;
-border-radius:20px;
-object-fit:cover;
-background:#eee5d9;
-border:1px solid #ddd2c4
-}
-
-.vendor-title h1{
-margin:0 0 5px;
-font-size:28px
-}
-
-.vendor-title p{
-margin:0;
-color:#81786e
-}
-
-.dashboard-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-bottom:20px
-}
-
-.stat{
-background:#f8f4ee;
-border:1px solid #e8dfd4;
+.pic{
+height:220px;
 border-radius:15px;
-padding:15px;
-text-align:center
+background:#fff;
+overflow:hidden;
+display:grid;
+place-items:center
 }
 
-.stat strong{
-display:block;
-font-size:23px
-}
-
-.stat span{
-color:#82776c;
-font-size:12px
-}
-
-.login-box{
-max-width:500px;
-margin:40px auto
-}
-
-.login-box h1{
-margin-top:0
-}
-
-.note{
-background:#f8f2e8;
-border:1px solid #eadcc8;
-padding:12px;
-border-radius:12px;
-color:#74695d;
-font-size:13px;
-line-height:1.6;
-margin-bottom:15px
-}
-
-.note.success{
-background:#edf5eb;
-border-color:#d3e5cf;
-color:#557051
-}
-
-.note.warning{
-background:#fff4e5;
-border-color:#ead8b8;
-color:#826a42
-}
-
-.note.danger-note{
-background:#f8e9e7;
-border-color:#ead0cc;
-color:#8c5751
-}
-
-.field{
-margin-bottom:14px
-}
-
-.field label{
-display:block;
-margin-bottom:7px;
-font-size:13px;
-font-weight:700
-}
-
-.field input,
-.field textarea,
-.field select{
+.pic img{
 width:100%;
-padding:13px;
-border:1px solid #dcd1c4;
-border-radius:12px;
-background:#fcfaf7;
-outline:none
+height:100%;
+object-fit:cover
 }
 
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-border-color:#a88a5b
+#stores{
+grid-template-columns:repeat(3,1fr);
+gap:14px
 }
 
-.field textarea{
-min-height:100px;
-resize:vertical
-}
-
-.image-preview{
-width:120px;
-height:120px;
-border-radius:18px;
-object-fit:cover;
-background:#eee6dc;
-border:1px solid #ddd2c4;
-display:block;
-margin-bottom:10px
-}
-
-.document-box{
-padding:14px;
-border:1px dashed #d8cdbf;
-border-radius:15px;
-background:#faf7f2;
-margin-top:8px
-}
-
-.document-name{
-font-size:12px;
-color:#746b61;
-margin-top:8px;
-word-break:break-word
-}
-
-.mini-product{
-display:flex;
-align-items:center;
-gap:10px;
-padding:12px 0;
-border-bottom:1px solid #eee6dc
-}
-
-.mini-product:last-child{
-border-bottom:0
-}
-
-.mini-product img{
-width:58px;
-height:58px;
-object-fit:cover;
-border-radius:12px;
-flex-shrink:0
-}
-
-.product-actions{
-display:flex;
-gap:6px;
-flex-wrap:wrap;
-margin-top:7px
-}
-
-.product-status{
-display:inline-block;
-font-size:10px;
-padding:4px 7px;
-border-radius:7px;
-background:#eee8df;
-color:#766b60;
-margin-right:5px
-}
-
-.product-status.active{
-background:#e8f1e7;
-color:#547052
-}
-
-.product-status.hidden-status{
-background:#f4e7e4;
-color:#95645e
-}
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(30,25,20,.55);
-z-index:100;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px
-}
-
-.modal.show{
-display:flex
-}
-
-.modal-box{
-width:min(560px,100%);
-max-height:90vh;
-overflow:auto;
-background:#fff;
-border-radius:22px;
-padding:22px
-}
-
-.modal-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:15px
-}
-
-.modal-head h2{margin:0}
-
-.close{
-width:38px;
-height:38px;
-border:0;
-border-radius:50%;
-background:#f1ece5;
-font-size:20px
-}
-
-.empty{
-padding:35px;
-text-align:center;
-color:#82786e;
-background:#fff;
-border:1px dashed #d8cdbf;
+#stores .card{
+padding:10px;
 border-radius:18px
 }
 
-.toast{
-position:fixed;
-left:20px;
-bottom:20px;
-background:#29251f;
-color:#fff;
-padding:13px 17px;
-border-radius:13px;
-z-index:200;
-display:none;
-box-shadow:0 8px 30px rgba(0,0,0,.2);
-max-width:calc(100% - 40px)
+#stores .pic{
+height:150px;
+border-radius:13px
 }
 
-.toast.show{display:block}
+#stores h3{
+margin:12px 4px 5px;
+font-size:18px
+}
 
-.cart-bar{
-position:fixed;
-left:20px;
-right:20px;
-bottom:18px;
-max-width:500px;
-margin:auto;
-background:#29251f;
-color:#fff;
-border-radius:18px;
-padding:13px 16px;
-display:none;
-align-items:center;
+.muted{
+color:#756b63;
+font-size:13px
+}
+
+.row{
+display:flex;
 justify-content:space-between;
-z-index:40
-}
-
-.cart-bar.show{display:flex}
-
-.cart-count{
-background:#a88a5b;
-padding:5px 9px;
-border-radius:8px;
-font-size:12px
-}
-
-.table-wrap{overflow:auto}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:500px
-}
-
-th,td{
-padding:12px 10px;
-border-bottom:1px solid #eee6dc;
-text-align:right
-}
-
-.hidden{display:none!important}
-
-footer{
-text-align:center;
-padding:35px 20px;
-color:#8a8076;
-font-size:12px
-}
-
-.status-badge{
-display:inline-block;
-padding:7px 11px;
-border-radius:9px;
-background:#fff0d9;
-color:#826a42;
-font-size:12px;
-font-weight:700
-}
-
-.status-approved{
-background:#e8f1e7;
-color:#547052
-}
-
-.status-rejected{
-background:#f4e7e4;
-color:#95645e
-}
-
-.application-card{
-background:#faf7f2;
-border:1px solid #e6ddd1;
-border-radius:17px;
-padding:16px;
-margin-bottom:12px
-}
-
-.application-head{
-display:flex;
 align-items:center;
+gap:10px
+}
+
+.price{
+font-weight:800;
+font-size:18px
+}
+
+.add{
+background:#241f1b
+}
+
+.panel{
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:20
+}
+
+.modal{
+background:#fffaf6;
+border-radius:22px;
+width:min(92%,600px);
+max-height:90vh;
+overflow:auto;
+padding:22px;
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%)
+}
+
+.close{
+float:left;
+background:none;
+color:#241f1b;
+font-size:25px;
+padding:0
+}
+
+input,textarea,select{
+width:100%;
+padding:12px;
+border:1px solid #ded3c8;
+border-radius:10px;
+margin:6px 0 12px;
+background:#fff
+}
+
+.full{
+width:100%;
+margin-top:8px
+}
+
+.admin,.vendor{
+display:none
+}
+
+.dash{
+display:grid;
+grid-template-columns:repeat(4,1fr);
 gap:12px;
-margin-bottom:14px
+margin:20px 0
 }
 
-.application-image{
-width:65px;
-height:65px;
+.stat b{
+display:block;
+font-size:23px;
+margin-top:6px
+}
+
+.order{
+margin:10px 0
+}
+
+.badge{
+display:inline-block;
+background:#efe6dc;
+border-radius:99px;
+padding:5px 9px;
+font-size:12px
+}
+
+.empty{
+text-align:center;
+padding:30px;
+color:#776e66
+}
+
+.store-head{
+margin:18px 0 22px
+}
+
+.preview{
+width:100%;
+height:180px;
 border-radius:15px;
-object-fit:cover;
-background:#eee6dc;
-border:1px solid #ddd2c4
+background:#f3eee8;
+display:none;
+place-items:center;
+overflow:hidden;
+margin:5px 0 12px
 }
 
-.application-name{
-font-size:18px;
-font-weight:900
+.preview img{
+width:100%;
+height:100%;
+object-fit:cover
 }
 
-.application-info{
-font-size:13px;
-line-height:1.9;
-color:#655d54
+.vendor-logo{
+width:120px;
+height:120px;
+border-radius:20px;
+overflow:hidden;
+background:#f3eee8;
+margin:auto
 }
 
-.application-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-top:14px
+.vendor-logo img{
+width:100%;
+height:100%;
+object-fit:cover
 }
 
 .document-view-button{
-background:#29251f;
-color:#fff;
-border:0;
-border-radius:10px;
-padding:9px 13px;
-font-weight:700;
-font-size:12px
+background:#241f1b;
+width:100%;
+margin-top:10px
+}
+
+.pending{
+background:#fff3cd;
+border:1px solid #ead59a;
+padding:15px;
+border-radius:15px;
+margin:15px 0
+}
+
+.approved{
+background:#e8f5e9;
+border:1px solid #b7d9bb;
+padding:15px;
+border-radius:15px;
+margin:15px 0
+}
+
+.rejected{
+background:#fdecec;
+border:1px solid #e6b7b7;
+padding:15px;
+border-radius:15px;
+margin:15px 0
+}
+
+.vendor-card{
+background:#fff;
+border:1px solid #e9dfd5;
+border-radius:20px;
+padding:18px;
+margin:12px 0
+}
+
+.vendor-card h3{
+margin-top:0
 }
 
 @media(max-width:700px){
 
 .nav{
-padding:12px 14px
+padding:12px 8px;
+flex-wrap:wrap
 }
 
-.logo{
-font-size:22px
-}
-
-.hero{
-padding:35px 10px 25px
+.nav button{
+padding:8px;
+font-size:11px
 }
 
 .hero h1{
 font-size:32px
 }
 
-.stores-grid,
-.products-grid{
+.wrap{
+padding:18px 14px 50px
+}
+
+.dash{
+grid-template-columns:repeat(2,1fr)
+}
+
+#stores{
 grid-template-columns:repeat(3,1fr);
 gap:9px
 }
 
-.store-card,
-.product-card{
-border-radius:14px
+#stores .card{
+padding:7px;
+border-radius:15px
 }
 
-.store-body,
-.product-body{
-padding:9px
+#stores .pic{
+height:105px
 }
 
-.store-name{
+#stores h3{
 font-size:14px
 }
 
-.store-desc{
-font-size:10px;
-min-height:34px
+#stores .muted{
+font-size:11px
 }
 
-.product-name{
-font-size:13px
-}
-
-.product-store{
-font-size:9px
-}
-
-.price{
-font-size:12px
-}
-
-.btn{
-padding:9px 11px;
-font-size:12px
-}
-
-.btn.small{
-padding:6px 7px;
-font-size:9px
-}
-
-.dashboard-grid{
-grid-template-columns:1fr
-}
-
-.stats{
-grid-template-columns:repeat(3,1fr)
-}
-
-.stat{
-padding:10px 5px
-}
-
-.stat strong{
-font-size:18px
-}
-
-.stat span{
-font-size:10px
-}
-
-.vendor-title h1{
-font-size:22px
-}
-
-.vendor-avatar{
-width:70px;
-height:70px
-}
-
-.mini-product img{
-width:50px;
-height:50px
+#stores .btn{
+font-size:11px;
+padding:8px 4px
 }
 
 }
@@ -696,30 +357,24 @@ height:50px
 
 <body>
 
-<header class="topbar">
-
+<header>
 <div class="nav">
 
-<div class="logo">
-مِنّا
-<small>من أياديهم إلى يديك</small>
-</div>
+<div class="logo">مِنّا</div>
 
-<div class="nav-actions">
+<div>
 
-<button class="btn light" onclick="showHome()">
-المتاجر
+<button class="ghost" onclick="showShop()">المتجر</button>
+
+<button onclick="openCart()">
+السلة (<span id="count">0</span>)
 </button>
 
-<button class="btn light" onclick="openVendorLogin()">
+<button class="ghost" onclick="openVendorLogin()">
 أصحاب المتاجر
 </button>
 
-<button class="btn gold" onclick="openVendorSignup()">
-انضم إلى مِنّا
-</button>
-
-<button class="btn light" onclick="openAdmin()">
+<button onclick="openAdmin()">
 مالك المنصة
 </button>
 
@@ -728,1016 +383,659 @@ height:50px
 </div>
 </header>
 
-<main class="container">
 
-<section id="homePage">
+<!-- SHOP -->
+
+<section id="shop">
+
+<main class="wrap">
 
 <div class="hero">
 
-<h1>من أياديهم إلى يديك</h1>
+<div class="muted" style="color:#cfc2b7">
+الأسر المنتجة في مكان واحد
+</div>
+
+<h1>
+من أياديهم،<br>
+إلى يديك.
+</h1>
 
 <p>
-اكتشف منتجات صنعت بحب من أصحاب المتاجر والأسر المنتجة.
+اكتشف منتجات صُنعت بِحُب، من أيادي الأسر المنتجة إلى يديك.
+</p>
+
+<button class="btn"
+onclick="document.getElementById('stores').scrollIntoView({behavior:'smooth'})">
+ابدأ الطلب
+</button>
+
+</div>
+
+
+<h2>اكتشف متاجر مِنّا</h2>
+
+<div id="stores" class="grid"></div>
+
+
+<div id="catalog" style="display:none">
+
+<button class="btn" onclick="showStores()">
+← المتاجر
+</button>
+
+<div class="store-head">
+
+<h2 id="storeTitle">المتجر</h2>
+
+<div class="muted" id="storeDescription">
+حلويات ومنتجات صنعت بحب
+</div>
+
+</div>
+
+
+<h2>الأقسام</h2>
+
+<div>
+
+<button class="ghost" onclick="filterStore('all')">
+الكل
+</button>
+
+<button class="ghost" onclick="filterStore('cookies')">
+كوكيز
+</button>
+
+<button class="ghost" onclick="filterStore('cakes')">
+كيك
+</button>
+
+<button class="ghost" onclick="filterStore('bakery')">
+مخبوزات
+</button>
+
+</div>
+
+
+<h2>المنتجات</h2>
+
+<div id="grid" class="grid"></div>
+
+</div>
+
+</main>
+
+</section>
+
+
+
+<!-- OWNER -->
+
+<section id="admin" class="admin">
+
+<main class="wrap">
+
+<div class="hero">
+
+<div class="muted" style="color:#cfc2b7">
+لوحة المالك
+</div>
+
+<h1>إدارة المنصة</h1>
+
+<p>
+إدارة المتاجر والطلبات والمنتجات.
 </p>
 
 </div>
 
-<div class="section-title">
-<h2>متاجر مِنّا</h2>
+
+<div class="dash">
+
+<div class="stat">
+الطلبات
+<b id="ordersN">0</b>
 </div>
 
-<div id="storesGrid" class="stores-grid"></div>
+<div class="stat">
+المبيعات
+<b id="salesN">0 ر.س</b>
+</div>
 
-</section>
+<div class="stat">
+عمولتك 10%
+<b id="commN">0 ر.س</b>
+</div>
+
+<div class="stat">
+المنتجات
+<b id="prodN">0</b>
+</div>
+
+</div>
 
 
-<section id="storePage" class="hidden">
+<h2>طلبات الانضمام</h2>
 
-<div class="back">
+<div id="pendingVendors"></div>
 
-<button class="btn light" onclick="showHome()">
-← المتاجر
+
+<div class="row">
+
+<h2>الطلبات</h2>
+
+<button class="btn" onclick="openAdd()">
++ إضافة منتج
 </button>
 
 </div>
 
-<div class="vendor-head">
+<div id="orders"></div>
 
-<img
-id="storePageImage"
-class="vendor-avatar"
-src=""
-alt="">
-
-<div class="vendor-title">
-
-<h1 id="storePageTitle"></h1>
-
-<p id="storePageDescription"></p>
-
-</div>
-
-</div>
-
-<div id="storeProducts" class="products-grid"></div>
+</main>
 
 </section>
 
 
-<section id="vendorLoginPage" class="hidden">
 
-<div class="login-box panel">
+<!-- VENDOR -->
 
-<h1>دخول أصحاب المتاجر</h1>
+<section id="vendor" class="vendor">
 
-<div class="note">
-أدخل البريد الإلكتروني وكلمة المرور الخاصة بحسابك.
+<main class="wrap">
+
+<div class="hero">
+
+<div class="muted" style="color:#cfc2b7">
+لوحة صاحب المتجر
 </div>
 
-<div class="field">
+<h1 id="vendorWelcome">
+متجري
+</h1>
 
-<label>البريد الإلكتروني</label>
+<p>
+إدارة بيانات متجرك ومنتجاتك.
+</p>
+
+</div>
+
+
+<div id="vendorStatus"></div>
+
+
+<div class="store-head">
+
+<div class="vendor-logo">
+
+<img id="vendorImage" alt="صورة المتجر">
+
+</div>
+
+<h2 id="vendorNameView" style="text-align:center">
+متجر بندر
+</h2>
+
+<div class="muted" id="vendorDescView" style="text-align:center">
+حلويات فاخرة
+</div>
+
+</div>
+
+
+<div class="store-head">
+
+<h2>بيانات المتجر</h2>
+
+<label>اسم المتجر</label>
+
+<input id="vn">
+
+
+<label>الوصف</label>
+
+<textarea id="vd"></textarea>
+
+
+<label>صورة المتجر</label>
+
+<input
+id="vi"
+type="file"
+accept="image/*"
+onchange="vendorPreview(event)"
+>
+
+<div id="vp" class="preview">
+
+<img id="vpi">
+
+</div>
+
+
+<button class="btn full" onclick="saveVendor()">
+حفظ بيانات المتجر
+</button>
+
+</div>
+
+
+<div class="row">
+
+<h2>منتجاتي</h2>
+
+<button class="btn" onclick="openVendorAdd()">
++ إضافة منتج
+</button>
+
+</div>
+
+<div id="vendorProducts" class="grid"></div>
+
+
+<button class="ghost full" onclick="showShop()">
+← العودة
+</button>
+
+</main>
+
+</section>
+
+
+
+<!-- CART -->
+
+<div class="panel" id="cartPanel">
+
+<div class="modal">
+
+<button class="close" onclick="closeP('cartPanel')">
+×
+</button>
+
+<h2>السلة</h2>
+
+<div id="cart"></div>
+
+<h3>
+الإجمالي:
+<span id="total">0</span> ر.س
+</h3>
+
+<button class="btn full" onclick="checkout()">
+إتمام الطلب
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- CHECKOUT -->
+
+<div class="panel" id="checkoutPanel">
+
+<div class="modal">
+
+<button class="close" onclick="closeP('checkoutPanel')">
+×
+</button>
+
+<h2>بيانات الطلب</h2>
+
+<label>الاسم</label>
+
+<input id="name">
+
+
+<label>الجوال</label>
+
+<input
+id="phone"
+placeholder="05xxxxxxxx"
+>
+
+
+<label>العنوان</label>
+
+<textarea id="address"></textarea>
+
+
+<button class="btn full" onclick="placeOrder()">
+تأكيد الطلب — الدفع لاحقًا
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ADD PRODUCT -->
+
+<div class="panel" id="addPanel">
+
+<div class="modal">
+
+<button class="close" onclick="closeP('addPanel')">
+×
+</button>
+
+<h2>إضافة منتج</h2>
+
+
+<label>اسم المنتج</label>
+
+<input id="pn">
+
+
+<label>السعر</label>
+
+<input id="pp" type="number">
+
+
+<label>الوصف</label>
+
+<textarea id="pd"></textarea>
+
+
+<label>الصورة</label>
+
+<input
+id="pi"
+type="file"
+accept="image/*"
+onchange="previewImage(event)"
+>
+
+<div id="imagePreview" class="preview">
+
+<img id="previewImg">
+
+</div>
+
+
+<label>التصنيف</label>
+
+<select id="pc">
+
+<option value="cookies">
+كوكيز
+</option>
+
+<option value="cakes">
+كيك
+</option>
+
+<option value="bakery">
+مخبوزات
+</option>
+
+</select>
+
+
+<button class="btn full" onclick="addProduct()">
+حفظ المنتج
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- VENDOR LOGIN -->
+
+<div class="panel" id="vendorLoginPanel">
+
+<div class="modal">
+
+<button class="close" onclick="closeP('vendorLoginPanel')">
+×
+</button>
+
+<h2>دخول أصحاب المتاجر</h2>
+
+<p class="muted">
+استخدم البريد الإلكتروني وكلمة المرور الخاصة بحسابك.
+</p>
 
 <input
 id="vendorEmail"
 type="email"
-autocomplete="email"
-placeholder="example@email.com">
-
-</div>
-
-<div class="field">
-
-<label>كلمة المرور</label>
+placeholder="البريد الإلكتروني"
+>
 
 <input
 id="vendorPassword"
 type="password"
-autocomplete="current-password"
-placeholder="كلمة المرور">
+placeholder="كلمة المرور"
+>
 
-</div>
-
-<button
-class="btn gold"
-style="width:100%;margin-bottom:8px"
-onclick="vendorLogin()">
-
+<button class="btn full" onclick="vendorLogin()">
 دخول
-
 </button>
 
-<button
-class="btn light"
-style="width:100%;margin-bottom:8px"
-onclick="openVendorSignup()">
+<hr style="border:0;border-top:1px solid #eadfd5;margin:20px 0">
 
-ليس لديك متجر؟ انضم إلى مِنّا
-
-</button>
-
-<button
-class="btn light"
-style="width:100%"
-onclick="showHome()">
-
-رجوع
-
+<button class="ghost full" onclick="openVendorSignup()">
+إنشاء متجر جديد
 </button>
 
 </div>
 
-</section>
-
-
-<section id="vendorSignupPage" class="hidden">
-
-<div class="login-box panel">
-
-<h1>انضم إلى مِنّا</h1>
-
-<div class="note">
-أنشئ حسابك أولاً، ثم أكمل بيانات متجرك وارفع الوثائق المطلوبة.
 </div>
 
-<div class="field">
 
-<label>البريد الإلكتروني</label>
 
-<input
-id="signupEmail"
-type="email"
-autocomplete="email"
-placeholder="example@email.com">
+<!-- VENDOR SIGNUP -->
 
-</div>
+<div class="panel" id="vendorSignupPanel">
 
-<div class="field">
+<div class="modal">
 
-<label>كلمة المرور</label>
-
-<input
-id="signupPassword"
-type="password"
-autocomplete="new-password"
-placeholder="6 أحرف أو أكثر">
-
-</div>
-
-<div class="field">
-
-<label>تأكيد كلمة المرور</label>
-
-<input
-id="signupPasswordConfirm"
-type="password"
-autocomplete="new-password"
-placeholder="أعد كتابة كلمة المرور">
-
-</div>
-
-<button
-class="btn gold"
-style="width:100%;margin-bottom:8px"
-onclick="vendorSignup()">
-
-إنشاء الحساب
-
+<button class="close" onclick="closeP('vendorSignupPanel')">
+×
 </button>
 
-<button
-class="btn light"
-style="width:100%"
-onclick="openVendorLogin()">
+<h2>طلب إنشاء متجر</h2>
 
-لدي حساب بالفعل
+<p class="muted">
+أرسل بياناتك وسيتم مراجعة الطلب من مالك المنصة.
+</p>
 
-</button>
-
-</div>
-
-</section>
-
-
-<section id="vendorOnboardingPage" class="hidden">
-
-<div class="login-box panel">
-
-<h1>إكمال طلب المتجر</h1>
-
-<div class="note">
-أكمل بيانات متجرك وارفع الوثيقة المطلوبة. بعد الإرسال سيتم إرسال الطلب إلى إدارة مِنّا للمراجعة.
-</div>
-
-<div class="field">
 
 <label>اسم صاحب المتجر</label>
 
-<input
-id="onboardingOwnerName"
-type="text"
-placeholder="الاسم الكامل">
+<input id="signupOwner">
 
-</div>
-
-<div class="field">
 
 <label>اسم المتجر</label>
 
-<input
-id="onboardingStoreName"
-type="text"
-placeholder="مثال: متجر بندر">
+<input id="signupStore">
 
-</div>
-
-<div class="field">
 
 <label>رقم الجوال</label>
 
-<input
-id="onboardingPhone"
-type="tel"
-placeholder="05xxxxxxxx">
+<input id="signupPhone" placeholder="05xxxxxxxx">
 
-</div>
 
-<div class="field">
+<label>البريد الإلكتروني</label>
+
+<input id="signupEmail" type="email">
+
+
+<label>كلمة المرور</label>
+
+<input id="signupPassword" type="password">
+
 
 <label>وصف المتجر</label>
 
-<textarea
-id="onboardingDescription"
-placeholder="اكتب نبذة بسيطة عن متجرك ومنتجاته"></textarea>
+<textarea id="signupDescription"></textarea>
 
-</div>
-
-<div class="field">
-
-<label>صورة المتجر</label>
-
-<img
-id="onboardingImagePreview"
-class="image-preview"
-src=""
-alt="صورة المتجر">
-
-<input
-id="onboardingImageInput"
-type="file"
-accept="image/*"
-onchange="previewOnboardingImage(event)">
-
-</div>
-
-<div class="field">
 
 <label>نوع الوثيقة</label>
 
-<select id="onboardingDocumentType">
+<select id="signupDocumentType">
 
-<option value="">اختر نوع الوثيقة</option>
-<option value="freelance">وثيقة العمل الحر</option>
-<option value="productive_families">شهادة الأسر المنتجة</option>
+<option value="هوية وطنية">
+هوية وطنية
+</option>
+
+<option value="إقامة">
+إقامة
+</option>
+
+<option value="وثيقة أخرى">
+وثيقة أخرى
+</option>
 
 </select>
 
-</div>
 
-<div class="field">
-
-<label>رفع الوثيقة</label>
-
-<div class="document-box">
+<label>الوثيقة</label>
 
 <input
-id="onboardingDocumentInput"
+id="signupDocument"
 type="file"
-accept=".pdf,.jpg,.jpeg,.png"
-onchange="showDocumentName(event)">
+accept="image/*,.pdf"
+>
 
-<div
-id="onboardingDocumentName"
-class="document-name">
 
-لم يتم اختيار ملف
-
-</div>
-
-</div>
-
-</div>
-
-<button
-class="btn gold"
-style="width:100%;margin-bottom:8px"
-onclick="submitVendorApplication()">
-
-إرسال الطلب للمراجعة
-
-</button>
-
-<button
-class="btn light"
-style="width:100%"
-onclick="vendorLogout()">
-
-تسجيل الخروج
-
-</button>
-
-</div>
-
-</section>
-
-
-<section id="vendorPendingPage" class="hidden">
-
-<div class="login-box panel" style="text-align:center">
-
-<div style="font-size:50px;margin-bottom:10px">
-⏳
-</div>
-
-<h1>طلبك قيد المراجعة</h1>
-
-<div class="note warning">
-تم استلام طلب متجرك بنجاح. ستتم مراجعة البيانات والوثيقة من إدارة مِنّا قبل نشر المتجر.
-</div>
-
-<button
-class="btn light"
-style="width:100%"
-onclick="vendorLogout()">
-
-تسجيل الخروج
-
-</button>
-
-</div>
-
-</section>
-
-
-<section id="vendorRejectedPage" class="hidden">
-
-<div class="login-box panel" style="text-align:center">
-
-<div style="font-size:50px;margin-bottom:10px">
-✕
-</div>
-
-<h1>تم رفض الطلب</h1>
-
-<div class="note danger-note">
-لم تتم الموافقة على طلب متجرك حاليًا. يمكنك التواصل مع إدارة مِنّا لمعرفة التفاصيل.
-</div>
-
-<button
-class="btn light"
-style="width:100%"
-onclick="vendorLogout()">
-
-تسجيل الخروج
-
-</button>
-
-</div>
-
-</section>
-
-
-<section id="vendorDashboardPage" class="hidden">
-
-<div class="back">
-
-<button
-class="btn light"
-onclick="showHome()">
-
-← المتاجر
-
-</button>
-
-</div>
-
-
-<div class="vendor-head">
-
-<img
-id="dashboardVendorImage"
-class="vendor-avatar"
-src=""
-alt="">
-
-<div class="vendor-title">
-
-<h1 id="dashboardVendorName">
-متجري
-</h1>
-
-<p id="dashboardVendorDescription"></p>
-
-</div>
-
-</div>
-
-
-<div class="stats">
-
-<div class="stat">
-
-<strong id="vendorProductsCount">
-0
-</strong>
-
-<span>المنتجات</span>
-
-</div>
-
-<div class="stat">
-
-<strong id="vendorOrdersCount">
-0
-</strong>
-
-<span>الطلبات</span>
-
-</div>
-
-<div class="stat">
-
-<strong id="vendorSalesCount">
-0
-</strong>
-
-<span>المنتجات المباعة</span>
-
-</div>
-
-</div>
-
-
-<div class="dashboard-grid">
-
-
-<div class="panel">
-
-<div class="section-title">
-
-<h2>بيانات المتجر</h2>
-
-</div>
-
-
-<div class="field">
-
-<label>صورة المتجر</label>
-
-<img
-id="vendorImagePreview"
-class="image-preview"
-src=""
-alt="صورة المتجر">
-
-
-<input
-id="vendorImageInput"
-type="file"
-accept="image/*"
-onchange="previewVendorImage(event)">
-
-</div>
-
-
-<div class="field">
-
-<label>اسم المتجر</label>
-
-<input
-id="vendorNameInput"
-type="text">
-
-</div>
-
-
-<div class="field">
-
-<label>وصف المتجر</label>
-
-<textarea
-id="vendorDescriptionInput"></textarea>
-
-</div>
-
-
-<button
-class="btn gold"
-onclick="saveVendorProfile()">
-
-حفظ بيانات المتجر
-
-</button>
-
-</div>
-
-
-<div class="panel">
-
-<div class="section-title">
-
-<h2>منتجاتي</h2>
-
-<button
-class="btn"
-onclick="openAddVendorProduct()">
-
-+ إضافة منتج
-
-</button>
-
-</div>
-
-<div id="vendorProductsList"></div>
-
-</div>
-
-</div>
-
-
-<div style="margin-top:18px">
-
-<button
-class="btn light"
-onclick="vendorLogout()">
-
-تسجيل الخروج
-
-</button>
-
-</div>
-
-</section>
-
-
-<section id="adminPage" class="hidden">
-
-<div class="back">
-
-<button
-class="btn light"
-onclick="showHome()">
-
-← المتاجر
-
-</button>
-
-</div>
-
-
-<div class="panel">
-
-<div class="section-title">
-<h2>لوحة مالك المنصة</h2>
-</div>
-
-
-<div class="stats">
-
-<div class="stat">
-
-<strong id="adminProductsCount">0</strong>
-
-<span>المنتجات</span>
-
-</div>
-
-<div class="stat">
-
-<strong id="adminVendorsCount">0</strong>
-
-<span>المتاجر</span>
-
-</div>
-
-<div class="stat">
-
-<strong id="adminOrdersCount">0</strong>
-
-<span>الطلبات</span>
-
-</div>
-
-</div>
-
-
-<button
-class="btn gold"
-onclick="openAdminAddProduct()">
-
-+ إضافة منتج
-
-</button>
-
-
-<div style="height:30px"></div>
-
-
-<div class="section-title">
-
-<h2>طلبات انضمام المتاجر</h2>
-
-</div>
-
-
-<div id="pendingVendorsList"></div>
-
-
-<div style="height:25px"></div>
-
-
-<div class="section-title">
-
-<h2>المنتجات</h2>
-
-</div>
-
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>المنتج</th>
-<th>المتجر</th>
-<th>السعر</th>
-
-</tr>
-
-</thead>
-
-<tbody id="adminProductsTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<div id="productModal" class="modal">
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h2 id="productModalTitle">
-إضافة منتج
-</h2>
-
-<button
-class="close"
-onclick="closeProductModal()">
-
-×
-
-</button>
-
-</div>
-
-
-<div class="field">
-
-<label>اسم المنتج</label>
-
-<input
-id="productNameInput"
-type="text"
-placeholder="مثال: كوكيز فستق">
-
-</div>
-
-
-<div class="field">
-
-<label>السعر</label>
-
-<input
-id="productPriceInput"
-type="number"
-min="0"
-step="0.01"
-placeholder="17">
-
-</div>
-
-
-<div class="field">
-
-<label>التصنيف</label>
-
-<select id="productCategoryInput">
-
-<option value="cookies">كوكيز</option>
-<option value="desserts">حلويات</option>
-<option value="cakes">كيك</option>
-<option value="drinks">مشروبات</option>
-<option value="other">أخرى</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>وصف المنتج</label>
-
-<textarea
-id="productDescriptionInput"
-placeholder="اكتب وصفاً للمنتج"></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>صورة المنتج</label>
-
-<input
-id="productImageInput"
-type="file"
-accept="image/*">
-
-</div>
-
-
-<button
-class="btn gold"
-onclick="saveProduct()">
-
-<span id="saveProductButtonText">
-حفظ المنتج
-</span>
-
+<button class="btn full" onclick="signupVendor()">
+إرسال طلب الانضمام
 </button>
 
 </div>
 
 </div>
 
-
-<div id="toast" class="toast"></div>
-
-
-<div id="cartBar" class="cart-bar">
-
-<div>
-
-السلة
-
-<span
-id="cartCount"
-class="cart-count">
-0
-</span>
-
-</div>
-
-<button
-class="btn gold"
-onclick="openCart()">
-
-عرض السلة
-
-</button>
-
-</div>
-
-
-<footer>
-مِنّا © 2026 — من أياديهم إلى يديك
-</footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =====================================================
-   SUPABASE
-===================================================== */
-
 const SUPABASE_URL =
 "https://eetytrvkovzkadcfrmdh.supabase.co";
 
-const SUPABASE_KEY =
+const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_Tr8icfN87zwe9yhF0BIJ3Q_5Grbu7yu";
 
 const supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
-SUPABASE_KEY
+SUPABASE_PUBLISHABLE_KEY
 );
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+let dbConnected=false;
 
-let currentVendorId = null;
-let currentVendor = null;
-let vendorLoggedIn = false;
-let products = [];
-let vendors = [];
-let cart = [];
-let productModalMode = "vendor";
-let editingProductId = null;
+let currentVendorId=1;
+
+let currentVendor=null;
+
+let currentStoreId=null;
 
 
-/* =====================================================
-   HELPERS
-===================================================== */
+let products =
+JSON.parse(
+localStorage.getItem("products") || "[]"
+);
 
-function escapeHtml(value){
+let cart =
+JSON.parse(
+localStorage.getItem("cart") || "[]"
+);
 
-if(value === null || value === undefined)
-return "";
+let orders =
+JSON.parse(
+localStorage.getItem("orders") || "[]"
+);
 
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+
+
+function save(){
+
+localStorage.setItem(
+"products",
+JSON.stringify(products)
+);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+localStorage.setItem(
+"orders",
+JSON.stringify(orders)
+);
 
 }
 
-
-function imageFallback(type="product"){
-
-if(type === "store"){
-
-return "https://placehold.co/700x700/f0e9df/8b7a65?text=MINNA";
-
-}
-
-return "https://placehold.co/700x700/eee6dc/8b7a65?text=MINNA";
-
-}
 
 
 function toast(message){
 
-const el =
-document.getElementById("toast");
-
-el.textContent =
-message;
-
-el.classList.add("show");
-
-setTimeout(()=>{
-
-el.classList.remove("show");
-
-},3500);
-
+alert(message);
 
 }
 
 
-function hideAllPages(){
 
-[
-"homePage",
-"storePage",
-"vendorLoginPage",
-"vendorSignupPage",
-"vendorOnboardingPage",
-"vendorPendingPage",
-"vendorRejectedPage",
-"vendorDashboardPage",
-"adminPage"
-].forEach(id=>{
+function escapeHtml(value){
 
-document
-.getElementById(id)
-.classList.add("hidden");
-
-});
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
-/* =====================================================
-   LOAD PUBLIC DATA
-===================================================== */
 
-async function loadData(){
+async function connectDatabase(){
 
-const vendorResult =
+try{
+
+const result =
 await supabaseClient
 .from("vendors")
-.select("*")
-.eq("is_active",true)
-.order("id");
+.select("id")
+.limit(1);
 
+if(result.error)
+throw result.error;
 
-if(vendorResult.error){
+dbConnected=true;
 
-console.error(vendorResult.error);
+await loadProducts();
 
-vendors = [];
+}catch(error){
 
-}else{
+console.error("DATABASE:",error);
 
-vendors =
-vendorResult.data || [];
+}
 
 }
 
 
-const productResult =
-await supabaseClient
-.from("products")
-.select(`
-*,
-vendors(
-name,
-image_url,
-description
-)
-`)
-.eq("is_active",true)
-.order("id",{ascending:false});
 
-
-if(productResult.error){
-
-console.error(productResult.error);
-
-products = [];
-
-return;
-
-}
-
-
-products =
-(productResult.data || []).map(x=>({
-
-id:x.id,
-n:x.name,
-s:x.vendors?.name || "متجر مِنّا",
-p:Number(x.price || 0),
-e:x.emoji || "🍪",
-c:x.category || "cookies",
-vendor_id:x.vendor_id,
-description:x.description || "",
-image_url:x.image_url || "",
-vendor_image_url:x.vendors?.image_url || "",
-vendor_description:
-x.vendors?.description ||
-"حلويات ومنتجات صنعت بحب",
-is_active:x.is_active !== false
-
-}));
-
-}
-
-
-/* =====================================================
-   LOAD VENDOR PRODUCTS
-===================================================== */
-
-async function loadVendorProducts(){
-
-if(!currentVendorId)
-return;
-
+async function loadProducts(){
 
 const result =
 await supabaseClient
 .from("products")
-.select(`
-*,
-vendors(
-name,
-image_url,
-description
+.select(
+"*, vendors(name,image_url,description)"
 )
-`)
-.eq("vendor_id",currentVendorId)
-.order("id",{ascending:false});
-
+.eq("is_active",true);
 
 if(result.error){
 
@@ -1748,76 +1046,63 @@ return;
 }
 
 
-const allProducts =
-(result.data || []).map(x=>({
+products =
+(result.data || []).map(x => ({
 
 id:x.id,
+
 n:x.name,
-s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
-p:Number(x.price || 0),
+
+s:x.vendors?.name || "متجر مِنّا",
+
+p:Number(x.price),
+
 e:x.emoji || "🍪",
+
 c:x.category || "cookies",
+
 vendor_id:x.vendor_id,
+
 description:x.description || "",
+
 image_url:x.image_url || "",
-vendor_image_url:x.vendors?.image_url || "",
-vendor_description:x.vendors?.description || "",
-is_active:x.is_active !== false
+
+vendor_image_url:
+x.vendors?.image_url || "",
+
+vendor_description:
+x.vendors?.description ||
+"حلويات ومنتجات صنعت بحب"
 
 }));
 
 
-products =
-products
-.filter(p=>Number(p.vendor_id)!==Number(currentVendorId))
-.concat(
-allProducts.filter(p=>p.is_active)
-);
+save();
+
+render();
+
+renderStores();
 
 renderVendorProducts();
 
 }
 
 
-/* =====================================================
-   HOME
-===================================================== */
-
-async function showHome(){
-
-hideAllPages();
-
-document
-.getElementById("homePage")
-.classList.remove("hidden");
-
-await loadData();
-
-renderStores();
-
-}
-
-
-/* =====================================================
-   STORES
-===================================================== */
 
 function renderStores(){
 
-const grid =
-document.getElementById("storesGrid");
+const box =
+document.getElementById("stores");
 
-const map =
-new Map();
+if(!box)return;
 
 
+const stores =
+[
+...new Map(
 products
 .filter(p=>p.vendor_id)
-.forEach(p=>{
-
-if(!map.has(p.vendor_id)){
-
-map.set(
+.map(p=>[
 p.vendor_id,
 {
 id:p.vendor_id,
@@ -1825,2368 +1110,519 @@ name:p.s,
 image_url:p.vendor_image_url,
 description:p.vendor_description
 }
-);
+])
+).values()
+];
+
+
+box.innerHTML =
+stores.map(v => `
+
+<article
+class="card"
+onclick="openStore(${v.id})"
+>
+
+<div class="pic">
+
+${
+v.image_url
+
+?
+
+`<img
+src="${escapeHtml(v.image_url)}"
+alt="${escapeHtml(v.name)}"
+>`
+
+:
+
+`<span style="font-size:55px">
+🏪
+</span>`
 
 }
 
-});
+</div>
 
 
-vendors.forEach(v=>{
+<h3>
+${escapeHtml(v.name)}
+</h3>
 
-if(!map.has(v.id)){
 
-map.set(
-v.id,
-{
-id:v.id,
-name:v.name,
-image_url:v.image_url || "",
-description:
+<div class="muted">
+${escapeHtml(
 v.description ||
 "حلويات ومنتجات صنعت بحب"
-}
-);
-
-}
-
-});
-
-
-const stores =
-[...map.values()];
-
-
-if(!stores.length){
-
-grid.innerHTML =
-`
-<div class="empty">
-لا توجد متاجر حالياً
-</div>
-`;
-
-return;
-
-}
-
-
-grid.innerHTML =
-stores.map(v=>`
-
-<div class="store-card">
-
-<img
-class="store-image"
-src="${escapeHtml(
-v.image_url || imageFallback("store")
-)}"
-alt="${escapeHtml(v.name)}"
-onerror="this.src='${imageFallback("store")}'">
-
-<div class="store-body">
-
-<div class="store-name">
-${escapeHtml(v.name)}
+)}
 </div>
 
-<div class="store-desc">
-${escapeHtml(v.description)}
-</div>
 
 <button
-class="btn"
-style="width:100%;margin-top:10px"
-onclick="openStore(${Number(v.id)})">
-
-دخول المتجر
-
+class="btn full"
+onclick="event.stopPropagation();openStore(${v.id})"
+>
+عرض المتجر
 </button>
 
-</div>
-
-</div>
+</article>
 
 `).join("");
 
 }
 
 
-/* =====================================================
-   STORE
-===================================================== */
 
-async function openStore(vendorId){
+function openStore(id){
 
-hideAllPages();
-
-document
-.getElementById("storePage")
-.classList.remove("hidden");
-
-await loadData();
-
-
-const vendor =
-vendors.find(
-v=>Number(v.id) === Number(vendorId)
+const s =
+products.find(
+p=>p.vendor_id===id
 );
 
+if(!s)return;
 
-const vendorProducts =
+
+currentStoreId=id;
+
+
+document.getElementById("stores")
+.style.display="none";
+
+document.getElementById("catalog")
+.style.display="block";
+
+document.getElementById("storeTitle")
+.textContent=s.s;
+
+document.getElementById("storeDescription")
+.textContent=
+s.vendor_description || "";
+
+render(
 products.filter(
-p=>Number(p.vendor_id) === Number(vendorId)
+p=>p.vendor_id===id
+)
 );
 
-
-const first =
-vendorProducts[0];
+}
 
 
-const name =
-vendor?.name ||
-first?.s ||
-"متجر مِنّا";
 
+function showStores(){
 
-const description =
-vendor?.description ||
-first?.vendor_description ||
-"";
+document.getElementById("catalog")
+.style.display="none";
 
+document.getElementById("stores")
+.style.display="grid";
 
-const image =
-vendor?.image_url ||
-first?.vendor_image_url ||
-imageFallback("store");
-
-
-document
-.getElementById("storePageTitle")
-.textContent =
-name;
-
-
-document
-.getElementById("storePageDescription")
-.textContent =
-description;
-
-
-const imageEl =
-document.getElementById("storePageImage");
-
-
-imageEl.src =
-image;
-
-
-imageEl.onerror = ()=>{
-
-imageEl.src =
-imageFallback("store");
-
-};
-
-
-renderStoreProducts(vendorProducts);
+renderStores();
 
 }
 
 
-function renderStoreProducts(list){
 
-const el =
-document.getElementById("storeProducts");
+function render(list=products){
 
+const g =
+document.getElementById("grid");
 
-if(!list.length){
-
-el.innerHTML =
-`
-<div class="empty">
-هذا المتجر لا يملك منتجات حالياً.
-</div>
-`;
-
-return;
-
-}
+if(!g)return;
 
 
-el.innerHTML =
-list.map(p=>`
+g.innerHTML =
+list.map(p => `
 
-<div class="product-card">
+<article class="card">
 
-<img
-class="product-image"
-src="${escapeHtml(
-p.image_url || imageFallback()
-)}"
+<div class="pic">
+
+${
+p.image_url
+
+?
+
+`<img
+src="${escapeHtml(p.image_url)}"
 alt="${escapeHtml(p.n)}"
-onerror="this.src='${imageFallback()}'">
+>`
 
-<div class="product-body">
+:
 
-<div class="product-name">
-${escapeHtml(p.n)}
+`<span style="font-size:70px">
+${p.e}
+</span>`
+
+}
+
 </div>
 
-<div class="product-store">
+
+<h3>
+${escapeHtml(p.n)}
+</h3>
+
+
+<div class="muted">
 ${escapeHtml(
 p.description || p.s
 )}
 </div>
 
-<div class="product-bottom">
 
-<div class="price">
-${Number(p.p).toFixed(0)} ر.س
-</div>
+<div
+class="row"
+style="margin-top:14px"
+>
+
+<span class="price">
+${p.p} ر.س
+</span>
 
 <button
-class="btn gold"
-onclick="addToCart(${Number(p.id)})">
-
-أضف
-
+class="add"
+onclick="add(${p.id})"
+>
++ أضف
 </button>
 
 </div>
 
-</div>
-
-</div>
+</article>
 
 `).join("");
 
-}
 
+const prodN =
+document.getElementById("prodN");
 
-/* =====================================================
-   AUTH
-===================================================== */
-
-function openVendorLogin(){
-
-hideAllPages();
-
-document
-.getElementById("vendorLoginPage")
-.classList.remove("hidden");
-
-document
-.getElementById("vendorEmail")
-.focus();
+if(prodN)
+prodN.textContent=products.length;
 
 }
 
 
-function openVendorSignup(){
 
-hideAllPages();
+function filterStore(category){
 
-document
-.getElementById("vendorSignupPage")
-.classList.remove("hidden");
-
-document
-.getElementById("signupEmail")
-.focus();
-
-}
-
-
-async function vendorSignup(){
-
-const email =
-document
-.getElementById("signupEmail")
-.value
-.trim();
-
-
-const password =
-document
-.getElementById("signupPassword")
-.value;
-
-
-const confirmPassword =
-document
-.getElementById("signupPasswordConfirm")
-.value;
-
-
-if(!email){
-
-toast("اكتب البريد الإلكتروني");
-
-return;
-
-}
-
-
-if(!password || password.length < 6){
-
-toast("كلمة المرور يجب أن تكون 6 أحرف أو أكثر");
-
-return;
-
-}
-
-
-if(password !== confirmPassword){
-
-toast("كلمتا المرور غير متطابقتين");
-
-return;
-
-}
-
-
-toast("جاري إنشاء الحساب...");
-
-
-const result =
-await supabaseClient.auth.signUp({
-
-email:email,
-
-password:password
-
-});
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast(
-result.error.message ||
-"تعذر إنشاء الحساب"
-);
-
-return;
-
-}
-
-
-if(result.data?.session){
-
-toast("تم إنشاء الحساب");
-
-await handleAuthenticatedUser(
-result.data.user
-);
-
-return;
-
-}
-
-
-hideAllPages();
-
-document
-.getElementById("vendorLoginPage")
-.classList.remove("hidden");
-
-toast(
-"تم إنشاء الحساب. تحقق من بريدك الإلكتروني ثم سجل الدخول."
-);
-
-}
-
-
-async function vendorLogin(){
-
-const email =
-document
-.getElementById("vendorEmail")
-.value
-.trim();
-
-
-const password =
-document
-.getElementById("vendorPassword")
-.value;
-
-
-if(!email){
-
-toast("اكتب البريد الإلكتروني");
-
-return;
-
-}
-
-
-if(!password){
-
-toast("اكتب كلمة المرور");
-
-return;
-
-}
-
-
-toast("جاري تسجيل الدخول...");
-
-
-const result =
-await supabaseClient.auth.signInWithPassword({
-
-email:email,
-password:password
-
-});
-
-
-if(result.error){
-
-console.error(
-"LOGIN ERROR:",
-result.error
-);
-
-toast(
-"بيانات الدخول غير صحيحة أو لم يتم تأكيد البريد"
-);
-
-return;
-
-}
-
-
-await handleAuthenticatedUser(
-result.data.user
-);
-
-}
-
-
-async function handleAuthenticatedUser(user){
-
-if(!user){
-
-toast("تعذر قراءة الحساب");
-
-return;
-
-}
-
-
-const vendorResult =
-await supabaseClient
-.from("vendors")
-.select("*")
-.eq("user_id",user.id)
-.limit(1);
-
-
-if(vendorResult.error){
-
-console.error(vendorResult.error);
-
-toast(
-"حدث خطأ أثناء قراءة بيانات المتجر"
-);
-
-return;
-
-}
-
-
-if(
-vendorResult.data &&
-vendorResult.data.length
-){
-
-const vendor =
-vendorResult.data[0];
-
-
-currentVendor =
-vendor;
-
-currentVendorId =
-vendor.id;
-
-vendorLoggedIn =
-true;
-
-
-if(
-vendor.approval_status === "pending"
-){
-
-hideAllPages();
-
-document
-.getElementById("vendorPendingPage")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-if(
-vendor.approval_status === "rejected"
-){
-
-hideAllPages();
-
-document
-.getElementById("vendorRejectedPage")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-if(
-vendor.approval_status === "approved" &&
-vendor.is_active === true
-){
-
-await openVendorDashboard();
-
-return;
-
-}
-
-
-hideAllPages();
-
-document
-.getElementById("vendorPendingPage")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-currentVendor =
-null;
-
-currentVendorId =
-null;
-
-vendorLoggedIn =
-true;
-
-openVendorOnboarding();
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-async function vendorLogout(){
-
-await supabaseClient.auth.signOut();
-
-currentVendor =
-null;
-
-currentVendorId =
-null;
-
-vendorLoggedIn =
-false;
-
-showHome();
-
-toast("تم تسجيل الخروج");
-
-}
-
-
-/* =====================================================
-   ONBOARDING
-===================================================== */
-
-function previewOnboardingImage(event){
-
-const file =
-event.target.files?.[0];
-
-if(!file)
-return;
-
-
-const url =
-URL.createObjectURL(file);
-
-
-document
-.getElementById("onboardingImagePreview")
-.src =
-url;
-
-}
-
-
-function showDocumentName(event){
-
-const file =
-event.target.files?.[0];
-
-
-const el =
-document.getElementById(
-"onboardingDocumentName"
-);
-
-
-if(!file){
-
-el.textContent =
-"لم يتم اختيار ملف";
-
-return;
-
-}
-
-
-el.textContent =
-file.name;
-
-}
-
-
-async function uploadVendorDocument(file){
-
-if(!file)
-return null;
-
-
-const sessionResult =
-await supabaseClient.auth.getSession();
-
-
-const session =
-sessionResult.data?.session;
-
-
-if(!session?.user){
-
-throw new Error(
-"يجب تسجيل الدخول قبل رفع الوثيقة"
-);
-
-}
-
-
-const extension =
-(
-file.name
-.split(".")
-.pop() ||
-"pdf"
-)
-.toLowerCase();
-
-
-const fileName =
-Date.now() +
-"-" +
-Math.random()
-.toString(36)
-.substring(2) +
-"." +
-extension;
-
-
-const path =
-session.user.id +
-"/" +
-fileName;
-
-
-const upload =
-await supabaseClient
-.storage
-.from("vendor-documents")
-.upload(
-path,
-file,
-{
-upsert:false,
-contentType:file.type
-}
-);
-
-
-if(upload.error){
-
-console.error(upload.error);
-
-throw upload.error;
-
-}
-
-
-return path;
-
-}
-
-
-/* =====================================================
-   DOCUMENT VIEW
-===================================================== */
-
-async function openVendorDocument(documentPath){
-
-if(!documentPath){
-
-toast("لا توجد وثيقة مرفقة لهذا الطلب");
-
-return;
-
-}
-
-
-try{
-
-toast("جاري تجهيز الوثيقة...");
-
-
-const sessionResult =
-await supabaseClient.auth.getSession();
-
-
-const session =
-sessionResult.data?.session;
-
-
-if(!session?.user){
-
-toast(
-"يجب تسجيل الدخول بحساب المالك لعرض الوثائق الخاصة"
-);
-
-return;
-
-}
-
-
-const signedResult =
-await supabaseClient
-.storage
-.from("vendor-documents")
-.createSignedUrl(
-documentPath,
-300
-);
-
-
-if(signedResult.error){
-
-console.error(
-"DOCUMENT SIGN ERROR:",
-signedResult.error
-);
-
-toast(
-"تعذر فتح الوثيقة. تأكد من تسجيل دخول حساب المالك."
-);
-
-return;
-
-}
-
-
-const signedUrl =
-signedResult.data?.signedUrl;
-
-
-if(!signedUrl){
-
-toast("تعذر إنشاء رابط الوثيقة");
-
-return;
-
-}
-
-
-window.open(
-signedUrl,
-"_blank",
-"noopener,noreferrer"
-);
-
-}
-catch(error){
-
-console.error(error);
-
-toast(
-"حدث خطأ أثناء فتح الوثيقة"
-);
-
-}
-
-}
-
-
-/* =====================================================
-   SUBMIT VENDOR APPLICATION
-===================================================== */
-
-async function submitVendorApplication(){
-
-const ownerName =
-document
-.getElementById("onboardingOwnerName")
-.value
-.trim();
-
-
-const storeName =
-document
-.getElementById("onboardingStoreName")
-.value
-.trim();
-
-
-const phone =
-document
-.getElementById("onboardingPhone")
-.value
-.trim();
-
-
-const description =
-document
-.getElementById("onboardingDescription")
-.value
-.trim();
-
-
-const documentType =
-document
-.getElementById("onboardingDocumentType")
-.value;
-
-
-const imageFile =
-document
-.getElementById("onboardingImageInput")
-.files?.[0];
-
-
-const documentFile =
-document
-.getElementById("onboardingDocumentInput")
-.files?.[0];
-
-
-if(!ownerName){
-
-toast("اكتب اسم صاحب المتجر");
-
-return;
-
-}
-
-
-if(!storeName){
-
-toast("اكتب اسم المتجر");
-
-return;
-
-}
-
-
-if(!phone){
-
-toast("اكتب رقم الجوال");
-
-return;
-
-}
-
-
-if(!documentType){
-
-toast("اختر نوع الوثيقة");
-
-return;
-
-}
-
-
-if(!documentFile){
-
-toast("ارفع الوثيقة المطلوبة");
-
-return;
-
-}
-
-
-const sessionResult =
-await supabaseClient.auth.getSession();
-
-
-const session =
-sessionResult.data?.session;
-
-
-if(!session?.user){
-
-toast(
-"انتهت الجلسة، سجل الدخول مرة أخرى"
-);
-
-return;
-
-}
-
-
-try{
-
-toast("جاري تجهيز الطلب...");
-
-
-let imageUrl =
-null;
-
-
-if(imageFile){
-
-toast("جاري رفع صورة المتجر...");
-
-imageUrl =
-await uploadImage(imageFile);
-
-}
-
-
-toast("جاري رفع الوثيقة...");
-
-
-const documentPath =
-await uploadVendorDocument(
-documentFile
-);
-
-
-const insertData = {
-
-user_id:session.user.id,
-
-name:storeName,
-
-owner_name:ownerName,
-
-phone:phone,
-
-description:description,
-
-document_type:documentType,
-
-document_url:documentPath,
-
-is_active:false,
-
-approval_status:"pending"
-
-};
-
-
-if(imageUrl){
-
-insertData.image_url =
-imageUrl;
-
-}
-
-
-const result =
-await supabaseClient
-.from("vendors")
-.insert(insertData)
-.select("*")
-.single();
-
-
-if(result.error){
-
-console.error(
-"VENDOR APPLICATION ERROR:",
-result.error
-);
-
-toast(
-"تعذر إرسال الطلب: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-currentVendor =
-result.data;
-
-currentVendorId =
-result.data.id;
-
-vendorLoggedIn =
-true;
-
-
-hideAllPages();
-
-document
-.getElementById("vendorPendingPage")
-.classList.remove("hidden");
-
-toast(
-"تم إرسال طلبك بنجاح ✓"
-);
-
-}
-catch(error){
-
-console.error(error);
-
-toast(
-"حدث خطأ أثناء إرسال الطلب"
-);
-
-}
-
-}
-
-
-/* =====================================================
-   VENDOR DASHBOARD
-===================================================== */
-
-async function openVendorDashboard(){
-
-if(!vendorLoggedIn){
-
-openVendorLogin();
-
-return;
-
-}
-
-
-hideAllPages();
-
-document
-.getElementById("vendorDashboardPage")
-.classList.remove("hidden");
-
-
-await loadVendorDashboard();
-
-}
-
-
-async function loadVendorDashboard(){
-
-await loadData();
-
-
-const sessionResult =
-await supabaseClient.auth.getSession();
-
-
-const session =
-sessionResult.data?.session;
-
-
-if(session?.user){
-
-const vendorResult =
-await supabaseClient
-.from("vendors")
-.select("*")
-.eq("user_id",session.user.id)
-.eq("approval_status","approved")
-.eq("is_active",true)
-.limit(1);
-
-
-if(
-!vendorResult.error &&
-vendorResult.data &&
-vendorResult.data.length
-){
-
-currentVendor =
-vendorResult.data[0];
-
-currentVendorId =
-currentVendor.id;
-
-}
-
-}
-
-
-if(!currentVendor){
-
-toast("لم يتم العثور على متجرك");
-
-return;
-
-}
-
-
-document
-.getElementById("dashboardVendorName")
-.textContent =
-currentVendor.name ||
-"متجري";
-
-
-document
-.getElementById("dashboardVendorDescription")
-.textContent =
-currentVendor.description ||
-"";
-
-
-document
-.getElementById("vendorNameInput")
-.value =
-currentVendor.name ||
-"";
-
-
-document
-.getElementById("vendorDescriptionInput")
-.value =
-currentVendor.description ||
-"";
-
-
-const image =
-currentVendor.image_url ||
-imageFallback("store");
-
-
-document
-.getElementById("dashboardVendorImage")
-.src =
-image;
-
-
-document
-.getElementById("vendorImagePreview")
-.src =
-image;
-
-
-await loadVendorProducts();
-
-
-const ordersResult =
-await supabaseClient
-.from("orders")
-.select("id");
-
-
-const orders =
-ordersResult.data || [];
-
-
-document
-.getElementById("vendorOrdersCount")
-.textContent =
-orders.length;
-
-
-document
-.getElementById("vendorSalesCount")
-.textContent =
+let list =
 products.filter(
-p=>Number(p.vendor_id) ===
-Number(currentVendorId)
-).length;
+p=>p.vendor_id===currentStoreId
+);
+
+if(category!=="all")
+list=list.filter(
+p=>p.c===category
+);
+
+render(list);
 
 }
 
 
-/* =====================================================
-   VENDOR PRODUCTS
-===================================================== */
 
-async function renderVendorProducts(){
+function add(id){
 
-const el =
-document.getElementById(
-"vendorProductsList"
+const p =
+products.find(
+x=>x.id===id
+);
+
+if(!p)return;
+
+cart.push(p);
+
+save();
+
+update();
+
+openCart();
+
+}
+
+
+
+function update(){
+
+document.getElementById("count")
+.textContent=cart.length;
+
+}
+
+
+
+function openCart(){
+
+drawCart();
+
+document.getElementById("cartPanel")
+.style.display="block";
+
+}
+
+
+
+function drawCart(){
+
+document.getElementById("total")
+.textContent =
+cart.reduce(
+(a,p)=>a+p.p,
+0
 );
 
 
-if(!el)
-return;
+document.getElementById("cart")
+.innerHTML =
 
+cart.length
 
-const result =
-await supabaseClient
-.from("products")
-.select(`
-*,
-vendors(
-name,
-image_url,
-description
-)
-`)
-.eq("vendor_id",currentVendorId)
-.order("id",{ascending:false});
+?
 
-
-if(result.error){
-
-console.error(result.error);
-
-el.innerHTML =
-`
-<div class="empty">
-تعذر تحميل المنتجات.
-</div>
-`;
-
-return;
-
-}
-
-
-const list =
-(result.data || []).map(x=>({
-
-id:x.id,
-n:x.name,
-s:x.vendors?.name || currentVendor?.name || "متجر مِنّا",
-p:Number(x.price || 0),
-e:x.emoji || "🍪",
-c:x.category || "cookies",
-vendor_id:x.vendor_id,
-description:x.description || "",
-image_url:x.image_url || "",
-is_active:x.is_active !== false
-
-}));
-
-
-document
-.getElementById("vendorProductsCount")
-.textContent =
-list.filter(p=>p.is_active).length;
-
-
-if(!list.length){
-
-el.innerHTML =
-`
-<div class="empty">
-لم تضف أي منتجات حتى الآن.
-</div>
-`;
-
-return;
-
-}
-
-
-el.innerHTML =
-list.map(p=>`
-
-<div class="mini-product">
-
-<img
-src="${escapeHtml(
-p.image_url || imageFallback()
-)}"
-alt=""
-onerror="this.src='${imageFallback()}'">
-
-<div style="flex:1;min-width:0">
-
-<strong>
-${escapeHtml(p.n)}
-</strong>
+cart.map(
+(p,i)=>`
 
 <div
-style="font-size:12px;color:#81776d;margin-top:3px">
+class="row"
+style="padding:12px 0;border-bottom:1px solid #eadfd5"
+>
 
-${Number(p.p).toFixed(0)} ر.س
+<span>
 
-<span class="product-status ${p.is_active ? "active" : "hidden-status"}">
+${escapeHtml(p.n)}
 
-${p.is_active ? "ظاهر" : "مخفي"}
+<br>
+
+<small>
+${escapeHtml(p.s)}
+</small>
+
+</span>
+
+
+<span>
+
+${p.p} ر.س
+
+<button onclick="removeCart(${i})">
+×
+</button>
 
 </span>
 
 </div>
 
+`
+).join("")
 
-<div class="product-actions">
+:
 
-<button
-class="btn small"
-onclick="editProduct(${Number(p.id)})">
-
-✏️ تعديل
-
-</button>
-
-<button
-class="btn small ${p.is_active ? "light" : "gold"}"
-onclick="toggleProduct(${Number(p.id)},${p.is_active})">
-
-${p.is_active ? "👁️ إخفاء" : "👁️ إظهار"}
-
-</button>
-
-<button
-class="btn small danger"
-onclick="deleteProduct(${Number(p.id)})">
-
-🗑️ حذف
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`).join("");
+'<div class="empty">السلة فارغة</div>';
 
 }
 
 
-/* =====================================================
-   VENDOR IMAGE
-===================================================== */
 
-function previewVendorImage(event){
+function removeCart(i){
 
-const file =
-event.target.files?.[0];
+cart.splice(i,1);
 
-if(!file)
-return;
+save();
 
+update();
 
-const url =
-URL.createObjectURL(file);
-
-
-document
-.getElementById("vendorImagePreview")
-.src =
-url;
+drawCart();
 
 }
 
 
-/* =====================================================
-   UPLOAD IMAGE
-===================================================== */
 
-async function uploadImage(file){
+function checkout(){
 
-if(!file)
-return null;
+if(!cart.length){
 
-
-const extension =
-(
-file.name
-.split(".")
-.pop() ||
-"jpg"
-)
-.toLowerCase();
-
-
-const fileName =
-Date.now() +
-"-" +
-Math.random()
-.toString(36)
-.substring(2) +
-"." +
-extension;
-
-
-const path =
-"uploads/" +
-fileName;
-
-
-const upload =
-await supabaseClient
-.storage
-.from("product-images")
-.upload(
-path,
-file,
-{
-upsert:false,
-contentType:file.type
-}
-);
-
-
-if(upload.error){
-
-console.error(upload.error);
-
-throw upload.error;
-
-}
-
-
-const publicUrl =
-supabaseClient
-.storage
-.from("product-images")
-.getPublicUrl(path);
-
-
-return publicUrl.data.publicUrl;
-
-}
-
-
-/* =====================================================
-   SAVE VENDOR
-===================================================== */
-
-async function saveVendorProfile(){
-
-if(!currentVendorId){
-
-toast("لم يتم تحديد المتجر");
+alert("السلة فارغة");
 
 return;
 
 }
 
+closeP("cartPanel");
 
-const name =
-document
-.getElementById("vendorNameInput")
-.value
-.trim();
+document.getElementById("checkoutPanel")
+.style.display="block";
 
-
-const description =
-document
-.getElementById("vendorDescriptionInput")
-.value
-.trim();
+}
 
 
-const file =
-document
-.getElementById("vendorImageInput")
-.files?.[0];
+
+async function placeOrder(){
+
+const n =
+document.getElementById("name")
+.value.trim();
+
+const ph =
+document.getElementById("phone")
+.value.trim();
+
+const a =
+document.getElementById("address")
+.value.trim();
 
 
-if(!name){
+if(!n || !ph || !a){
 
-toast("اكتب اسم المتجر");
+alert("أكمل البيانات");
 
 return;
 
 }
 
-
-try{
-
-let imageUrl =
-null;
-
-
-if(file){
-
-toast("جاري رفع صورة المتجر...");
-
-imageUrl =
-await uploadImage(file);
-
-}
-
-
-const updateData = {
-
-name:name,
-
-description:description
-
-};
-
-
-if(imageUrl){
-
-updateData.image_url =
-imageUrl;
-
-}
-
-
-const result =
-await supabaseClient
-.from("vendors")
-.update(updateData)
-.eq("id",currentVendorId)
-.select("*");
-
-
-if(result.error){
-
-console.error(
-"VENDOR UPDATE ERROR:",
-result.error
-);
-
-toast(
-"لم يتم الحفظ: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-let updatedVendor =
-null;
-
-
-if(
-result.data &&
-result.data.length
-){
-
-updatedVendor =
-result.data[0];
-
-}
-
-
-if(!updatedVendor){
-
-const reload =
-await supabaseClient
-.from("vendors")
-.select("*")
-.eq("id",currentVendorId)
-.limit(1);
-
-
-if(reload.error){
-
-toast(
-"تم التحديث لكن تعذر قراءة البيانات"
-);
-
-return;
-
-}
-
-
-if(
-!reload.data ||
-!reload.data.length
-){
-
-toast("لم يتم العثور على المتجر");
-
-return;
-
-}
-
-
-updatedVendor =
-reload.data[0];
-
-}
-
-
-currentVendor =
-updatedVendor;
-
-currentVendorId =
-updatedVendor.id;
-
-
-const vendorIndex =
-vendors.findIndex(
-v=>Number(v.id) ===
-Number(updatedVendor.id)
-);
-
-
-if(vendorIndex !== -1){
-
-vendors[vendorIndex] =
-updatedVendor;
-
-}else{
-
-vendors.push(updatedVendor);
-
-}
-
-
-products =
-products.map(p=>{
-
-if(
-Number(p.vendor_id) ===
-Number(updatedVendor.id)
-){
-
-return {
-
-...p,
-
-s:updatedVendor.name,
-
-vendor_image_url:
-updatedVendor.image_url || "",
-
-vendor_description:
-updatedVendor.description || ""
-
-};
-
-}
-
-return p;
-
-});
-
-
-document
-.getElementById("dashboardVendorName")
-.textContent =
-updatedVendor.name;
-
-
-document
-.getElementById("dashboardVendorDescription")
-.textContent =
-updatedVendor.description || "";
-
-
-const image =
-updatedVendor.image_url ||
-imageFallback("store");
-
-
-document
-.getElementById("dashboardVendorImage")
-.src =
-image;
-
-
-document
-.getElementById("vendorImagePreview")
-.src =
-image;
-
-
-document
-.getElementById("vendorImageInput")
-.value =
-"";
-
-
-renderStores();
-
-toast("تم حفظ بيانات المتجر ✓");
-
-}
-catch(error){
-
-console.error(error);
-
-toast(
-"حدث خطأ أثناء حفظ بيانات المتجر"
-);
-
-}
-
-}
-
-
-/* =====================================================
-   ADD / EDIT PRODUCT
-===================================================== */
-
-function openAddVendorProduct(){
-
-productModalMode =
-"vendor";
-
-editingProductId =
-null;
-
-openProductModal();
-
-}
-
-
-function openAdminAddProduct(){
-
-productModalMode =
-"admin";
-
-editingProductId =
-null;
-
-openProductModal();
-
-}
-
-
-async function editProduct(productId){
-
-const result =
-await supabaseClient
-.from("products")
-.select("*")
-.eq("id",productId)
-.eq("vendor_id",currentVendorId)
-.limit(1);
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast("تعذر تحميل المنتج");
-
-return;
-
-}
-
-
-if(!result.data || !result.data.length){
-
-toast("المنتج غير موجود");
-
-return;
-
-}
-
-
-const p =
-result.data[0];
-
-
-editingProductId =
-p.id;
-
-productModalMode =
-"vendor";
-
-
-document
-.getElementById("productModalTitle")
-.textContent =
-"تعديل المنتج";
-
-
-document
-.getElementById("saveProductButtonText")
-.textContent =
-"حفظ التعديلات";
-
-
-document
-.getElementById("productNameInput")
-.value =
-p.name || "";
-
-
-document
-.getElementById("productPriceInput")
-.value =
-p.price ?? "";
-
-
-document
-.getElementById("productCategoryInput")
-.value =
-p.category || "cookies";
-
-
-document
-.getElementById("productDescriptionInput")
-.value =
-p.description || "";
-
-
-document
-.getElementById("productImageInput")
-.value =
-"";
-
-
-document
-.getElementById("productModal")
-.classList.add("show");
-
-}
-
-
-function openProductModal(){
-
-document
-.getElementById("productModal")
-.classList.add("show");
-
-
-if(!editingProductId){
-
-document
-.getElementById("productModalTitle")
-.textContent =
-"إضافة منتج";
-
-
-document
-.getElementById("saveProductButtonText")
-.textContent =
-"حفظ المنتج";
-
-
-document
-.getElementById("productNameInput")
-.value =
-"";
-
-
-document
-.getElementById("productPriceInput")
-.value =
-"";
-
-
-document
-.getElementById("productCategoryInput")
-.value =
-"cookies";
-
-
-document
-.getElementById("productDescriptionInput")
-.value =
-"";
-
-
-document
-.getElementById("productImageInput")
-.value =
-"";
-
-}
-
-}
-
-
-function closeProductModal(){
-
-document
-.getElementById("productModal")
-.classList.remove("show");
-
-editingProductId =
-null;
-
-}
-
-
-async function saveProduct(){
-
-if(!currentVendorId){
-
-toast("لم يتم تحديد المتجر");
-
-return;
-
-}
-
-
-const name =
-document
-.getElementById("productNameInput")
-.value
-.trim();
-
-
-const price =
-Number(
-document
-.getElementById("productPriceInput")
-.value
-);
-
-
-const category =
-document
-.getElementById("productCategoryInput")
-.value;
-
-
-const description =
-document
-.getElementById("productDescriptionInput")
-.value
-.trim();
-
-
-const file =
-document
-.getElementById("productImageInput")
-.files?.[0];
-
-
-if(!name){
-
-toast("اكتب اسم المنتج");
-
-return;
-
-}
-
-
-if(isNaN(price) || price < 0){
-
-toast("اكتب سعر صحيح");
-
-return;
-
-}
-
-
-try{
-
-let imageUrl =
-null;
-
-
-if(file){
-
-toast("جاري رفع صورة المنتج...");
-
-imageUrl =
-await uploadImage(file);
-
-}
-
-
-if(editingProductId){
-
-const updateData = {
-
-name:name,
-price:price,
-category:category,
-description:description
-
-};
-
-
-if(imageUrl){
-
-updateData.image_url =
-imageUrl;
-
-}
-
-
-const result =
-await supabaseClient
-.from("products")
-.update(updateData)
-.eq("id",editingProductId)
-.eq("vendor_id",currentVendorId)
-.select("*");
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast(
-"تعذر تعديل المنتج: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-closeProductModal();
-
-toast("تم تعديل المنتج ✓");
-
-await loadData();
-
-await loadVendorDashboard();
-
-return;
-
-}
-
-
-const insertData = {
-
-vendor_id:currentVendorId,
-name:name,
-price:price,
-category:category,
-description:description,
-emoji:"🍪",
-is_active:true
-
-};
-
-
-if(imageUrl){
-
-insertData.image_url =
-imageUrl;
-
-}
-
-
-const result =
-await supabaseClient
-.from("products")
-.insert(insertData)
-.select("*");
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast(
-"تعذر إضافة المنتج: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-closeProductModal();
-
-toast("تمت إضافة المنتج ✓");
-
-await loadData();
-
-await loadVendorDashboard();
-
-}
-catch(error){
-
-console.error(error);
-
-toast(
-"حدث خطأ أثناء حفظ المنتج"
-);
-
-}
-
-}
-
-
-/* =====================================================
-   HIDE / SHOW PRODUCT
-===================================================== */
-
-async function toggleProduct(productId,currentStatus){
-
-const newStatus =
-!currentStatus;
-
-
-const result =
-await supabaseClient
-.from("products")
-.update({
-is_active:newStatus
-})
-.eq("id",productId)
-.eq("vendor_id",currentVendorId)
-.select("*");
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast(
-"تعذر تغيير حالة المنتج: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-toast(
-newStatus
-? "تم إظهار المنتج ✓"
-: "تم إخفاء المنتج ✓"
-);
-
-
-await loadData();
-
-await renderVendorProducts();
-
-}
-
-
-/* =====================================================
-   DELETE PRODUCT
-===================================================== */
-
-async function deleteProduct(productId){
-
-const product =
-await supabaseClient
-.from("products")
-.select("id,name")
-.eq("id",productId)
-.eq("vendor_id",currentVendorId)
-.limit(1);
-
-
-if(product.error){
-
-console.error(product.error);
-
-toast("تعذر العثور على المنتج");
-
-return;
-
-}
-
-
-if(!product.data || !product.data.length){
-
-toast("المنتج غير موجود");
-
-return;
-
-}
-
-
-const name =
-product.data[0].name;
-
-
-const confirmed =
-confirm(
-"هل أنت متأكد من حذف المنتج:\n\n" +
-name +
-"\n\nسيتم حذفه نهائيًا."
-);
-
-
-if(!confirmed)
-return;
-
-
-const result =
-await supabaseClient
-.from("products")
-.delete()
-.eq("id",productId)
-.eq("vendor_id",currentVendorId);
-
-
-if(result.error){
-
-console.error(result.error);
-
-toast(
-"تعذر حذف المنتج: " +
-result.error.message
-);
-
-return;
-
-}
-
-
-toast("تم حذف المنتج نهائيًا ✓");
-
-await loadData();
-
-await renderVendorProducts();
-
-}
-
-
-/* =====================================================
-   CART
-===================================================== */
-
-function addToCart(productId){
-
-const product =
-products.find(
-p=>Number(p.id) ===
-Number(productId)
-);
-
-
-if(!product)
-return;
-
-
-const existing =
-cart.find(
-x=>Number(x.id) ===
-Number(productId)
-);
-
-
-if(existing){
-
-existing.qty++;
-
-}else{
-
-cart.push({
-
-...product,
-
-qty:1
-
-});
-
-}
-
-
-updateCart();
-
-toast(
-"تمت إضافة المنتج للسلة"
-);
-
-}
-
-
-function updateCart(){
 
 const total =
 cart.reduce(
-(sum,item)=>
-sum + item.qty,
+(x,p)=>x+p.p,
 0
 );
 
 
-document
-.getElementById("cartCount")
-.textContent =
-total;
+let o={
+
+id:Date.now()
+.toString()
+.slice(-6),
+
+name:n,
+
+phone:ph,
+
+address:a,
+
+total,
+
+items:cart.map(
+p=>p.n
+),
+
+status:"جديد",
+
+date:new Date()
+.toLocaleString("ar-SA")
+
+};
 
 
-const bar =
-document.getElementById("cartBar");
+if(dbConnected){
+
+try{
+
+const result =
+await supabaseClient
+.from("orders")
+.insert({
+
+customer_name:n,
+
+customer_phone:ph,
+
+customer_address:a,
+
+total,
+
+commission:Number(
+(total*.1).toFixed(2)
+),
+
+status:"جديد"
+
+})
+.select("id")
+.single();
 
 
-if(total > 0){
-
-bar.classList.add("show");
-
-}else{
-
-bar.classList.remove("show");
-
-}
-
-}
+if(result.error)
+throw result.error;
 
 
-function openCart(){
+const itemsResult =
+await supabaseClient
+.from("order_items")
+.insert(
+cart.map(p=>({
 
-if(!cart.length){
+order_id:result.data.id,
 
-toast("السلة فارغة");
+product_id:
+typeof p.id==="number"
+?p.id
+:null,
+
+vendor_id:
+p.vendor_id || null,
+
+quantity:1,
+
+price:p.p,
+
+subtotal:p.p
+
+}))
+);
+
+
+if(itemsResult.error)
+throw itemsResult.error;
+
+
+o.id=result.data.id;
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"تعذر حفظ الطلب في قاعدة البيانات"
+);
 
 return;
 
 }
 
-
-let message =
-"السلة:\n\n";
+}
 
 
-cart.forEach(item=>{
+orders.unshift(o);
 
-message +=
-item.n +
-" × " +
-item.qty +
-"\n";
+cart=[];
 
-});
+save();
 
+update();
 
-alert(message);
+closeP("checkoutPanel");
+
+alert(
+"تم إنشاء الطلب #"+o.id
+);
+
+showShop();
 
 }
 
 
-/* =====================================================
-   ADMIN — SUPABASE AUTH
-===================================================== */
 
 async function openAdmin(){
-
-/*
-  دخول مالك المنصة أصبح عن طريق
-  حساب Supabase بدل الرمز 1234
-*/
 
 const email =
 prompt(
 "أدخل بريد مالك المنصة"
 );
 
-
-if(email === null)
-return;
+if(email===null)return;
 
 
 const password =
@@ -4194,9 +1630,7 @@ prompt(
 "أدخل كلمة مرور مالك المنصة"
 );
 
-
-if(password === null)
-return;
+if(password===null)return;
 
 
 if(!email.trim()){
@@ -4223,7 +1657,8 @@ toast("جاري تسجيل الدخول...");
 
 
 const result =
-await supabaseClient.auth.signInWithPassword({
+await supabaseClient.auth
+.signInWithPassword({
 
 email:email.trim(),
 
@@ -4235,7 +1670,7 @@ password:password
 if(result.error){
 
 console.error(
-"OWNER LOGIN ERROR:",
+"OWNER LOGIN:",
 result.error
 );
 
@@ -4263,11 +1698,7 @@ return;
 }
 
 
-/*
-  التحقق من أن الحساب Owner
-*/
-
-const profileResult =
+const profile =
 await supabaseClient
 .from("profiles")
 .select("role")
@@ -4275,11 +1706,11 @@ await supabaseClient
 .single();
 
 
-if(profileResult.error){
+if(profile.error){
 
 console.error(
-"OWNER PROFILE ERROR:",
-profileResult.error
+"PROFILE:",
+profile.error
 );
 
 await supabaseClient.auth.signOut();
@@ -4293,7 +1724,7 @@ return;
 }
 
 
-if(profileResult.data?.role !== "owner"){
+if(profile.data?.role!=="owner"){
 
 await supabaseClient.auth.signOut();
 
@@ -4306,15 +1737,14 @@ return;
 }
 
 
-/*
-  فتح لوحة المالك
-*/
+document.getElementById("shop")
+.style.display="none";
 
-hideAllPages();
+document.getElementById("vendor")
+.style.display="none";
 
-document
-.getElementById("adminPage")
-.classList.remove("hidden");
+document.getElementById("admin")
+.style.display="block";
 
 
 await loadAdmin();
@@ -4322,10 +1752,7 @@ await loadAdmin();
 
 }catch(error){
 
-console.error(
-"OWNER LOGIN EXCEPTION:",
-error
-);
+console.error(error);
 
 toast(
 "حدث خطأ أثناء تسجيل دخول المالك"
@@ -4336,251 +1763,138 @@ toast(
 }
 
 
-/* =====================================================
-   ADMIN
-===================================================== */
 
 async function loadAdmin(){
 
-await loadData();
-
-
-document
-.getElementById("adminProductsCount")
-.textContent =
-products.length;
-
-
-document
-.getElementById("adminVendorsCount")
-.textContent =
-vendors.length;
-
-
-const ordersResult =
-await supabaseClient
-.from("orders")
-.select("id");
-
-
-const orders =
-ordersResult.data || [];
-
-
-document
-.getElementById("adminOrdersCount")
-.textContent =
-orders.length;
-
-
-const table =
-document
-.getElementById("adminProductsTable");
-
-
-table.innerHTML =
-products.map(p=>`
-
-<tr>
-
-<td>
-
-<div class="mini-product">
-
-<img
-src="${escapeHtml(
-p.image_url || imageFallback()
-)}"
-alt="">
-
-<span>
-${escapeHtml(p.n)}
-</span>
-
-</div>
-
-</td>
-
-<td>
-${escapeHtml(p.s)}
-</td>
-
-<td>
-${Number(p.p).toFixed(0)} ر.س
-</td>
-
-</tr>
-
-`).join("");
-
-
 await loadPendingVendors();
+
+drawAdmin();
 
 }
 
 
-/* =====================================================
-   PENDING VENDORS
-===================================================== */
 
 async function loadPendingVendors(){
 
-const el =
+const box =
 document.getElementById(
-"pendingVendorsList"
+"pendingVendors"
 );
 
-
-if(!el)
-return;
+if(!box)return;
 
 
 const result =
 await supabaseClient
 .from("vendors")
-.select("*")
-.eq("approval_status","pending")
-.eq("is_active",false)
-.order("id",{ascending:false});
+.select(
+"id,name,phone,description,owner_name,document_type,document_url,approval_status,is_active,created_at"
+)
+.eq(
+"approval_status",
+"pending"
+)
+.order(
+"created_at",
+{ascending:false}
+);
 
 
 if(result.error){
 
 console.error(result.error);
 
-el.innerHTML =
-`
-<div class="empty">
-تعذر تحميل طلبات المتاجر.
-</div>
-`;
+box.innerHTML=
+'<div class="empty">تعذر تحميل الطلبات</div>';
 
 return;
 
 }
 
 
-const list =
+const rows =
 result.data || [];
 
 
-if(!list.length){
+if(!rows.length){
 
-el.innerHTML =
-`
-<div class="empty">
-لا توجد طلبات جديدة حالياً.
-</div>
-`;
+box.innerHTML=
+'<div class="empty">لا توجد طلبات معلقة حالياً</div>';
 
 return;
 
 }
 
 
-el.innerHTML =
-list.map(v=>`
+box.innerHTML =
+rows.map(v => `
 
-<div class="application-card">
+<div class="vendor-card">
 
-<div class="application-head">
+<h3>
+${escapeHtml(v.name)}
+</h3>
 
-<img
-class="application-image"
-src="${escapeHtml(
-v.image_url || imageFallback("store")
-)}"
-alt=""
-onerror="this.src='${imageFallback("store")}'">
-
-<div>
-
-<div class="application-name">
-${escapeHtml(v.name || "بدون اسم")}
-</div>
-
-<div style="font-size:12px;color:#81776d;margin-top:4px">
-${escapeHtml(v.owner_name || "بدون اسم صاحب المتجر")}
-</div>
-
-</div>
-
-</div>
-
-
-<div class="application-info">
-
-<div>
-<strong>اسم صاحب المتجر:</strong>
+<p>
+<b>صاحب المتجر:</b>
 ${escapeHtml(v.owner_name || "-")}
-</div>
+</p>
 
-<div>
-<strong>رقم الجوال:</strong>
+<p>
+<b>الجوال:</b>
 ${escapeHtml(v.phone || "-")}
-</div>
+</p>
 
-<div>
-<strong>الوصف:</strong>
+<p>
+<b>الوصف:</b>
 ${escapeHtml(v.description || "-")}
-</div>
+</p>
 
-<div>
-<strong>نوع الوثيقة:</strong>
+<p>
+<b>نوع الوثيقة:</b>
+${escapeHtml(v.document_type || "-")}
+</p>
 
-${
-v.document_type === "freelance"
-? "وثيقة العمل الحر"
-: v.document_type === "productive_families"
-? "شهادة الأسر المنتجة"
-: escapeHtml(v.document_type || "-")
-}
-
-</div>
-
-<div style="margin-top:9px">
-
-<span class="status-badge">
-قيد المراجعة
-</span>
-
-</div>
-
-</div>
-
-
-<div class="application-actions">
 
 ${
 v.document_url
+
 ?
-`
-<button
+
+`<button
 class="document-view-button"
-onclick="openVendorDocument(${JSON.stringify(v.document_url)})">
-
+data-document-path="${escapeHtml(v.document_url)}"
+onclick="openVendorDocument(this.dataset.documentPath)"
+>
 📄 عرض الوثيقة
+</button>`
 
-</button>
-`
 :
+
 ""
+
 }
 
+
+<div
+style="display:flex;gap:8px;margin-top:10px"
+>
+
 <button
-class="btn gold"
-onclick="approveVendor(${Number(v.id)})">
-
-✓ قبول المتجر
-
+class="btn"
+style="flex:1"
+onclick="approveVendor(${v.id})"
+>
+✓ قبول
 </button>
 
+
 <button
-class="btn danger"
-onclick="rejectVendor(${Number(v.id)})">
-
-✕ رفض الطلب
-
+class="ghost"
+style="flex:1"
+onclick="rejectVendor(${v.id})"
+>
+رفض
 </button>
 
 </div>
@@ -4592,19 +1906,143 @@ onclick="rejectVendor(${Number(v.id)})">
 }
 
 
-/* =====================================================
-   APPROVE VENDOR
-===================================================== */
 
-async function approveVendor(vendorId){
+async function openVendorDocument(documentPath){
 
-const confirmed =
-confirm(
-"هل تريد قبول هذا المتجر ونشره للعامة؟"
+if(!documentPath){
+
+toast(
+"لا توجد وثيقة مرفقة لهذا الطلب"
+);
+
+return;
+
+}
+
+
+try{
+
+toast(
+"جاري تجهيز الوثيقة..."
 );
 
 
-if(!confirmed)
+const sessionResult =
+await supabaseClient.auth
+.getSession();
+
+
+const session =
+sessionResult.data?.session;
+
+
+if(!session?.user){
+
+toast(
+"يجب تسجيل الدخول بحساب المالك"
+);
+
+return;
+
+}
+
+
+/*
+نضمن أن المسار لا يحتوي
+على اسم الـ bucket.
+*/
+
+let path =
+String(documentPath).trim();
+
+path=path
+.replace(
+/^https?:\/\/[^/]+\/storage\/v1\/object\/(?:sign|authenticated|public)\/vendor-documents\//i,
+""
+);
+
+path=path
+.replace(
+/^vendor-documents\//i,
+""
+);
+
+
+/*
+إنشاء رابط مؤقت للوثيقة الخاصة.
+*/
+
+const signedResult =
+await supabaseClient
+.storage
+.from("vendor-documents")
+.createSignedUrl(
+path,
+600
+);
+
+
+if(signedResult.error){
+
+console.error(
+"DOCUMENT SIGN ERROR:",
+signedResult.error
+);
+
+toast(
+"تعذر فتح الوثيقة: "+
+signedResult.error.message
+);
+
+return;
+
+}
+
+
+const signedUrl =
+signedResult.data?.signedUrl;
+
+
+if(!signedUrl){
+
+toast(
+"تعذر إنشاء رابط الوثيقة"
+);
+
+return;
+
+}
+
+
+/*
+بدلاً من window.open
+نستخدم نفس الصفحة حتى لا يمنع
+Safari فتح الرابط بعد await.
+*/
+
+window.location.href=signedUrl;
+
+
+}catch(error){
+
+console.error(
+"DOCUMENT ERROR:",
+error
+);
+
+toast(
+"حدث خطأ أثناء فتح الوثيقة"
+);
+
+}
+
+}
+
+
+
+async function approveVendor(id){
+
+if(!confirm("هل تريد قبول هذا المتجر؟"))
 return;
 
 
@@ -4614,11 +2052,11 @@ await supabaseClient
 .update({
 
 approval_status:"approved",
+
 is_active:true
 
 })
-.eq("id",vendorId)
-.eq("approval_status","pending");
+.eq("id",id);
 
 
 if(result.error){
@@ -4626,8 +2064,7 @@ if(result.error){
 console.error(result.error);
 
 toast(
-"تعذر قبول المتجر: " +
-result.error.message
+"تعذر قبول المتجر"
 );
 
 return;
@@ -4636,28 +2073,18 @@ return;
 
 
 toast(
-"تم قبول المتجر ونشره للعامة ✓"
+"تم قبول المتجر ✅"
 );
-
 
 await loadAdmin();
 
 }
 
 
-/* =====================================================
-   REJECT VENDOR
-===================================================== */
 
-async function rejectVendor(vendorId){
+async function rejectVendor(id){
 
-const confirmed =
-confirm(
-"هل تريد رفض طلب هذا المتجر؟"
-);
-
-
-if(!confirmed)
+if(!confirm("هل تريد رفض هذا الطلب؟"))
 return;
 
 
@@ -4667,11 +2094,11 @@ await supabaseClient
 .update({
 
 approval_status:"rejected",
+
 is_active:false
 
 })
-.eq("id",vendorId)
-.eq("approval_status","pending");
+.eq("id",id);
 
 
 if(result.error){
@@ -4679,8 +2106,7 @@ if(result.error){
 console.error(result.error);
 
 toast(
-"تعذر رفض الطلب: " +
-result.error.message
+"تعذر رفض الطلب"
 );
 
 return;
@@ -4692,98 +2118,291 @@ toast(
 "تم رفض الطلب"
 );
 
-
 await loadAdmin();
 
 }
 
 
-/* =====================================================
-   MODAL CLICK
-===================================================== */
 
-document
-.getElementById("productModal")
-.addEventListener(
-"click",
-function(e){
+function drawAdmin(){
 
-if(e.target === this){
+const sales =
+orders.reduce(
+(a,o)=>a+Number(o.total||0),
+0
+);
 
-closeProductModal();
+
+document.getElementById("ordersN")
+.textContent=orders.length;
+
+
+document.getElementById("salesN")
+.textContent=
+sales+" ر.س";
+
+
+document.getElementById("commN")
+.textContent=
+(sales*.1).toFixed(2)+" ر.س";
+
+
+document.getElementById("prodN")
+.textContent=
+products.length;
+
+
+const box =
+document.getElementById("orders");
+
+
+if(!orders.length){
+
+box.innerHTML=
+'<div class="empty">لا توجد طلبات حتى الآن</div>';
+
+return;
 
 }
 
-});
+
+box.innerHTML =
+orders.map(
+o=>`
+
+<div class="order">
+
+<div class="row">
+
+<b>
+طلب #${escapeHtml(o.id)}
+</b>
+
+<span class="badge">
+${escapeHtml(o.status)}
+</span>
+
+</div>
 
 
-/* =====================================================
-   START
-===================================================== */
-
-(async function(){
-
-const sessionResult =
-await supabaseClient.auth.getSession();
-
-const session =
-sessionResult.data?.session;
+<p class="muted">
+${escapeHtml(o.date)}
+</p>
 
 
-if(session?.user){
+<b>
+${escapeHtml(o.name)}
+</b>
 
-const vendorResult =
-await supabaseClient
-.from("vendors")
-.select("*")
-.eq("user_id",session.user.id)
-.limit(1);
+—
+
+${escapeHtml(o.phone)}
 
 
-if(
-!vendorResult.error &&
-vendorResult.data &&
-vendorResult.data.length
-){
+<p>
+${o.items
+.map(escapeHtml)
+.join("، ")}
+</p>
 
-currentVendor =
-vendorResult.data[0];
+
+<div class="row">
+
+<b>
+${o.total} ر.س
+</b>
+
+
+<select
+onchange="changeStatus('${escapeHtml(o.id)}',this.value)"
+style="width:auto"
+>
+
+<option>
+جديد
+</option>
+
+<option>
+قيد التجهيز
+</option>
+
+<option>
+جاهز
+</option>
+
+<option>
+تم التوصيل
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+`
+).join("");
+
+}
+
+
+
+function changeStatus(id,v){
+
+const o =
+orders.find(
+x=>String(x.id)===String(id)
+);
+
+if(!o)return;
+
+o.status=v;
+
+save();
+
+drawAdmin();
+
+}
+
+
+
+function openAdd(){
 
 currentVendorId =
-currentVendor.id;
+currentVendorId || 1;
 
-vendorLoggedIn =
-true;
+document.getElementById("addPanel")
+.style.display="block";
+
+}
 
 
-if(
-currentVendor.approval_status === "pending"
-){
 
-hideAllPages();
+function openVendorAdd(){
 
-document
-.getElementById("vendorPendingPage")
-.classList.remove("hidden");
+document.getElementById("addPanel")
+.style.display="block";
 
-}else if(
-currentVendor.approval_status === "rejected"
-){
+}
 
-hideAllPages();
 
-document
-.getElementById("vendorRejectedPage")
-.classList.remove("hidden");
 
-}else if(
-currentVendor.approval_status === "approved" &&
-currentVendor.is_active === true
-){
+function previewImage(e){
 
-await loadData();
+const f=e.target.files[0];
 
-await showHome();
+if(!f)return;
+
+document.getElementById("previewImg")
+.src=
+URL.createObjectURL(f);
+
+document.getElementById("imagePreview")
+.style.display="grid";
+
+}
+
+
+
+async function addProduct(){
+
+const n =
+document.getElementById("pn")
+.value.trim();
+
+const p =
+Number(
+document.getElementById("pp")
+.value
+);
+
+const d =
+document.getElementById("pd")
+.value.trim();
+
+const c =
+document.getElementById("pc")
+.value;
+
+const file =
+document.getElementById("pi")
+.files[0];
+
+
+if(!n || !p){
+
+toast(
+"أدخل اسم المنتج والسعر"
+);
+
+return;
+
+}
+
+
+if(!currentVendorId){
+
+toast(
+"لم يتم تحديد المتجر"
+);
+
+return;
+
+}
+
+
+let imageUrl="";
+
+
+if(file){
+
+try{
+
+const fileName =
+Date.now()+
+"-"+
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+"-"
+);
+
+
+const upload =
+await supabaseClient
+.storage
+.from("product-images")
+.upload(
+fileName,
+file,
+{
+cacheControl:"3600",
+upsert:false
+}
+);
+
+
+if(upload.error)
+throw upload.error;
+
+
+imageUrl =
+supabaseClient
+.storage
+.from("product-images")
+.getPublicUrl(
+fileName
+)
+.data
+.publicUrl;
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"تعذر رفع صورة المنتج"
+);
 
 return;
 
@@ -4791,16 +2410,882 @@ return;
 
 }
 
+
+const result =
+await supabaseClient
+.from("products")
+.insert({
+
+vendor_id:currentVendorId,
+
+name:n,
+
+description:d,
+
+price:p,
+
+image_url:imageUrl,
+
+category:c,
+
+emoji:"🍪",
+
+is_active:true
+
+})
+.select()
+.single();
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر إضافة المنتج: "+
+result.error.message
+);
+
+return;
+
 }
 
 
-await loadData();
+toast(
+"تمت إضافة المنتج ✅"
+);
 
-await showHome();
 
-updateCart();
+closeP("addPanel");
 
-})();
+resetProduct();
+
+await loadProducts();
+
+}
+
+
+
+function resetProduct(){
+
+document.getElementById("pn").value="";
+
+document.getElementById("pp").value="";
+
+document.getElementById("pd").value="";
+
+document.getElementById("pi").value="";
+
+document.getElementById("imagePreview")
+.style.display="none";
+
+}
+
+
+
+function openVendorLogin(){
+
+document.getElementById("vendorEmail")
+.value="";
+
+document.getElementById("vendorPassword")
+.value="";
+
+document.getElementById("vendorLoginPanel")
+.style.display="block";
+
+}
+
+
+
+async function vendorLogin(){
+
+const email =
+document.getElementById("vendorEmail")
+.value.trim();
+
+const password =
+document.getElementById("vendorPassword")
+.value;
+
+
+if(!email || !password){
+
+toast(
+"أدخل البريد وكلمة المرور"
+);
+
+return;
+
+}
+
+
+try{
+
+const result =
+await supabaseClient.auth
+.signInWithPassword({
+
+email,
+
+password
+
+});
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"بيانات الدخول غير صحيحة"
+);
+
+return;
+
+}
+
+
+const user =
+result.data?.user;
+
+
+if(!user){
+
+toast(
+"تعذر تسجيل الدخول"
+);
+
+return;
+
+}
+
+
+const vendor =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("user_id",user.id)
+.single();
+
+
+if(vendor.error){
+
+await supabaseClient.auth.signOut();
+
+toast(
+"لا يوجد متجر مرتبط بهذا الحساب"
+);
+
+return;
+
+}
+
+
+currentVendor=
+vendor.data;
+
+currentVendorId=
+vendor.data.id;
+
+
+closeP("vendorLoginPanel");
+
+
+await openVendorDashboard();
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"حدث خطأ أثناء تسجيل الدخول"
+);
+
+}
+
+}
+
+
+
+async function openVendorDashboard(){
+
+document.getElementById("shop")
+.style.display="none";
+
+document.getElementById("admin")
+.style.display="none";
+
+document.getElementById("vendor")
+.style.display="block";
+
+
+await loadVendor();
+
+renderVendorProducts();
+
+}
+
+
+
+async function loadVendor(){
+
+if(!currentVendorId)
+return;
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.select("*")
+.eq("id",currentVendorId)
+.single();
+
+
+if(result.error){
+
+console.error(result.error);
+
+toast(
+"تعذر تحميل بيانات المتجر"
+);
+
+return;
+
+}
+
+
+const data=result.data;
+
+currentVendor=data;
+
+
+document.getElementById("vn")
+.value=data.name || "";
+
+
+document.getElementById("vd")
+.value=data.description || "";
+
+
+document.getElementById("vendorWelcome")
+.textContent=
+data.name || "متجري";
+
+
+document.getElementById("vendorNameView")
+.textContent=
+data.name || "متجري";
+
+
+document.getElementById("vendorDescView")
+.textContent=
+data.description || "";
+
+
+if(data.image_url){
+
+document.getElementById("vendorImage")
+.src=data.image_url;
+
+}
+
+
+const statusBox =
+document.getElementById("vendorStatus");
+
+
+if(data.approval_status==="pending"){
+
+statusBox.innerHTML=`
+
+<div class="pending">
+
+<b>طلبك قيد المراجعة ⏳</b>
+
+<p>
+سيظهر متجرك للعملاء بعد اعتماد الطلب من مالك المنصة.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+else if(data.approval_status==="rejected"){
+
+statusBox.innerHTML=`
+
+<div class="rejected">
+
+<b>تم رفض الطلب</b>
+
+<p>
+يمكنك التواصل مع إدارة المنصة للمزيد من المعلومات.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+else{
+
+statusBox.innerHTML=`
+
+<div class="approved">
+
+<b>المتجر معتمد ✓</b>
+
+<p>
+متجرك نشط ويمكنه استقبال الطلبات.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+
+function vendorPreview(e){
+
+const f=e.target.files[0];
+
+if(!f)return;
+
+document.getElementById("vpi")
+.src=
+URL.createObjectURL(f);
+
+document.getElementById("vp")
+.style.display="grid";
+
+}
+
+
+
+async function saveVendor(){
+
+if(!currentVendorId){
+
+toast(
+"تعذر تحديد المتجر"
+);
+
+return;
+
+}
+
+
+const name =
+document.getElementById("vn")
+.value.trim();
+
+const description =
+document.getElementById("vd")
+.value.trim();
+
+const file =
+document.getElementById("vi")
+.files[0];
+
+
+if(!name){
+
+toast(
+"اكتب اسم المتجر"
+);
+
+return;
+
+}
+
+
+let image_url;
+
+
+try{
+
+if(file){
+
+const fileName =
+"vendor-"+
+currentVendorId+
+"-"+
+Date.now()+
+"-"+
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+"-"
+);
+
+
+const upload =
+await supabaseClient
+.storage
+.from("product-images")
+.upload(
+fileName,
+file,
+{
+cacheControl:"3600",
+upsert:false
+}
+);
+
+
+if(upload.error)
+throw upload.error;
+
+
+image_url =
+supabaseClient
+.storage
+.from("product-images")
+.getPublicUrl(
+fileName
+)
+.data
+.publicUrl;
+
+}
+
+
+const update={
+name,
+description
+};
+
+
+if(image_url)
+update.image_url=image_url;
+
+
+const result =
+await supabaseClient
+.from("vendors")
+.update(update)
+.eq("id",currentVendorId)
+.select()
+.single();
+
+
+if(result.error)
+throw result.error;
+
+
+currentVendor=result.data;
+
+
+document.getElementById("vendorWelcome")
+.textContent=result.data.name;
+
+document.getElementById("vendorNameView")
+.textContent=result.data.name;
+
+document.getElementById("vendorDescView")
+.textContent=
+result.data.description || "";
+
+
+if(result.data.image_url){
+
+document.getElementById("vendorImage")
+.src=
+result.data.image_url;
+
+}
+
+
+document.getElementById("vi")
+.value="";
+
+document.getElementById("vp")
+.style.display="none";
+
+
+toast(
+"تم حفظ بيانات المتجر ✅"
+);
+
+
+await loadProducts();
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"تعذر حفظ بيانات المتجر: "+
+error.message
+);
+
+}
+
+}
+
+
+
+function renderVendorProducts(){
+
+const box =
+document.getElementById("vendorProducts");
+
+if(!box)return;
+
+
+const mine =
+products.filter(
+p=>p.vendor_id===currentVendorId
+);
+
+
+box.innerHTML =
+mine.length
+
+?
+
+mine.map(
+p=>`
+
+<article class="card">
+
+<div class="pic">
+
+${
+p.image_url
+
+?
+
+`<img
+src="${escapeHtml(p.image_url)}"
+>`
+
+:
+
+`<span style="font-size:60px">
+${p.e}
+</span>`
+
+}
+
+</div>
+
+
+<h3>
+${escapeHtml(p.n)}
+</h3>
+
+
+<div class="muted">
+${escapeHtml(p.description || "")}
+</div>
+
+
+<div class="row">
+
+<span class="price">
+${p.p} ر.س
+</span>
+
+<span class="badge">
+نشط
+</span>
+
+</div>
+
+</article>
+
+`
+).join("")
+
+:
+
+'<div class="empty">لا توجد منتجات حتى الآن</div>';
+
+}
+
+
+
+function openVendorSignup(){
+
+closeP("vendorLoginPanel");
+
+document.getElementById("vendorSignupPanel")
+.style.display="block";
+
+}
+
+
+
+async function signupVendor(){
+
+const ownerName =
+document.getElementById("signupOwner")
+.value.trim();
+
+const storeName =
+document.getElementById("signupStore")
+.value.trim();
+
+const phone =
+document.getElementById("signupPhone")
+.value.trim();
+
+const email =
+document.getElementById("signupEmail")
+.value.trim();
+
+const password =
+document.getElementById("signupPassword")
+.value;
+
+const description =
+document.getElementById("signupDescription")
+.value.trim();
+
+const documentType =
+document.getElementById("signupDocumentType")
+.value;
+
+const file =
+document.getElementById("signupDocument")
+.files[0];
+
+
+if(
+!ownerName ||
+!storeName ||
+!phone ||
+!email ||
+!password ||
+!file
+){
+
+toast(
+"أكمل جميع البيانات وارفع الوثيقة"
+);
+
+return;
+
+}
+
+
+if(password.length<6){
+
+toast(
+"كلمة المرور يجب أن تكون 6 أحرف على الأقل"
+);
+
+return;
+
+}
+
+
+try{
+
+toast(
+"جاري إنشاء الحساب..."
+);
+
+
+const signup =
+await supabaseClient.auth
+.signUp({
+
+email,
+
+password
+
+});
+
+
+if(signup.error){
+
+console.error(signup.error);
+
+toast(
+signup.error.message
+);
+
+return;
+
+}
+
+
+const user =
+signup.data?.user;
+
+
+if(!user){
+
+toast(
+"تعذر إنشاء الحساب"
+);
+
+return;
+
+}
+
+
+/*
+رفع الوثيقة داخل مجلد المستخدم.
+*/
+
+const fileName =
+user.id+
+"/"+
+Date.now()+
+"-"+
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+"-"
+);
+
+
+const upload =
+await supabaseClient
+.storage
+.from("vendor-documents")
+.upload(
+fileName,
+file,
+{
+upsert:false
+}
+);
+
+
+if(upload.error){
+
+console.error(upload.error);
+
+toast(
+"تم إنشاء الحساب لكن تعذر رفع الوثيقة"
+);
+
+return;
+
+}
+
+
+/*
+إنشاء سجل المتجر.
+*/
+
+const vendor =
+await supabaseClient
+.from("vendors")
+.insert({
+
+user_id:user.id,
+
+name:storeName,
+
+phone:phone,
+
+description:description,
+
+owner_name:ownerName,
+
+document_type:documentType,
+
+document_url:fileName,
+
+approval_status:"pending",
+
+is_active:false
+
+})
+.select()
+.single();
+
+
+if(vendor.error){
+
+console.error(vendor.error);
+
+toast(
+"تعذر حفظ طلب المتجر: "+
+vendor.error.message
+);
+
+return;
+
+}
+
+
+closeP("vendorSignupPanel");
+
+
+toast(
+"تم إرسال طلب المتجر بنجاح ✅\nسيتم مراجعته من مالك المنصة."
+);
+
+
+/*
+إذا كان تأكيد البريد مفعلاً،
+يبقى المستخدم بحاجة لتأكيد البريد.
+*/
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"حدث خطأ أثناء إنشاء الطلب"
+);
+
+}
+
+}
+
+
+
+function closeP(id){
+
+const el =
+document.getElementById(id);
+
+if(el)
+el.style.display="none";
+
+}
+
+
+
+function showShop(){
+
+document.getElementById("admin")
+.style.display="none";
+
+document.getElementById("vendor")
+.style.display="none";
+
+document.getElementById("shop")
+.style.display="block";
+
+}
+
+
+
+render();
+
+update();
+
+drawAdmin();
+
+connectDatabase();
 
 </script>
 
