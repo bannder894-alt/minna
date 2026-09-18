@@ -1289,6 +1289,7 @@ class="btn light"
 onclick="showHome()">
 
 ← المتاجر
+
 </button>
 
 </div>
@@ -1608,6 +1609,7 @@ setTimeout(()=>{
 el.classList.remove("show");
 
 },3500);
+
 
 }
 
@@ -4167,27 +4169,146 @@ alert(message);
 
 
 /* =====================================================
-   ADMIN
+   ADMIN — SUPABASE AUTH
 ===================================================== */
 
 async function openAdmin(){
 
-const pin =
-prompt("أدخل رمز مالك المنصة");
+/*
+  دخول مالك المنصة أصبح عن طريق
+  حساب Supabase بدل الرمز 1234
+*/
+
+const email =
+prompt(
+"أدخل بريد مالك المنصة"
+);
 
 
-if(pin !== "1234"){
+if(email === null)
+return;
 
-if(pin !== null){
 
-toast("الرمز غير صحيح");
+const password =
+prompt(
+"أدخل كلمة مرور مالك المنصة"
+);
 
-}
+
+if(password === null)
+return;
+
+
+if(!email.trim()){
+
+toast("أدخل البريد الإلكتروني");
 
 return;
 
 }
 
+
+if(!password){
+
+toast("أدخل كلمة المرور");
+
+return;
+
+}
+
+
+try{
+
+toast("جاري تسجيل الدخول...");
+
+
+const result =
+await supabaseClient.auth.signInWithPassword({
+
+email:email.trim(),
+
+password:password
+
+});
+
+
+if(result.error){
+
+console.error(
+"OWNER LOGIN ERROR:",
+result.error
+);
+
+toast(
+"بيانات دخول المالك غير صحيحة"
+);
+
+return;
+
+}
+
+
+const user =
+result.data?.user;
+
+
+if(!user){
+
+toast(
+"تعذر قراءة حساب المالك"
+);
+
+return;
+
+}
+
+
+/*
+  التحقق من أن الحساب Owner
+*/
+
+const profileResult =
+await supabaseClient
+.from("profiles")
+.select("role")
+.eq("id",user.id)
+.single();
+
+
+if(profileResult.error){
+
+console.error(
+"OWNER PROFILE ERROR:",
+profileResult.error
+);
+
+await supabaseClient.auth.signOut();
+
+toast(
+"تعذر التحقق من صلاحيات المالك"
+);
+
+return;
+
+}
+
+
+if(profileResult.data?.role !== "owner"){
+
+await supabaseClient.auth.signOut();
+
+toast(
+"هذا الحساب ليس حساب مالك المنصة"
+);
+
+return;
+
+}
+
+
+/*
+  فتح لوحة المالك
+*/
 
 hideAllPages();
 
@@ -4198,8 +4319,26 @@ document
 
 await loadAdmin();
 
+
+}catch(error){
+
+console.error(
+"OWNER LOGIN EXCEPTION:",
+error
+);
+
+toast(
+"حدث خطأ أثناء تسجيل دخول المالك"
+);
+
 }
 
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
 
 async function loadAdmin(){
 
